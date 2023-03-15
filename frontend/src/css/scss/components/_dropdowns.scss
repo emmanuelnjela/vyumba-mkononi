@@ -1,0 +1,67 @@
+.dropdown {
+    border: 1px solid var(--dark);
+    // padding: .5rem; 
+    position: relative;
+    min-width: 10rem;
+    
+  &__list {
+    position: absolute;
+    // margin-top: 0.5rem;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    /* padding: 0 .5rem; */
+    background-color: var(--element-bg);
+  }
+  &__current {
+    background-color: var(--element-bg);
+    padding: 0 1rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2rem;
+    width: max-content;
+  }
+  &__list .list__item,
+  &__current {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    column-gap: .5rem;
+    width: auto;
+  }
+  
+  & .list__item {
+    color: var(--white);
+    background-color: var(--dark);
+    padding: 0.75rem;
+    border-bottom: 1px solid;
+    min-width: 10rem;
+  }
+  & .list__item:last-child {
+    border-bottom: none;
+  }
+  &__list--hide {
+    display: none;
+  }
+  &--primary, &--secondary {
+      border: none;
+  }
+  &--primary :is(&__current, &__list, .list__item) {
+    background-color: var(--primary-clr);
+    color: white;
+  }
+  &--primary .list__item:hover {
+    background-color: var(--muted-primary-clr);
+  }
+  
+  &--secondary :is(&__current, &__list, .list__item) {
+    background-color: var(--secondary-clr);
+    color: white;
+  }
+  &--secondary .list__item:hover {
+    background-color: var(--dark);
+  }
+  
+}

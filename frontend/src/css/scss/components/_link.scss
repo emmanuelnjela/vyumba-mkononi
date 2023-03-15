@@ -1,0 +1,17 @@
+.link {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* align-items: flex-end;    */
+}
+.link--inline {
+    flex-direction: row;
+    align-items: baseline;
+}
+.link--primary {
+    color: var(--primary-clr);
+}
+.link--primary:hover {
+    color: var(--muted-primary-clr);
+}

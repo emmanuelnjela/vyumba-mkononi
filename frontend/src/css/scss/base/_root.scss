@@ -1,0 +1,21 @@
+:root {
+    --primary-clr: hsl(23deg 98% 49%);
+    --muted-primary-clr: hsl(23deg 99% 69%);
+    --light-primary-clr: hsl(33, 100%, 88%);
+    --secondary-clr: hsl(23deg 98% 24%);
+    --dark: hsl(25deg 100% 6%);
+    --muted-dark: hsl(23deg 15% 30%);
+    --grey-1: hsl(21deg 7% 53%);
+    --grey-2: hsl(23deg 7% 76%);
+    --grey-3: hsl(40deg 6% 90%);
+    --light: hsl(40deg 12% 95%);
+    --white: hsl(0deg 100% 100%);
+    --shadow-sm: 0 0 .8rem var(--grey-2);
+    --danger: hsl(16, 100%, 50%);
+    
+
+    --main-bg: hsl(40deg 20% 95%);
+    --element-bg: var(--white);
+    --text-clr: var(--dark);
+    --text-muted: var(--muted-dark);
+}

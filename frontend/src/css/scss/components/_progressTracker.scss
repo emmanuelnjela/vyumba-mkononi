@@ -1,0 +1,18 @@
+.progress-tracker {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: space-between;
+
+    &__line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: .25rem;
+        z-index: -1;
+        width: auto;
+        background-color: var(--primary-clr);
+    }
+}

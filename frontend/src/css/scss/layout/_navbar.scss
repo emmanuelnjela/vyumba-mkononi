@@ -1,0 +1,77 @@
+.navbar {
+  position: relative;
+  z-index: 5;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: var(--element-bg);
+  box-shadow: var(--shadow-sm);
+
+  &__brand {
+    display: flex;
+    align-items: flex-end;
+
+    &-name {
+      font-weight: 700;
+      color: var(--secondary-clr);
+      font-family: "Bahnschrift", Arial, Helvetica;
+      /* font-size: 12pt; */
+      font-size: 16pt;
+      display: none;
+    }
+    &-logo {
+      height: 50px;
+      width: 50px;
+    }
+  }
+  &__links {
+    /* flex-basis: 150px; */
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+    /* justify-content: space-between; */
+  }
+}
+
+.navbar__list {
+  position: absolute;
+  top: 4rem;
+  background-color: var(--element-bg);
+  height: 15vh;
+  width: 100%;
+  left: 0;
+  display: flex;
+  column-gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background-color: var(--element-bg);
+
+
+}
+.navbar__item {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+
+  @media screen and (max-width: 768px) {
+    display: block !important;
+
+    &:last-child {
+      display: none !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    &:last-child {
+      display: block !important;
+    }
+  }
+}
+.navbar__list {
+  background-color: var(--light-primary-clr);
+}

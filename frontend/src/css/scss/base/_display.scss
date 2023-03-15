@@ -1,0 +1,18 @@
+@use "../helpers/mixins" as *; 
+
+.d {
+    &--flex {
+        display: flex!important;
+    }
+    &--block {
+        display: block!important;
+    }
+    &--grid {
+        display: grid!important;
+    }
+    &--none {
+        display: none!important;
+    }
+}
+
+@include display-respond-to-breakpoints;

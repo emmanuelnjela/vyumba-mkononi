@@ -1,0 +1,111 @@
+@use "../helpers/mixins" as *;
+
+html {
+  font-size: 112.5%; /*18px*/
+  @media screen and (max-width: 768px) {
+    font-size: 100% !important; /*16px*/
+  }
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
+  
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  /* margin: 1rem 0 .75rem; */
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-clr);
+}
+
+h1 {
+  font-size: 1.802rem;
+}
+
+h2 {
+  font-size: 1.602rem;
+}
+
+h3 {
+  font-size: 1.424rem;
+}
+
+h4 {
+  font-size: 1.266rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6, .text--medium {
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--muted-dark);
+}
+small,
+.text--small {
+  font-size: 0.6rem;
+}
+
+p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+button,
+span {
+  font-size: 0.75rem;
+}
+.text {
+  color: var(--text-muted);
+}
+.text--bold {
+  font-weight: 600;
+}
+.text--center {
+  text-align: center;
+}
+.text--title {
+  color: var(--text-clr)
+}
+.text--muted {
+  color: var(--muted-dark);
+}
+.text--primary {
+  color: var(--primary-clr);
+}
+.text--dark {
+  color: var(--text-clr);
+}
+.text--secondary {
+  color: var(--secondary-clr);
+}
+.text-light-primary {
+  color: var(--light-primary-clr);
+}
+.text--light {
+  font-weight: 300;
+}
+.text--underline {
+  text-decoration: underline;
+}
+a.text--muted:hover + span {
+  color: var(--dark);
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 100% !important;
+  } /*16px*/
+}
+
+@include generate_class_unit_for("font-size")

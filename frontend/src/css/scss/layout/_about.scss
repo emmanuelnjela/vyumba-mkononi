@@ -1,0 +1,16 @@
+.about {
+    padding: 1rem;
+    &__sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    &__section {
+        background-color: var(--white);
+        padding: 1rem;
+        box-shadow: var(--shadow-sm);
+    }
+    &__subtitle {
+        color: var(--primary-clr);
+    }
+}

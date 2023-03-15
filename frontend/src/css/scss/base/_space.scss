@@ -1,0 +1,3 @@
+@use "../helpers" as *;
+
+@include generate_class_unit_for("space");

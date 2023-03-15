@@ -1,0 +1,75 @@
+.add-house {
+  &__info {
+    height: 100%;
+    display: grid;
+    align-items: center;
+    column-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+  }
+  &__upload-img {
+    height: 100%;
+    width: 80%;
+    margin: auto;
+
+    .btn {
+      margin: 1rem auto;
+    }
+  }
+  &__img-preview {
+    border: 2px solid var(--secondary-clr);
+    background-color: var(--grey-3);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-column: 9/13;
+    grid-row: span 4;
+    height: 15rem;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    &:nth-child(1) {
+      grid-column: 1/9;
+      grid-row: 1/13;
+    }
+    &-img {
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+
+  &__input-group {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    &-input {
+      padding: 0.5rem;
+      width: 100%;
+
+      &:focus {
+        outline: 1px solid var(--primary-clr);
+      }
+    }
+    &-text-area {
+      width: 100%;
+    }
+  }
+  &__upload-input {
+    position: relative;
+
+    input {
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      height: 100%;
+      width: 40%;
+      opacity: 0;
+      margin: auto;
+    }
+  }
+  .btn {
+    width: fit-content;
+  }
+}

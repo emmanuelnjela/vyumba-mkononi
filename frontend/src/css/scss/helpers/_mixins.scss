@@ -1,0 +1,257 @@
+@use "./variables" as *;
+
+@mixin apply-to($ltgt, $breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @if $ltgt == less-than {
+      @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+        @content;
+      }
+    } @else if $ltgt == greater-than {
+      @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+        @content;
+      }
+    }
+  } @else {
+    @warn "The #{breakpoint} breakpoint not found. Invalid breakpoint given";
+  }
+}
+
+@mixin generate_class_unit_for($type) {
+  @each $label, $size in $sizes {
+    @if $type == "space" {
+      // padding
+      .p-#{$label} {
+        padding: $size !important;
+      }
+      .px-#{$label} {
+        padding-right: $size !important;
+        padding-left: $size !important;
+      }
+      .py-#{$label} {
+        padding-top: $size !important;
+        padding-bottom: $size !important;
+      }
+      .ps-#{$label} {
+        padding-left: $size !important;
+      }
+      .pe-#{$label} {
+        padding-right: $size !important;
+      }
+      .pt-#{$label} {
+        padding-top: $size !important;
+      }
+      .pb-#{$label} {
+        padding-bottom: $size !important;
+      }
+      //   margin
+      .m-#{$label} {
+        margin: $size !important;
+      }
+      .mx-#{$label} {
+        margin-right: $size !important;
+        margin-left: $size !important;
+      }
+      .my-#{$label} {
+        margin-top: $size !important;
+        margin-bottom: $size !important;
+      }
+      .ms-#{$label} {
+        margin-left: $size !important;
+      }
+      .me-#{$label} {
+        margin-right: $size !important;
+      }
+      .mt-#{$label} {
+        margin-top: $size !important;
+      }
+      .mb-#{$label} {
+        margin-bottom: $size !important;
+      }
+
+      .m-auto {
+        margin: auto!important;
+      }
+      .ms-auto {
+        margin-left: auto!important;
+      }
+      .me-auto {
+        margin-right: auto!important;
+      }
+      .mb-auto {
+        margin-bottom: auto!important;
+      }
+      .mt-auto {
+        margin-top: auto!important;
+      }
+      .mx-auto {
+        margin: 0 auto!important;
+      }
+      .my-auto {
+        margin: auto 0!important;
+      }
+
+      //   gap
+      .c-gap-#{$label} {
+        column-gap: $size !important;
+      }
+    }
+    @if $type == "font-size" {
+      .fs-#{$label} {
+        font-size: $size;
+      }
+    }
+
+    // in respond to breakpoints
+    @each $breakpoint-name, $breakpoint-size in $breakpoints {
+      @include apply-to(greater-than, $breakpoint-name) {
+        @each $label, $size in $sizes {
+          @if $type == "space" {
+            // padding
+            .p-#{$breakpoint-name}-#{$label} {
+              padding: $size !important;
+            }
+            .px-#{$breakpoint-name}-#{$label} {
+              padding-right: $size !important;
+              padding-left: $size !important;
+            }
+            .py-#{$breakpoint-name}-#{$label} {
+              padding-top: $size !important;
+              padding-bottom: $size !important;
+            }
+            .ps-#{$breakpoint-name}-#{$label} {
+              padding-left: $size !important;
+            }
+            .pe-#{$breakpoint-name}-#{$label} {
+              padding-right: $size !important;
+            }
+            .pt-#{$breakpoint-name}-#{$label} {
+              padding-top: $size !important;
+            }
+            .pb-#{$breakpoint-name}-#{$label} {
+              padding-bottom: $size !important;
+            }
+            //   margin
+            .m-#{$breakpoint-name}-#{$label} {
+              margin: $size !important;
+            }
+            .mx-#{$breakpoint-name}-#{$label} {
+              margin-right: $size !important;
+              margin-left: $size !important;
+            }
+            .my-#{$breakpoint-name}-#{$label} {
+              margin-top: $size !important;
+              margin-bottom: $size !important;
+            }
+            .ms-#{$breakpoint-name}-#{$label} {
+              margin-left: $size !important;
+            }
+            .me-#{$breakpoint-name}-#{$label} {
+              margin-right: $size !important;
+            }
+            .mt-#{$breakpoint-name}-#{$label} {
+              margin-top: $size !important;
+            }
+            .mb-#{$breakpoint-name}-#{$label} {
+              margin-bottom: $size !important;
+            }
+
+            .m-#{$breakpoint-name}-auto {
+              margin: auto!important;
+            }
+            .ms-#{$breakpoint-name}-auto {
+              margin-left: auto!important;
+            }
+            .me-#{$breakpoint-name}-auto {
+              margin-right: auto!important;
+            }
+            .mb-#{$breakpoint-name}-auto {
+              margin-bottom: auto!important;
+            }
+            .mt-#{$breakpoint-name}-auto {
+              margin-top: auto!important;
+            }
+      
+            //   gap
+            .c-gap-#{$breakpoint-name}-#{$label} {
+              column-gap: $size !important;
+            }
+          }
+          @if $type == "font-size" {
+            .fs-#{$breakpoint-name}-#{$label} {
+              font-size: $size;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin flexbox-respond-to-breakpoints {
+  @each $breakpoint-name, $breakpoint-size in $breakpoints {
+    @include apply-to(greater-than, $breakpoint-name) {
+      .d-#{$breakpoint-name}-flex {
+        display: flex;
+      }
+      .align-#{$breakpoint-name}-items-center {
+        align-items: center;
+      }
+      .justify-#{$breakpoint-name}-items-center {
+        justify-items: center;
+      }
+      .space-#{$breakpoint-name}-btn {
+        justify-content: space-between;
+      }
+      .space-#{$breakpoint-name}-around {
+        justify-content: space-around;
+      }
+      .space-#{$breakpoint-name}-evenly {
+        justify-content: space-evenly;
+      }
+    }
+  }
+}
+
+@mixin display-respond-to-breakpoints {
+  @each $breakpoint-name, $breakpoint-size in $breakpoints {
+    @include apply-to(greater-than, $breakpoint-name) {
+      .d {
+        &--#{$breakpoint-name}-flex {
+          display: flex !important;
+        }
+        &--#{$breakpoint-name}-block {
+          display: block !important;
+        }
+        &--#{$breakpoint-name}-grid {
+          display: grid !important;
+        }
+        &--#{$breakpoint-name}-none {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin dimensions() {
+  @each $percentage-name, $percentage in $percentages {
+    .w-#{$percentage-name} {
+      width: $percentage!important;
+    }
+    .h-#{$percentage-name} {
+      height: $percentage!important;
+    }
+  }
+  @each $breakpoint-name, $breakpoint-size in $breakpoints {
+    @include apply-to(greater-than, $breakpoint-name) {
+      @each $percentage-name, $percentage in $percentages {
+        .w-#{$breakpoint-name}-#{$percentage-name} {
+          width: $percentage!important;
+        }
+        .h-#{$breakpoint-name}-#{$percentage-name} {
+          height: $percentage!important;
+        }
+      }
+    }
+  }
+}

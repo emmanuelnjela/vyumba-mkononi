@@ -1,0 +1,22 @@
+$border: 2px solid var(--secondary-clr);
+
+.btn-counter {
+  display: flex;
+  width: 100%;
+
+  &__item {
+    background-color: var(--element-bg);
+    border: $border;
+    border-left: 0;
+    width: 100%;
+    color: var(--secondary-clr);
+
+    &:first-child {
+      border-left: $border;
+    }
+    &--active {
+      background-color: var(--secondary-clr);
+      color: var(--element-bg);
+    }
+  }
+}

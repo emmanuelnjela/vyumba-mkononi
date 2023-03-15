@@ -1,0 +1,15 @@
+.rounded {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.rounded--primary {
+  color: var(--white);
+  background-color: var(--primary-clr);
+}/*# sourceMappingURL=rounded.css.map */

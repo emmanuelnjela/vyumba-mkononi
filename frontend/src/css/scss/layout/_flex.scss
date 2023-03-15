@@ -1,0 +1,24 @@
+@use "../helpers/" as *;
+
+
+// default flexbox
+.d-flex {
+  display: flex;
+}
+.align-items-center {
+  align-items: center;
+}
+.justify-items-center {
+  justify-items: center;
+}
+.space-btn {
+  justify-content: space-between;
+}
+.space-around {
+  justify-content: space-around;
+}
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+@include flexbox-respond-to-breakpoints();

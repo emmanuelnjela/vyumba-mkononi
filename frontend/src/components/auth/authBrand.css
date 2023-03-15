@@ -1,0 +1,19 @@
+.auth__brand {
+    padding: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+.auth__brand-logo {
+    height: 10rem;
+    margin-bottom: 1rem;
+}
+.auth__brand-name {
+    text-align: center;
+}
+.auth__brand-btn {
+    margin-top: 1rem;
+}
+

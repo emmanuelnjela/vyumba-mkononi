@@ -1,0 +1,26 @@
+.home {
+  position: relative;
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding-bottom: 1rem;
+    background-color: var(--main-bg);
+  }
+
+  &__searchbar {
+    display: grid;
+    justify-items: center;
+  }
+
+  &__searchbar .btn {
+    display: flex;
+    column-gap: 0.5rem;
+    align-items: center;
+    justify-content: space-around;
+  }
+  &__body {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

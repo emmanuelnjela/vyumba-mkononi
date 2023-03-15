@@ -1,0 +1,122 @@
+.saved {
+  padding: 1rem;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.sort__searchbar {
+  background-color: var(--white);
+  padding: 0 1rem 1rem 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.saved__searchbar .btn {
+  height: 2.5rem;
+  width: 5rem;
+  border-radius: 0;
+}
+.saved__sortbar {
+  // border-top: 2px solid var(--dark);
+  padding: 0.5rem 1rem;
+  background-color: var(--element-bg);
+  box-shadow: var(--shadow-sm);
+  height: 90%;
+}
+.sort__options {
+  margin-top: 0.5rem;
+}
+
+.sort__options {
+  column-gap: 1rem;
+}
+.sort__option {
+  display: block;
+  column-gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.sort__options select {
+  color: var(--dark);
+  background-color: transparent;
+  border: 1px solid;
+  padding: 0.25rem;
+}
+.saved__body {
+  display: flex;
+  column-gap: 1rem;
+  margin-top: 1rem;
+
+  &-right {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 480px) {
+    display: block;
+
+    &-right {
+      width: 100%;
+    }
+    .saved__house {
+      display: block;
+      height: auto;
+
+      &-img {
+        width: 100%;
+        height: 10rem;
+      }
+    }
+  }
+}
+
+.saved__houses {
+  overflow: auto;
+  height: 20rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+
+  // margin-left: auto;
+}
+.saved__house {
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  align-content: center;
+  height: 9rem;
+  overflow: hidden;
+  column-gap: 1rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  // overflow: hidden;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+
+  &-img {
+    width: 12rem;
+    height: 8rem;
+    grid-column: 1/ 2;
+  }
+  &-about {
+    grid-column: 2/ 13;
+  }
+  &-brief {
+    margin-bottom: 0.5rem;
+  }
+  &-about .btn {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
+  &-contacts {
+    width: 20%;
+    margin-top: 0.5rem;
+    & .list {
+      display: flex;
+      column-gap: 1rem;
+    }
+  }
+}
+
+.house-preview__owner-info {
+  display: flex;
+}
