@@ -25072,7 +25072,6 @@ a.text--muted:hover + span {
   background-image: url(../imgs/img-3.jpg);
   background-size: cover;
   position: relative;
-  /* display: flex; */
   display: grid;
   overflow: hidden;
   height: var(--header-height);
@@ -25426,4 +25425,4 @@ a.text--muted:hover + span {
   .house-preview__img-1 {
     display: flex;
   }
-}/*# sourceMappingURL=style.css.map */tyle.css.map */
+}
