@@ -11,8 +11,8 @@ function OverviewBody() {
     <>
       <div className="overview__body" id="main">
         <HousesPreviews />
-        <About />
-        <CustomerReviews />
+        {/* <About />
+        <CustomerReviews /> */}
         <OverviewBodyNavigatorBtn />
       </div>
       <Outlet />

@@ -1,36 +1,19 @@
-import OverviewBody from "./overview-body/overviewBody";
-import OverviewHeader from "./overview-header/overviewHeader";
-import OverviewFooter from "./overview-footer/overviewFooter";
-import { Route, Routes } from "react-router-dom";
-import Navbar from "../common/navbar/Navbar";
+
+import { NavLink, Route, Routes } from "react-router-dom";
+import OverviewIndex from "./OverviewIndex";
+import OverviewAboutUs from "./OverviewAboutUs";
 
 
 function Overview() {
-  const navItems = [
-    {
-      id: 1,
-      path: "/register",
-      link: <button className='btn btn--primary'>JIUNGE</button>,
-    },
-    {
-      id: 2,
-      path: "/login",
-      link: <button className='btn btn--primary'>INGIA</button>,
-    },
-  ];
-
       
   return (
     <div className="overview">
-      <Navbar navBrandHideSize="md" navItems={navItems} />
-      <OverviewBody />
-      <OverviewFooter />
-      {/* <Routes>
-        <Route index element={<OverviewHeader />}></Route>
-        <Route path="/main" element={<OverviewBody />}>
-          <Route index element={<OverviewFooter />} />
+      
+      <Routes>
+        <Route index element={<OverviewIndex />}></Route>
+        <Route path="/about-us" element={<OverviewAboutUs />}>
         </Route>
-      </Routes> */}
+      </Routes>
     </div>
   );
 }

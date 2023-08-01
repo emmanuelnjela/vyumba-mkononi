@@ -1,4 +1,5 @@
 function DefaultProfileInfoContent({ currentUser, name }) {
+  console.log(currentUser)
   return (
     <input
       type="text"

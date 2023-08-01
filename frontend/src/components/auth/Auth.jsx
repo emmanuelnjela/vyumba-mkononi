@@ -1,10 +1,6 @@
-import { useState } from "react";
-
 import AuthBrand from "./authBrand";
 import AuthForm from "./authForm";
 import AuthNavigatorBtn from "./authNavigatorBtn";
-import _ from "lodash";
-import { useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import RenderErrorMessage from "./renderComp/renderErrorMessage";
 
@@ -19,10 +15,10 @@ import RenderErrorMessage from "./renderComp/renderErrorMessage";
 function Auth({ authData }) {
   const { brand: authBrandData, form: authFormData } = authData;
   const { handleChange, values, errors, handleSubmit } = useForm(authData);
-
+  
   return (
     <div className="auth">
-      <RenderErrorMessage errorMessage={authFormData.errorMessage} />
+      <RenderErrorMessage errorMessage={authFormData.errorMessage}  />
       <AuthNavigatorBtn />
       <AuthBrand authBrandData={authBrandData} />
       <AuthForm

@@ -5,11 +5,10 @@ import HouseCards from "../../../common/houseCards/HouseCards";
 
 function HomeBody() {
   const housesContext = useContext(HousesContext);
-
   return (
     <div className="housesPreviews">
       <HouseCards
-        houses={housesContext.all}
+        houses={housesContext.getBySize(4)}
         houseCardsTitle="ZILIZOWEKWA HIVI KARIBUNI"
         layoutClass="grid-container"
       />

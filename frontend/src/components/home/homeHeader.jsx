@@ -60,7 +60,7 @@ function HomeHeader() {
     },
     {
       id: 5,
-      path: "/", // change path to /logout 
+      path: "/logout", // change path to /logout 
       link: <button className="btn btn--primary">TOKA</button>,
     },
   ];

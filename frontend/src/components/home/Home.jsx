@@ -7,6 +7,7 @@ import HomeLayout from "./homeLayout";
 import MyPosts from "./myPosts/MyPosts";
 
 function Home() {
+  
   return (
     <Routes>
       <Route path="*" element={<HomeLayout />}>

@@ -9,7 +9,8 @@ import ProfileInfoSide from "./profileInfoSide";
 
 function Profile() {
 
-  const { user: currentUser, onUserUpdate } = useContext(CurrentUserContext);
+  const { currentUser, onUserUpdate } = useContext(CurrentUserContext);
+  console.log(currentUser)
 
   const navigate = useNavigate()
   // console.log(currentUser)

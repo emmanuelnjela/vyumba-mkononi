@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import Cookies from "universal-cookie";
   
-function Login() {
+function Login({onCurrentUser}) {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState(null)
   const authData = {
@@ -45,7 +45,7 @@ function Login() {
           userName, password
         })
         .then((response) => {
-          const {accessToken, refreshToken, message} = response.data
+          const {accessToken, refreshToken, user} = response.data
           const cookies = new Cookies();
           const time = new Date().getTime();
           const cookiesOption = {
@@ -54,11 +54,13 @@ function Login() {
           }
           cookies.set('accessKey', accessToken, cookiesOption)
           cookies.set('refreshToken', refreshToken,  cookiesOption)
+          console.log(onCurrentUser)
+          onCurrentUser(user)
           navigate("/home")
         })
         .catch((err) => {
           console.log(err)
-          setErrorMessage(err.response.data.message)
+          return setErrorMessage(err.response.data.message)
         })
       }
     },

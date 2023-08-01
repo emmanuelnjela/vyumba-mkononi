@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import CurrentUserContext from "../../../../context/currentUserContext";
 import ContactInfoAfterAuth from "./contactInfoAfterAuth";
 import ContactInfoBeforeAuth from "./contactInfoBeforeAuth";
+import Cookies from "universal-cookie";
 
 function ContactInfo() {
   const currentUserContext = useContext(CurrentUserContext)
 
   const { isLogin } = currentUserContext
+  const cookies = new Cookies()
+  const accessKey = cookies.get("accessKey")
 
   const listItems = [
     {
@@ -41,7 +44,7 @@ function ContactInfo() {
 
   return (
     <div className="contact-info">
-      {isLogin ? (
+      {accessKey ? (
         <ContactInfoAfterAuth listItems={listItems} />
       ) : (
         <ContactInfoBeforeAuth />

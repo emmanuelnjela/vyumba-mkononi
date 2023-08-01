@@ -24,7 +24,7 @@ export const register = async (req, res) => {
       const { _id, userName, password, owner } = user;
       return { _id, userName, password, owner };
     })();
-    // user.save();
+    user.save();
 
     res.status(201).json({ user: formatedUser });
   } catch (err) {
@@ -39,12 +39,12 @@ export const login = async (req, res) => {
     const user = await User.findOne({ userName });
     console.log(user);
 
-    if (user == null) return res.status(404).json({ message: "not found" });
+    if (user == null) return res.status(404).json({ message: "Tarifa ulizoweka sio sahihi" });
 
     const passwordIsCorrect = await bcrypt.compare(password, user.password);
 
     if (passwordIsCorrect == false)
-      return res.status(401).json({ message: "password ulioweka sio sahihi" });
+      return res.status(401).json({ message: "Tarifa ulioweka sio sahihi" });
 
     const accessToken = jwt.sign(
       { sub: user.userName },

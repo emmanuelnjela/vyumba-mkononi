@@ -29,7 +29,12 @@ const app = express();
 const port = process.env.PORT;
 
 /* THIRDPART MIDDLWARE */
-app.use(cors())
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true, limit: "16mb"}));
 app.use(bodyParser.json({extended: true, limit: "16mb"}))
 app.use(cookieParser())

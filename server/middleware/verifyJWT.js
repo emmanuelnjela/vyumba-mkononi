@@ -2,12 +2,12 @@ import jwt from "jsonwebtoken";
 
 const verifyJWT = async (req, res, next) => {
   try {
-    const { accessToken, refreshToken } = req.cookies;
-    if (req.cookies == null)
+    const { accessKey, refreshToken } = req.cookies;
+    if (accessKey == undefined || refreshToken == undefined)
       return res.status(401).json({ message: "No authorization found" });
 
 
-    jwt.verify(accessToken, process.env.ACCESS_SECRET, (error, decode) => {
+    jwt.verify(accessKey, process.env.ACCESS_SECRET, (error, decode) => {
       if (error) {
         const { message } = error;
         const { id } = req.body;
@@ -16,10 +16,10 @@ const verifyJWT = async (req, res, next) => {
             if(refreshToken === null) return res.status(404).json({error: "Refresh token not found"})
             jwt.verify(refreshToken, process.env.REFRESH_SECRET, (error, decoded) => {
                 if(error) throw new Error("invalid refresh token")
-                const newAccessToken = jwt.sign({sub: id }, process.env.ACCESS_SECRET, {
+                const newAccessKey = jwt.sign({sub: id }, process.env.ACCESS_SECRET, {
                   expiresIn: "5m",
                 });
-                res.cookie("accessToken", newAccessToken);
+                res.cookie("accessKey", newAccessKey);
             })
         }
         else {
