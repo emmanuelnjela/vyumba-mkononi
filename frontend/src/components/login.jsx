@@ -54,7 +54,6 @@ function Login({onCurrentUser}) {
           }
           cookies.set('accessKey', accessToken, cookiesOption)
           cookies.set('refreshToken', refreshToken,  cookiesOption)
-          console.log(onCurrentUser)
           onCurrentUser(user)
           navigate("/home")
         })
