@@ -9,8 +9,8 @@ function ProfileInfo({ currentUser }) {
   const profileInfoItems = [
     {
       id: 1,
-      name: "fullName",
-      title: "jina kamili",
+      name: "userName",
+      title: "jina",
     },
     {
       id: 2,
@@ -20,10 +20,15 @@ function ProfileInfo({ currentUser }) {
     {
       id: 3,
       name: "from",
-      title: "Napoishi",
+      title: "upotokea",
     },
     {
       id: 4,
+      name: "phoneNumber",
+      title: "Namba ya simu"
+    },
+    {
+      id: 5,
       title: "Mimi Ni",
       content: () => <Dropdown items={items} />,
     },

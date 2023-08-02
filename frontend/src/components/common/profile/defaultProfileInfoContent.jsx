@@ -1,11 +1,11 @@
-function DefaultProfileInfoContent({ currentUser, name }) {
-  console.log(currentUser)
+function DefaultProfileInfoContent({ currentUser, name, title }) {
   return (
     <input
       type="text"
       name={name}
       className="profile__data"
-      defaultValue={currentUser[name]} />
+      defaultValue={currentUser[name]}
+      placeholder={`Andika hapa ${title}`} />
   );
 }
 
