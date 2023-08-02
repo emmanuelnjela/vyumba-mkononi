@@ -7,7 +7,7 @@ function profileInfoItem({ Content, title, currentUser, name }) {
       {Content ? (
         <Content currentUser={currentUser} />
       ) : (
-        <DefaultProfileInfoContent currentUser={currentUser} name={name} />
+        <DefaultProfileInfoContent currentUser={currentUser} name={name} title={title} />
       )}
     </div>
   );
