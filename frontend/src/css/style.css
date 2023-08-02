@@ -24269,7 +24269,6 @@ a.text--muted:hover + span {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  margin-top: 1rem;
   background-color: var(--element-bg);
   box-shadow: var(--shadow-sm);
   border-radius: 0.5rem;
@@ -24278,6 +24277,7 @@ a.text--muted:hover + span {
   left: 50%;
   top: 2rem;
   transform: translateX(-50%);
+  background-color: rebeccapurple;
 }
 .popup-card::after {
   content: " ";
@@ -24803,13 +24803,13 @@ a.text--muted:hover + span {
 .housecard__body {
   background-color: var(--element-bg);
   padding: 0.75rem;
-  /* border-radius: 1rem 1rem 0 0; */
+  height: 7.5rem;
+  display: grid;
+  row-gap: 0.45rem;
   /* box-shadow: var(--shadow-sm); */
 }
 
 .housecard p {
-  display: block ruby;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -25072,6 +25072,7 @@ a.text--muted:hover + span {
   background-image: url(../imgs/img-3.jpg);
   background-size: cover;
   position: relative;
+  /* display: flex; */
   display: grid;
   overflow: hidden;
   height: var(--header-height);
@@ -25098,19 +25099,22 @@ a.text--muted:hover + span {
   align-items: center;
   row-gap: 1rem;
 }
-.overview .overview__searchbar {
+.overview__searchbar {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   z-index: 5;
 }
-.overview .overview__searchbar-btn {
+.overview__searchbar-title {
+  padding-top: 1rem;
+}
+.overview__searchbar-btn {
   width: 80px;
 }
-.overview .overview__searchbar-btn-title {
-  text-align: center;
+.overview__searchbar-btn-title {
   color: var(--primary-clr);
+  padding-top: 1rem;
 }
 .overview__body {
   padding: 2rem;

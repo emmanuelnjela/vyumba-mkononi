@@ -34,12 +34,15 @@
 .housecard__body {
     background-color: var(--element-bg);
     padding: .75rem;
-    /* border-radius: 1rem 1rem 0 0; */
+    // border-radius: 1rem 1rem 0 0;
+    height: 7.5rem;
+    display: grid;
+    row-gap: .45rem;
     /* box-shadow: var(--shadow-sm); */
 }
 .housecard p {
-    display: block ruby;
-    overflow: hidden;
+    // display: block ruby;
+    // overflow: hidden;
     text-overflow: ellipsis;
 }
 .housecard__footer {
