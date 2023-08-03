@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import RenderCurrentSelected from "./renderComp/renderCurrentSelected";
 import List from "./list";
 
@@ -13,9 +12,11 @@ function Dropdown({ items, color }) {
   const [currentSelected, setCurrentSelected] = useState(
     items ? items.find((i) => i.id === 1) : {}
   );
+
   const handleShowDropdown = () => {
     setShowDropDown(true);
   };
+
   const handleItemClicked = (item) => {
     console.log(item);
     setCurrentSelected(!item ? currentSelected : item);
@@ -25,7 +26,10 @@ function Dropdown({ items, color }) {
   const handleHideDropdown = () => setShowDropDown(false);
 
   return (
-    <div className={`dropdown dropdown--${color || "none"}`}>
+    <div
+      className={`dropdown dropdown--${color || "none"}`}
+      onMouseLeave={handleHideDropdown} // Added onMouseLeave event here
+    >
       <RenderCurrentSelected
         currentSelected={currentSelected}
         onShowDropdown={handleShowDropdown}
