@@ -20,7 +20,7 @@ function ProfileInfo({ currentUser }) {
     {
       id: 3,
       name: "from",
-      title: "upotokea",
+      title: "unapotokea",
     },
     {
       id: 4,

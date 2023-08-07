@@ -4,6 +4,7 @@ import express from "express";
 import User from "../models/User.js";
 const app = express();
 
+
 export const getAllUsers = (req, res) => {};
 
 export const getUser = (req, res) => {};

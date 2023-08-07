@@ -8,7 +8,7 @@ import HousePreviewInfo from "./housePreviewInfo";
 import Profile from "../profile/Profile";
 
 function HousePreview() {
-  const housesCrud = new Crud(housesInDB)
+  const housesCrud = new Crud(housesInDB);
 
   const { id } = useParams();
   const house = housesCrud.getData(id);
@@ -16,7 +16,7 @@ function HousePreview() {
   return (
     <div className="house-preview">
       <Routes>
-        <Route path="profile" element={<Profile />}/>
+        <Route path="profile" element={<Profile />} />
       </Routes>
       <Link to="/home" className="house-preview__navigator-btn">
         <NavigatorBtn position="left" />
@@ -28,5 +28,3 @@ function HousePreview() {
 }
 
 export default HousePreview;
-
-

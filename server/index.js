@@ -8,13 +8,14 @@ import cors from "cors"
 
 import users from "./routes/users.js"
 import auth from "./routes/auth.js"
+import houses from "./routes/house.js"
 
 /* PREINSTALLED LIBRARY */
 import path from "path";
 import { fileURLToPath } from "url";
 
 
-import database from "./database.js";
+import database from "./utils/database.js";
 
 
 
@@ -41,6 +42,7 @@ app.use(cookieParser())
 /* CUSTOM MIDDLEWARE */
 app.use('/users', users)
 app.use('/auth', auth)
+app.use('/houses', houses)
 
 // mongoose.set('strictQuery', true)
 // mongoose.connect(process.env.MONGO_URL, 

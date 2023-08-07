@@ -57,6 +57,7 @@
   justify-content: center;
   align-items: center;
   justify-items: center;
+  
 
   @media screen and (max-width: 768px) {
     display: block !important;
@@ -74,4 +75,5 @@
 }
 .navbar__list {
   background-color: var(--light-primary-clr);
+  cursor: pointer;
 }

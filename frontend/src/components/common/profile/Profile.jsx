@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import CurrentUserContext from "../../../context/currentUserContext";
+import CurrentUserContext from "../../../context/usersContext";
 import NavigatorBtn from "../../common/navigatorBtn";
 import withPopUpCard from "../../hoc/withPopupCard";
 import ProfileButtons from "./profileButtons";

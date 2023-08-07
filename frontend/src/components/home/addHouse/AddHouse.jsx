@@ -10,12 +10,13 @@ import AddHouseComfirm from "./addHouseComfirm";
 import AddHouseDefault from "./addHouseDefault";
 import AddHouseTitle from "./addHouseTitle";
 import ProgressTracker from "./progressTracker";
-import { screenWidthUpdate } from "./screenWidthUpdate";
+import { screenWidthUpdate } from "../../../utils/screenWidthUpdate";
 
 function AddHouse() {
   const params = useParams();
   const addHouseRef = useRef();
   const [screenWidth, setScreenWidth] = useState(0);
+  const [houseInfo, setHouseInfo] = useState({})
 
   let { currentItemNum } = params;
   currentItemNum = currentItemNum ? parseInt(currentItemNum) : 1;

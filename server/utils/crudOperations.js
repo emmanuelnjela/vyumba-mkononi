@@ -1,15 +1,32 @@
 /**crud - add, view, view all, update, delete */
 export class Crud {
-  constructor(datas) {
-    this._datas = datas;
+  constructor(dataModel) {
+    this._dataModel = dataModel;
+    this._datas = this.getAllDatas();
   }
 
   /**
    * get all data in the DB
    * @returns array of datas
    */
-  getAllDatas() {
-    return this._datas;
+  async getAllDatas() {
+    try {
+      const datas = await this._dataModel.find({});
+      return datas;
+    } catch (error) {
+        return error
+    }
+  }
+
+  /**
+   * Add new data
+   * @param {Object} data
+   * @returns datas with updated data or message
+   */
+  async addData(data) {
+    const dataInDB = await this._dataModel(data)
+    dataInDB.save()
+    return dataInDB
   }
 
   /**
@@ -52,7 +69,7 @@ export class Crud {
 
     const { data: dataInDB, index: dataInDBIndex } = foundData;
     for (var elem of dataElements) {
-      const {name, value} = elem;
+      const { name, value } = elem;
       dataInDB[name] = value;
     }
 

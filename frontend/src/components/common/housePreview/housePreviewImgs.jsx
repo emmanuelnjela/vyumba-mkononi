@@ -17,7 +17,7 @@ function HousePreviewImgs({ house }) {
     <div className="house-preview__imgs">
       {imgs.map((img, index) => {
         return (
-          <div className={`house-preview__img house-preview__img-${index + 1}`}>
+          <div className={`house-preview__img house-preview__img-${index + 1}`} key={index}>
             <ShowNavigator
               index={index}
               pos="right"

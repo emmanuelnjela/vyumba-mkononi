@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../common/navbar/Navbar";
 import Image from "../common/image";
 import HousesContext from "../../context/housesContext";
-import CurrentUserContext from "../../context/currentUserContext";
+import CurrentUserContext from "../../context/usersContext";
 import img from "../../imgs/profile.jpg";
 import HomeSearchBar from "./homeSearchBar";
 

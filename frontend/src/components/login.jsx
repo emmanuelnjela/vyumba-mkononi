@@ -1,12 +1,15 @@
 import Auth from "./auth/Auth";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext,  useState } from "react";
 
 import Cookies from "universal-cookie";
+import UsersContext from "../context/usersContext";
   
-function Login({onCurrentUser}) {
+function Login() {
   const navigate = useNavigate()
+  const {onCurrentUser} = useContext(UsersContext)
+
   const [errorMessage, setErrorMessage] = useState(null)
   const authData = {
     brand: {

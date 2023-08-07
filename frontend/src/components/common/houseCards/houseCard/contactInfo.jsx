@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import CurrentUserContext from "../../../../context/currentUserContext";
+import CurrentUserContext from "../../../../context/usersContext";
 import ContactInfoAfterAuth from "./contactInfoAfterAuth";
 import ContactInfoBeforeAuth from "./contactInfoBeforeAuth";
 import Cookies from "universal-cookie";

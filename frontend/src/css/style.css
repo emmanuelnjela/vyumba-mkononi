@@ -24277,7 +24277,6 @@ a.text--muted:hover + span {
   left: 50%;
   top: 2rem;
   transform: translateX(-50%);
-  background-color: rebeccapurple;
 }
 .popup-card::after {
   content: " ";
@@ -24561,6 +24560,7 @@ a.text--muted:hover + span {
 
 .navbar__list {
   background-color: var(--light-primary-clr);
+  cursor: pointer;
 }
 
 .profile {
