@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 import "./app.css";
 import CurrentUserContext from "./context/currentUserContext";
@@ -14,31 +14,72 @@ import { usersInDB } from "./data/fakeUsersApi";
 import { Crud } from "./utils/crudOperations";
 import Cookies from "universal-cookie";
 import Logout from "./components/logout";
+import _ from "lodash";
 
 function App() {
   let updatedHouse = null;
-  const cookies = new Cookies()
-  
+  const cookies = new Cookies();
+  const getCurrentUser = () => {
+    // get the currentUser from computer cookies
+    const currentUserCookie = cookies.get("currentUser");
+    return currentUserCookie || {};
+  };
+
   const [errors, setErrors] = useState([]);
   // const { getAllHouses, updateData, deleteHouse } = new Crud(housesInDB)
   const [houses, setHouses] = useState(housesInDB);
-  const [users, setUsers] = useState(usersInDB);
-  const [accessKey, setAccessKey] = useState(cookies.get("accessKey"));
+  // const [users, setUsers] = useState(usersInDB);
   const housesCrud = new Crud(houses);
+
+  // const [currentUser, setCurrentUser] = useState(getCurrentUser());
+
+  const [{ users, currentUser }, dispatch] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case "SET_USERS":
+          return { ...state, users: action.payload };
+        case "SET_CURRECT_USER":
+          /**
+           * Encrypt the user object before it saved in the cookies
+           * Set an expire time when the user leave the website
+           */
+          const time = new Date().getTime();
+          const cookiesOption = {
+            path: "/",
+            expires: new Date(time + 5 * (60 * 1000)),
+          };
+          cookies.set("currentUser", action.payload, cookiesOption);
+          return { ...state, currentUser: action.payload };
+        default:
+          break;
+      }
+    },
+    {
+      users: usersInDB,
+      currentUser: getCurrentUser(),
+    }
+  );
   const usersCrud = new Crud(users);
 
   const handleUserUpate = (userToUpdate) => {
-    console.log(userToUpdate)
     const [userToUpdateID] = Object.keys(userToUpdate);
     const updatedUsers = usersCrud.updateData(
       userToUpdateID,
       userToUpdate[userToUpdateID]
     );
-    setUsers([...updatedUsers])
-  }
+    if (currentUser._id == userToUpdateID) {
+      const currentUserUpdated = updatedUsers.filter(
+        ({ _id }) => _id == userToUpdateID
+      );
+      console.log(currentUserUpdated);
+      // setCurrentUser(updatedUsers[currentUser._id])
+      // setCurrentUserInCookies(updatedUsers[currentUser._id])
+    }
+    dispatch({ type: "SET_USERS", payload: updatedUsers });
+  };
 
   const handleHouseUpate = (houseToUpdate) => {
-    console.log(houseToUpdate)
+    console.log(houseToUpdate);
     let errorMessage = "";
     const [houseToUpdateID] = Object.keys(houseToUpdate);
     updatedHouse = housesCrud.updateData(
@@ -69,23 +110,18 @@ function App() {
     getBySize: (size) => houses?.slice(0, size),
     onUpdate: handleHouseUpate,
     onHouseDelete: handleHouseDelete,
-  };     
-  
+  };
 
-  useEffect(() => {
+  const handleCurrentUser = (user) =>
+    dispatch({ type: "SET_CURRECT_USER", payload: user });
 
-  }, [])
-
-  console.log(accessKey)
-
-  const [currentUser, setCurrentUser] = useState({})
-
-  const handleCurrentUser = (user) => setCurrentUser(user)
+  const isLogin = !_.isEmpty(currentUser) && cookies.get("accessKey");
 
   const currentUserContextObject = {
     isOwner: currentUser.owner ? true : "false",
+    isLogin,
     currentUser,
-    onUserUpdate: handleUserUpate
+    onUserUpdate: handleUserUpate,
   };
 
   return (
@@ -95,9 +131,17 @@ function App() {
           <Routes>
             <Route path="*" element={<Overview />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login  onCurrentUser={handleCurrentUser}/>} />
+            <Route
+              path="/login"
+              element={<Login onCurrentUser={handleCurrentUser} />}
+            />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/home/*" element={accessKey  ? <Home /> : <Login />} />
+            <Route
+              path="/home/*"
+              element={
+                isLogin ? <Home /> : <Login onCurrentUser={handleCurrentUser} />
+              }
+            />
             <Route path="/house-preview/:id" element={<HousePreview />} />
           </Routes>
         </div>
