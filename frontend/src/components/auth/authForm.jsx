@@ -3,11 +3,15 @@ import AuthFormGroup from "./authFormGroup";
 import AuthFormInputGroup from "./authFormInputGroup";
 import AuthFormTitle from "./AuthFormTitle";
 
-function AuthForm({ authFormData, inputValues, onChange, errors, onSubmit}) {
-  const { btn, inputs } = authFormData;
-  console.log(inputs[0])
+function AuthForm({ authFormData, inputValues, onChange, errors, onSubmit }) {
+  const { btn, type: formType, inputs } = authFormData;
+  console.log(inputs[0]);
   return (
-    <form action="" className="auth__form" onSubmit={(e) => onSubmit(e, inputValues)}>
+    <form
+      action=""
+      className="auth__form"
+      onSubmit={(e) => onSubmit(e, inputValues)}
+    >
       <AuthFormTitle label={btn.label} />
       {inputs.map((input) => (
         <AuthFormInputGroup
@@ -18,7 +22,7 @@ function AuthForm({ authFormData, inputValues, onChange, errors, onSubmit}) {
           onChange={onChange}
         />
       ))}
-      <AuthFormGroup />
+      {formType === "login" ? <AuthFormGroup /> : <div className="p-sm"></div>}
       <AuthFormAction label={btn.label} />
     </form>
   );

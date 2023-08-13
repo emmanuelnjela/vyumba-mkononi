@@ -16,6 +16,7 @@ function Register() {
       },
     },
     form: {
+      type: "register",
       btn: {
         path: "/home",
         label: "JIUNGE",

@@ -19,6 +19,7 @@ function Login() {
       },
     },
     form: {
+      type: "login",
       btn: {
         path: "/home",
         label: "INGIA",
