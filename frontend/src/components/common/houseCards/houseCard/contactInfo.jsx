@@ -1,50 +1,32 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import CurrentUserContext from "../../../../context/usersContext";
+import UsersContext from "../../../../context/usersContext";
 import ContactInfoAfterAuth from "./contactInfoAfterAuth";
 import ContactInfoBeforeAuth from "./contactInfoBeforeAuth";
 import Cookies from "universal-cookie";
+import { ContactInfoLink } from "./contactInfoLink";
 
 function ContactInfo() {
-  const currentUserContext = useContext(CurrentUserContext)
-
-  const { isLogin } = currentUserContext
-  const cookies = new Cookies()
-  const accessKey = cookies.get("accessKey")
+  const {isLogin} = useContext(UsersContext)
 
   const listItems = [
     {
       id: 1,
-      content: (
-        <Link to={""} className="link">
-          <i className="fas fa-phone-volume"></i>
-          <span>Kupiga</span>
-        </Link>
-      ),
+      content: <ContactInfoLink text="kupiga" iconText="fas fa-phone-volume"/>,
     },
     {
       id: 2,
-      content: (
-        <Link to={""} className="link">
-          <i className="fas fa-envelope"></i>
-          <span>SMS</span>
-        </Link>
-      ),
+      content:<ContactInfoLink text="SMS" iconText="fas fa-envelope"/>,
     },
     {
       id: 3,
-      content: (
-        <Link to={""} className="link">
-          <i className="fab fa-whatsapp"></i>
-          <span>WhatsApp</span>
-        </Link>
-      ),
+      content: <ContactInfoLink text="whatsapp" iconText="fab fa-whatsapp"/>,
     },
   ];
 
   return (
     <div className="contact-info">
-      {accessKey ? (
+      {isLogin ? (
         <ContactInfoAfterAuth listItems={listItems} />
       ) : (
         <ContactInfoBeforeAuth />
@@ -54,3 +36,4 @@ function ContactInfo() {
 }
 
 export default ContactInfo;
+
