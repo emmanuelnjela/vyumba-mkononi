@@ -1,8 +1,8 @@
 // import _ from "lodash";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import withPopUpCard from "../../hoc/withPopupCard";
 import AddHouse2 from "./addHouse2";
@@ -11,43 +11,83 @@ import AddHouseDefault from "./addHouseDefault";
 import AddHouseTitle from "./addHouseTitle";
 import ProgressTracker from "./progressTracker";
 import { screenWidthUpdate } from "../../../utils/screenWidthUpdate";
+import AddHouseInfoContext from "../../../context/addHouseInfo";
+import axios from "axios";
 
 function AddHouse() {
   const params = useParams();
+  const navigate = useNavigate()
   const addHouseRef = useRef();
   const [screenWidth, setScreenWidth] = useState(0);
-  const [houseInfo, setHouseInfo] = useState({})
+  const [houseInfo, setHouseInfo] = useState({
+    location: "",
+    reasePerMonth: "",
+    minReaseLength: "",
+    description: "",
+    imgs: [],
+  });
 
   let { currentItemNum } = params;
   currentItemNum = currentItemNum ? parseInt(currentItemNum) : 1;
 
   const handleAddHouseInfo = (e) => {
-    console.log(e)
-  }
+    const { name, value } = e.target;
+    setHouseInfo({ ...houseInfo, [name]: value });
+  };
+  const handleAddHouseInfoSubmit = async () => {
+    try {
+      const respond = await axios.post("http://localhost:3001/houses", {houseInfo}, {
+        withCredentials: true,
+      });
+      return navigate("/home");
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  const count = useRef(0);
+  count.current++;
 
   useEffect(() => {
     screenWidthUpdate(addHouseRef, setScreenWidth);
   }, [screenWidth]);
 
+  const addHouseInfoObject = {
+    houseInfo,
+    onAddHouseInfo: handleAddHouseInfo,
+    onAddHouseInfoSubmit: handleAddHouseInfoSubmit,
+  };
+
   return (
     <div className="add-house" ref={addHouseRef}>
-      <AddHouseTitle
-        currentItemNum={currentItemNum}
-        screenWidth={screenWidth}
-      />
-      <div className="add-house_progress-tracker my-sm">
-        <ProgressTracker
+      <AddHouseInfoContext.Provider value={addHouseInfoObject}>
+        <AddHouseTitle
           currentItemNum={currentItemNum}
           screenWidth={screenWidth}
         />
-      </div>
-      {currentItemNum === 1 ? (
-        <AddHouseDefault currentItemNum={currentItemNum} screenWidth={screenWidth} onAddHouseInfo={handleAddHouseInfo} />
-      ) : currentItemNum === 2 && screenWidth < 768 ? (
-        <AddHouse2 currentItemNum={currentItemNum} screenWidth={screenWidth} />
-      ) : (
-        <AddHouseComfirm currentItemNum={currentItemNum} screenWidth={screenWidth}/>
-      )}
+        <div className="add-house_progress-tracker my-sm">
+          <ProgressTracker
+            currentItemNum={currentItemNum}
+            screenWidth={screenWidth}
+          />
+        </div>
+        {currentItemNum === 1 ? (
+          <AddHouseDefault
+            currentItemNum={currentItemNum}
+            screenWidth={screenWidth}
+          />
+        ) : currentItemNum === 2 && screenWidth < 768 ? (
+          <AddHouse2
+            currentItemNum={currentItemNum}
+            screenWidth={screenWidth}
+          />
+        ) : (
+          <AddHouseComfirm
+            currentItemNum={currentItemNum}
+            screenWidth={screenWidth}
+          />
+        )}
+      </AddHouseInfoContext.Provider>
     </div>
   );
 }

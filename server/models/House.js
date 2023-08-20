@@ -1,24 +1,17 @@
-// {
-//     _id: 2004,
-//     reasePerMounth: 25000,
-//     numberOfTenants: 3,
-//     minReaseLength: 3,
-//     location: "magogoni, bagamoyo",
-//     isSaved: false,
-//     owner: "",
-//     imgs: [
-//       require("../imgs/img-5.jpg"),
-//     ],
-//   }
+import mongoose from "mongoose"
 
-import mongoose from "mongoose";
+const imgSchema = mongoose.Schema({
+    img: {
+        type: String,
+        required: true
+    }
+});
 
 const houseSchema = mongoose.Schema({
-    reasePerMounth: {
+    reasePerMonth: {
         type: Number,
         required: true,
         min: 4,
-        max: 6
     },
     minReaseLength: {
         type: Number,
@@ -28,8 +21,7 @@ const houseSchema = mongoose.Schema({
     description: {
         type: String,
         required: true
-    }
-    ,
+    },
     location: {
         type: String,
         required: true,
@@ -38,24 +30,24 @@ const houseSchema = mongoose.Schema({
     isSaved: {
         type: Boolean,
         required: true,
+        default: false
     },
     ownerId: {
         type: String,
         required: true
     },
     imgs: {
-        type: Array,
+        type: [imgSchema], // Using an array of imgSchema
         required: true,
-        min: 1,
-        max: 4,
-
-        img: {
-            type: String,
-            required: true
-        }
+        validate: [arrayLimit, '{PATH} exceeds the limit of 4'] // Custom validation for array size
     }
-})
+});
 
-const House = mongoose.model("House", houseSchema)
+// Custom validation function for array size
+function arrayLimit(val) {
+    return val.length >= 1 && val.length <= 4;
+}
+
+const House = mongoose.model('House', houseSchema);
 
 export default House

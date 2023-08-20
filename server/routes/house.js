@@ -1,10 +1,12 @@
 import express from "express";
-import { addHouse, getAllHouses } from "../controllers/houses.js";
+import { addHouse, getAllHouses, getHouse, uploadHouseImage } from "../controllers/houses.js";
 import verifyJWT from "../middleware/verifyJWT.js";
 
 const router = express.Router()
 
-router.post("/", verifyJWT,addHouse)
-router.get("/", verifyJWT, getAllHouses)
+router.post("/",  addHouse)
+router.get("/", getAllHouses)
+router.get("/:houseId", getHouse)
+router.post("/upload", verifyJWT, uploadHouseImage)
 
 export default router
