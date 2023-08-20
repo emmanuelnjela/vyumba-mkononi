@@ -7,8 +7,8 @@ import Register from "./components/register";
 import Home from "./components/home/Home";
 import HousePreview from "./components/common/housePreview/HousePreview";
 import Logout from "./components/logout";
-import { UsersProvider } from "./contextProviders/users";
-import { HousesProvider } from "./contextProviders/houses";
+import { UsersProvider } from "./context/providers/users";
+import { HousesProvider } from "./context/providers/houses";
 
 function App() {
   return (
