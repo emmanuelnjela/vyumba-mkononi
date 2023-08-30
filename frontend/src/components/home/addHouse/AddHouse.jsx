@@ -12,12 +12,14 @@ import AddHouseTitle from "./addHouseTitle";
 import ProgressTracker from "./progressTracker";
 import { screenWidthUpdate } from "../../../utils/screenWidthUpdate";
 import AddHouseInfoContext from "../../../context/addHouseInfo";
-import axios from "axios";
+import HousesContext from "../../../context/housesContext";
+
 
 function AddHouse() {
   const params = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const addHouseRef = useRef();
+  const {onAddHouse} = useContext(HousesContext)
   const [screenWidth, setScreenWidth] = useState(0);
   const [houseInfo, setHouseInfo] = useState({
     location: "",
@@ -36,12 +38,17 @@ function AddHouse() {
   };
   const handleAddHouseInfoSubmit = async () => {
     try {
-      const respond = await axios.post("http://localhost:3001/houses", {houseInfo}, {
-        withCredentials: true,
+      await onAddHouse(houseInfo);
+      setHouseInfo({
+        location: "",
+        reasePerMonth: "",
+        minReaseLength: "",
+        description: "",
+        imgs: [],
       });
       return navigate("/home");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 

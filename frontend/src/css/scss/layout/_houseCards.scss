@@ -19,12 +19,16 @@
     // overflow: hidden;
     position: relative;
 }
-.housecard__header {
-    height: 10rem;
+.housecard__header  {
+    height: 10rem;width: 15rem;
+}
+.housecard__header span {
+    height: 100%;
+    width: 100%;
 }
 .housecard__img {
     width: 100%;
-    /* height: 10rem; */
+    height: 100%;
     border-radius: .5rem;
     object-fit: cover;
     position: relative;

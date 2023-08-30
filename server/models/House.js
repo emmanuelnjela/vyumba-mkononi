@@ -1,11 +1,11 @@
 import mongoose from "mongoose"
 
-const imgSchema = mongoose.Schema({
-    img: {
-        type: String,
-        required: true
-    }
-});
+// const imgSchema = mongoose.Schema({
+//     img: {
+//         type: String,
+//         required: true
+//     }
+// });
 
 const houseSchema = mongoose.Schema({
     reasePerMonth: {
@@ -37,7 +37,7 @@ const houseSchema = mongoose.Schema({
         required: true
     },
     imgs: {
-        type: [imgSchema], // Using an array of imgSchema
+        type: [String], 
         required: true,
         validate: [arrayLimit, '{PATH} exceeds the limit of 4'] // Custom validation for array size
     }
@@ -48,6 +48,6 @@ function arrayLimit(val) {
     return val.length >= 1 && val.length <= 4;
 }
 
-const House = mongoose.model('House', houseSchema);
+const House = mongoose.model('House', houseSchema)
 
 export default House

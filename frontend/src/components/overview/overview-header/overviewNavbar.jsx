@@ -6,6 +6,8 @@ function OverviewNavbar() {
         {
             id: 1, 
             path: "/about-us",
+            classes: "d--none d--sm-block",
+            inNavbarList: true,
             link: <button className='btn btn--primary'><NavLink to={"/about-us"} style={{"color": "white"}}>Kuhusu sisi</NavLink></button>
         }
         ,
@@ -22,7 +24,7 @@ function OverviewNavbar() {
       ];
       return (
           <div className="overview-navbar">
-            <Navbar navBrandHideSize="md" navItems={navItems} />
+            <Navbar navBrandHideSize="md" showDropdownIn="sm" navItems={navItems} />
         </div>
     )
 }

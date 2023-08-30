@@ -7,6 +7,7 @@ import HouseCardFooter from "./houseCardFooter";
 import HouseCardHeader from "./houseCardHeader";
 
 function HouseCard({ house }) {
+  console.log(house._id)
   const housesContext = useContext(HousesContext);
   const { "*": currentPage } = useParams();
 

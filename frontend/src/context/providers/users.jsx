@@ -1,9 +1,10 @@
 import Cookies from "universal-cookie";
 import CurrentUserContext from "../usersContext";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { usersInDB } from "../../data/fakeUsersApi";
 import { Crud } from "../../utils/crudOperations";
 import _ from "lodash";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function UsersProvider({ children }) {
   const cookies = new Cookies();
@@ -60,6 +61,15 @@ export function UsersProvider({ children }) {
     dispatch({ type: "SET_CURRECT_USER", payload: user });
 
   const isLogin = cookies.get("accessKey") && !_.isEmpty(currentUser);
+  
+  const navigate = useNavigate()
+  const url = useLocation()
+ 
+  useEffect(() => {
+    const excludedPathnames = ["/", "/register", "/about-us"]
+    const isPathNameExcluded = excludedPathnames.some(path => path === url.pathname)
+    if(!isLogin && !isPathNameExcluded) return navigate("/login")
+  }, [isLogin, navigate, url.pathname])
 
   const currentUserContextObject = {
     isOwner: true,

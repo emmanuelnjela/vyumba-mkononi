@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 
-function NavList({navItems}) {
+function NavList({navItems, showDropdownIn}) {
   return (
-    <div className="navbar__list d--md-none bg--light-primary">
+    <div className={`navbar__list d--${showDropdownIn}-none bg--light-primary`}>
       {navItems.map((navItem) => {
         if (navItem.inNavbarList)
           return (

@@ -21,7 +21,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/home/*" element={<Home />} />
-            <Route path="/house-preview/:id" element={<HousePreview />} />
+            <Route path="/house-preview/:id/*" element={<HousePreview />} />
           </Routes>
         </div>
       </HousesProvider>

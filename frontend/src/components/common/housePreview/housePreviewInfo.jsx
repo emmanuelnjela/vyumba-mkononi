@@ -5,7 +5,7 @@ import profile from "../../../imgs/profile.jpg";
 import map from "../../../imgs/map.jpeg";
 import MapComp from "../maps/map"
 
-function HousePreviewInfo() {
+function HousePreviewInfo({house}) {
   return (
     <div className="house-preview__info">
       <div className="house-preview__info-header">
@@ -23,10 +23,11 @@ function HousePreviewInfo() {
           Taarifa kuusu chumba
         </h5>
         <p className="house-preview__text">
-          Chumba kinaulinzi wa kutosha. Pia chumba kinapatikana maeneo ya kalibu
-          na chuo hivyo ni chumba kizuri sana kwa ajili ya wanachuo maji
-          yanapatika masaa 24 pia chumba kipo ndani ya wigo
+          {house.description}
         </p>
+        <div className="house-preview__text my-sm">
+          Kinapatikana: {house.location}
+        </div>
         <h5 className="house-preview__title text--dark">
           Tazama katika ramani
         </h5>

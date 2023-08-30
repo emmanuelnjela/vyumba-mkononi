@@ -5,7 +5,7 @@ function SavedHouse({ house, listItems, onUpdate }) {
   return (
     <div className="saved__house">
       <img
-        src={require("../../../imgs/img-6.jpg")}
+        src={house.imgs[0]}
         className="saved__house-img"
         alt=""
       />

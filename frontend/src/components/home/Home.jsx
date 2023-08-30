@@ -1,20 +1,12 @@
 import Profile from "../common/profile/Profile";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Saved from "./saved/Saved";
 import AddHouse from "./addHouse/AddHouse";
 import HomeLayout from "./homeLayout";
 import MyPosts from "./myPosts/MyPosts";
-import { useContext, useEffect } from "react";
-import UsersContext from "../../context/usersContext";
 
 function Home() {
-  const {isLogin} = useContext(UsersContext);
-  const navigate = useNavigate()
-  useEffect(() => {
-    if(!isLogin) return navigate("/login")
-  }, [])
-  
   return (
     <Routes>
       <Route path="*" element={<HomeLayout />}>

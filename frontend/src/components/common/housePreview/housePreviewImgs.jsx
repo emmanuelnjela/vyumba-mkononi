@@ -1,17 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { imageChanger } from "../../../utils/imageChanger";
+
 import ShowNavigator from "./showNavigator";
 
-function HousePreviewImgs({ house }) {
-  const [imgs, setImgs] = useState(house.imgs);
-
-  function handleImgChange(pos) {
-    let images = [...imgs];
-    images = images.map(imageChanger(images, pos));
-    setImgs(images);
-  }
+function HousePreviewImgs({ imgs, onImgChange }) {
   
   return (
     <div className="house-preview__imgs">
@@ -22,14 +15,14 @@ function HousePreviewImgs({ house }) {
               index={index}
               pos="right"
               condition={index === 0}
-              onImgChange={handleImgChange}
+              onImgChange={onImgChange}
             />
             <img key={index} src={img} alt="" />
             <ShowNavigator
               index={index}
               pos="left"
               condition={index > 0}
-              onImgChange={handleImgChange}
+              onImgChange={onImgChange}
             />
           </div>
         );

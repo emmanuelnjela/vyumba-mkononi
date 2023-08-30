@@ -28,14 +28,14 @@ export class Crud {
  /**
    * Add new data
    * @param {Object} data
-   * @returns datas with updated data or message
+   * @returns datas with added data or error message
    */
   async addData(data) {
     try {
       const dataInDB = new this._dataModel(data);
       await dataInDB.save();
       this._datas.push(dataInDB);
-      return dataInDB;
+      return this._datas;
     } catch (error) {
       throw error;
     }
@@ -47,8 +47,11 @@ export class Crud {
    * @returns object of found dataS
    */
   async foundDataInDB(id) {
+    
     try {
-      const data = this._datas.find(({ _id }) => _id === parseInt(id));
+      const data = this._datas.find(({ _id }) => {
+        return _id.toHexString() === id
+      } );
       if (!data) throw new Error("Data not found!");
       return { data, id };
     } catch (error) {
@@ -62,9 +65,9 @@ export class Crud {
    */
   async deleteData(id) {
     try {
-      const foundData = await this.foundDataInDB(id);
-      const { data: dataInDB } = foundData;
-      this._datas = this._datas.filter(({ _id }) => _id !== dataInDB._id);
+      await this._dataModel.findOneAndDelete({_id: id})
+      this._datas = this._datas.filter(({ _id }) => _id.toHexString() !== id);
+
       return this._datas;
     } catch (error) {
       throw error;

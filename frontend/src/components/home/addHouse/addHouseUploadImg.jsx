@@ -37,8 +37,9 @@ function AddHouseUploadImg() {
         withCredentials: true,
       }
     );
-    uploaded.current.file = `http://localhost:3001/images/${respond.data.imgName}`
-    const updatedImgs = [...houseInfo.imgs, {img: respond.data.imgName}];
+    const imgUrl = `http://localhost:3001/images/${respond.data.imgName}`
+    uploaded.current.file = imgUrl
+    const updatedImgs = [...houseInfo.imgs, imgUrl];
     onAddHouseInfo({ target: { name: "imgs", value: updatedImgs } });
   }
 

@@ -59,7 +59,7 @@ export const login = async (req, res) => {
       process.env.REFRESH_SECRET,
       {
         algorithm: "HS256",
-        expiresIn: "2m",
+        expiresIn: "5m",
       }
     );
     // res.cookie("accessToken", accessToken);

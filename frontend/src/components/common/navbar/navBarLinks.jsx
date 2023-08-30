@@ -5,12 +5,13 @@ function NavBarLinks({
   onNavMenuClicked,
   menuClicked,
   navItems,
+  showDropdownIn
 }) {
   return (
     <div className="navbar__links">
       {containsNavLists && (
         <button
-          className="btn btn--light-primary navbar__menu d--md-none"
+          className={`btn btn--light-primary navbar__menu d--${showDropdownIn}-none`}
           onClick={() => onNavMenuClicked()}
         >
           <i

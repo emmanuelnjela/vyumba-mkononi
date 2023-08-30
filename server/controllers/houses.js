@@ -8,11 +8,10 @@ export const addHouse = async (req, res) => {
     const { houseInfo } = req.body;
     const { currentUser } = req.cookies;
     const { _id: ownerId } = JSON.parse(currentUser);
-    houseInfo.ownerId = ownerId;
-    await housesCrud.addData(houseInfo);
-    res.status(204).json({ message: "Nyumba imeongezwa kikamilifu" });
+    const houses = await housesCrud.addData({...houseInfo, ownerId});
+    res.json({houses})
   } catch (error) {
-    console.log(error);
+
     res.json({ message: error.message });
   }
 };
@@ -20,6 +19,7 @@ export const addHouse = async (req, res) => {
 export const getHouse = async (req, res) => {
   try {
     const houseId = req.params.houseId;
+    console.log(houseId)
     const house = await housesCrud.getData(houseId);
     res.json({ house });
   } catch (error) {
@@ -29,8 +29,8 @@ export const getHouse = async (req, res) => {
 
 export const getAllHouses = async (req, res) => {
   try {
-    const datas = await housesCrud.getAllDatas();
-    res.json({ datas });
+    const houses = await housesCrud.getAllDatas()
+    res.json({ houses });
   } catch (error) {
     res.json({ message: error.message });
   }
@@ -39,8 +39,8 @@ export const getAllHouses = async (req, res) => {
 export const deleteHouse = async (req, res) => {
   try {
     const houseId = req.params.houseId;
-    await housesCrud.deleteData(houseId);
-    res.status(204).json({ message: "House deleted successfully" });
+    const houses = await housesCrud.deleteData(houseId);
+    res.json({ houses });
   } catch (error) {
     res.json({ message: error.message });
   }
@@ -48,13 +48,10 @@ export const deleteHouse = async (req, res) => {
 
 export const updateHouse = async (req, res) => {
   try {
-    const houseId = req.params.houseId;
-    const { houseInfo } = req.body;
+    const {id, dataElements} = req.body
 
-    // Perform the update operation
-    // Example: await housesCrud.updateData(houseId, houseInfo);
-
-    res.status(204).json({ message: "House updated successfully" });
+    const updatedHouses = await housesCrud.updateData(id, dataElements);
+    res.json({ updatedHouses});
   } catch (error) {
     res.json({ message: error.message });
   }
