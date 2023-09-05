@@ -4,12 +4,12 @@ import HousesContext from "../../../context/housesContext";
 import HouseCards from "../../common/houseCards/HouseCards";
 
 function MyPosts() {
-  const housesContext = useContext(HousesContext);
+  const {currentOwnerHouses} = useContext(HousesContext);
 
   return (
     <div className="home__body">
       <HouseCards
-        houses={housesContext.all}
+        houses={currentOwnerHouses}
         houseCardsTitle="ULIZO ZIWEKA"
         layoutClass="grid-container"
       />

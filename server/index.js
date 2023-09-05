@@ -10,11 +10,11 @@ import multer from "multer"
 import users from "./routes/users.js"
 import auth from "./routes/auth.js"
 import houses from "./routes/house.js"
+import images from "./routes/images.js"
 
 /* PREINSTALLED LIBRARY */
 import path from "path";
 import { fileURLToPath } from "url";
-import fs from "fs"
 
 
 
@@ -26,7 +26,6 @@ import database from "./utils/database.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config()
-const upload = multer({dest: "images/"})
 
 
 /* INITIALIZATION */
@@ -49,21 +48,7 @@ app.use(cookieParser())
 app.use('/users', users)
 app.use('/auth', auth)
 app.use('/houses', houses)
-app.get("/images/:imageName", (req, res) => {
-    const imageName = req.params.imageName
-    const readStream = fs.createReadStream(`images/${imageName}`)
-    readStream.pipe(res)
-})
-app.post('/upload-house-img', upload.single('image'), (req, res) => {
-    try {
-        const filename = req.file.filename
-        res.json({imgName: filename})
-    } catch (error) {
-        console.log(error.message)
-        res.json({errorMessage: error.message})
-    }
-    
-})
+app.use('/images', images)
 
 console.log(__dirname)
 app.listen(port, () => console.log("Server is connected sucessfuly"))

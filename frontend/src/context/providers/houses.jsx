@@ -12,7 +12,7 @@ export function HousesProvider({ children }) {
   const [errorMessage, setErrorMessage] = useState();
   // const { getAllHouses, updateData, deleteHouse } = new Crud(housesInDB)
   const [houses, setHouses] = useState([]);
-  const { isLogin } = useContext(UsersContext);
+  const { isLogin, currentUser } = useContext(UsersContext);
   // const ErrorMessage = withPopUpCard(ErrorMessage)
   const housesUrl = "http://localhost:3001/houses";
 
@@ -54,6 +54,7 @@ export function HousesProvider({ children }) {
   const handleHouseUpate = async (houseToUpdate) => {
     let errorMessage = "";
     const [houseToUpdateID] = Object.keys(houseToUpdate);
+    console.log(houseToUpdate)
     const respond = await axios.put(
       housesUrl,
       {
@@ -106,6 +107,7 @@ export function HousesProvider({ children }) {
 
   const housesContextObject = {
     all: houses,
+    currentOwnerHouses: houses.filter(({ownerId}) => ownerId === currentUser._id),
     saved: houses?.filter(({ isSaved }) => isSaved === true),
     savedTotal: houses?.filter(({ isSaved }) => isSaved === true).length,
     getBySize: (size) => houses?.slice(0, size),

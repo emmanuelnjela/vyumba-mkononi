@@ -25319,10 +25319,20 @@ a.text--muted:hover + span {
   height: 15rem;
   width: 100%;
   margin-bottom: 1rem;
+  position: relative;
 }
 .add-house__img-preview:nth-child(1) {
   grid-column: 1/9;
   grid-row: 1/13;
+}
+.add-house__img-preview-action-btns {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  display: flex;
+}
+.add-house__img-preview-action-btns:first-child {
+  margin-right: 1rem;
 }
 .add-house__img-preview-img {
   height: 3rem;

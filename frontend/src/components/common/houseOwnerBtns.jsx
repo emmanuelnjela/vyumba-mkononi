@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import HousesContext from "../../context/housesContext";
 
 import RenderHouseOwnerBtn from "./renderComp/renderHouseOwnerBtn";
@@ -9,6 +9,8 @@ function HouseOwnerBtns({ withText, houseId }) {
   const { "*": currentPage } = useParams();
   const { onHouseDelete } = useContext(HousesContext)
   const pageViewMyPosts = currentPage === "my_posts";
+  const navigate = useNavigate()
+
 
   return (
     pageViewMyPosts && (
@@ -17,13 +19,15 @@ function HouseOwnerBtns({ withText, houseId }) {
           withText={withText}
           btnText="Badili"
           iconName="pencil"
+          houseId={houseId}
+          onClick={() => navigate(`/home/add_house`, {state: houseId})}
         />
         <RenderHouseOwnerBtn
           withText={withText}
           btnText="Futa"
           iconName="trash"
           houseId={houseId}
-          onHouseDelete={onHouseDelete}
+          onClick={onHouseDelete}
         />
       </div>
     )

@@ -21,15 +21,6 @@ const userSchema = mongoose.Schema(
       max: 10,
     },
     owner: {
-      firstName: {
-        type: String,
-        // required: true,
-        default: ""
-      },
-      lastName: {
-        type: String,
-        // required: true,
-      },
       phoneNumber: {
         type: String,
         // required: true,

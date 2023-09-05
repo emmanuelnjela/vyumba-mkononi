@@ -7,14 +7,14 @@ function RenderHouseOwnerBtn({
   houseId,
   onShowToolTip,
   onHideToolTip,
-  onHouseDelete
+  onClick
 }) {
   return (
     <button
       className="btn btn--danger"
       onMouseOver={onShowToolTip}
       onMouseLeave={onHideToolTip}
-      onClick={() => onHouseDelete(houseId)}
+      onClick={() => onClick(houseId)}
     >
       {withText && btnText} <i className={`fas fa-${iconName} icon--md`}></i>
     </button>

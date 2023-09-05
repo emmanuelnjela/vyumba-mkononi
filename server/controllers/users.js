@@ -1,13 +1,50 @@
-import bcrypt from "bcrypt";
-import express from "express";
-
 import User from "../models/User.js";
-const app = express();
+
+import { Crud } from "../utils/crudOperations.js";
+
+const usersCrud = new Crud(User);
 
 
-export const getAllUsers = (req, res) => {};
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await usersCrud.getAllDatas()
+    res.json({ users });
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+};
 
-export const getUser = (req, res) => {};
+export const getUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const user = await usersCrud.getData(userId);
+    user.password = ""
+    res.json({ user });
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const users = await usersCrud.deleteData(userId);
+    res.json({ users });
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+}
+
+export const updateUser = async (req, res) => {
+  try {
+    const {id, dataElements} = req.body
+
+    const updatedUsers = await usersCrud.updateData(id, dataElements);
+    res.json({ updatedUsers});
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+}
 
 export const addRemoveOwner = async (req, res) => {
   try {

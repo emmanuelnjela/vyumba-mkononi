@@ -1,7 +1,7 @@
 import Cookies from "universal-cookie";
 import CurrentUserContext from "../usersContext";
 import { useEffect, useReducer } from "react";
-import { usersInDB } from "../../data/fakeUsersApi";
+// import { usersInDB } from "../../data/fakeUsersApi";
 import { Crud } from "../../utils/crudOperations";
 import _ from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -35,10 +35,11 @@ export function UsersProvider({ children }) {
       }
     },
     {
-      users: usersInDB,
+      users: {},
       currentUser: getCurrentUser(),
     }
   );
+  
   const usersCrud = new Crud(users);
 
   const handleUserUpate = (userToUpdate) => {
@@ -47,6 +48,7 @@ export function UsersProvider({ children }) {
       userToUpdateID,
       userToUpdate[userToUpdateID]
     );
+    
     if (currentUser._id == userToUpdateID) {
       const currentUserUpdated = updatedUsers.filter(
         ({ _id }) => _id == userToUpdateID
@@ -59,6 +61,10 @@ export function UsersProvider({ children }) {
   };
   const handleCurrentUser = (user) =>
     dispatch({ type: "SET_CURRECT_USER", payload: user });
+
+  const updateCurrentUser = (dataElements) => {
+    
+  }
 
   const isLogin = cookies.get("accessKey") && !_.isEmpty(currentUser);
   

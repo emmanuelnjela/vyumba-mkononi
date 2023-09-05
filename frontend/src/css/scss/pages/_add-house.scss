@@ -28,10 +28,21 @@
     height: 15rem;
     width: 100%;
     margin-bottom: 1rem;
+    position: relative;
 
     &:nth-child(1) {
       grid-column: 1/9;
       grid-row: 1/13;
+    }
+    &-action-btns {
+      position: absolute;
+      right: 1rem;
+      top: .5rem;
+      display: flex;
+
+      &:first-child {
+        margin-right: 1rem;
+      }
     }
     &-img {
       height: 3rem;

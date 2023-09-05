@@ -7,21 +7,24 @@ import List from "./list";
  * @param props items, color
  * @returns dropdown view
  */
-function Dropdown({ items, color, getSelectedValue }) {
+function Dropdown({ items, color, getSelectedValue, defaultSelectedValue }) {
   const [showDropDown, setShowDropDown] = useState(false);
   const [currentSelected, setCurrentSelected] = useState(
-    items ? items.find((i) => i.id === 1) : {}
+    defaultSelectedValue
+      ? defaultSelectedValue
+      :( items
+      ? items.find((i) => i.id === 1)
+      : {})
   );
-
 
   const handleShowDropdown = () => {
     setShowDropDown(true);
   };
 
   const handleItemClicked = (item) => {
-    const currentSelectedItem = !item ? currentSelected : item
+    const currentSelectedItem = !item ? currentSelected : item;
     setCurrentSelected(currentSelectedItem);
-    getSelectedValue(currentSelectedItem.value)
+    getSelectedValue(currentSelectedItem.value);
     handleHideDropdown();
   };
 
