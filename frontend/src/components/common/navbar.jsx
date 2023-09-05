@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import logo from "../../imgs/logo.png";
 
-function Navbar({ navItems }) {
+function Navbar({ navItems = [] }) {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const navMenuClicked = () => setShowDropdown(!showDropdown);

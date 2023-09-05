@@ -13,7 +13,7 @@ function SavedBody() {
   const timeItems = [{ id: 1, content: "Zilizowekwa Mapema" }];
 
   return (
-    <div className="saved__body">
+    <div className="saved__body px-md">
       <SavedBodyLeft timeItems={timeItems} />
       <SavedBodyRight
         houses={houses}
