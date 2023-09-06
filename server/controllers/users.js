@@ -10,17 +10,26 @@ export const getAllUsers = async (req, res) => {
     const users = await usersCrud.getAllDatas()
     res.json({ users });
   } catch (error) {
+    if(error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({message: error.message})
+      return
+    }
     res.json({ message: error.message });
   }
 };
 
 export const getUser = async (req, res) => {
   try {
-    const userId = req.params.userId;
+    const userId = req.params.id;
+    console.log(req.params.id)
     const user = await usersCrud.getData(userId);
     user.password = ""
     res.json({ user });
   } catch (error) {
+    if(error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({message: error.message})
+      return
+    }
     res.json({ message: error.message });
   }
 };
@@ -31,6 +40,10 @@ export const deleteUser = async (req, res) => {
     const users = await usersCrud.deleteData(userId);
     res.json({ users });
   } catch (error) {
+    if(error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({message: error.message})
+      return
+    }
     res.json({ message: error.message });
   }
 }
@@ -38,10 +51,14 @@ export const deleteUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     const {id, dataElements} = req.body
-
+    console.log(id, "up")
     const updatedUsers = await usersCrud.updateData(id, dataElements);
     res.json({ updatedUsers});
   } catch (error) {
+    if(error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({message: error.message})
+      return
+    }
     res.json({ message: error.message });
   }
 }
