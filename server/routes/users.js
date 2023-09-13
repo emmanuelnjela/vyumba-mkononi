@@ -8,9 +8,9 @@ router.get("/", getAllUsers)
 
 router.get("/:id", getUser)
 
-router.delete("/", verfiyJWT, deleteUser)
+router.delete("/:userId", verfiyJWT, deleteUser)
 
-router.put("/:userId", verfiyJWT, updateUser)
+router.put("/", verfiyJWT, updateUser)
 
 router.patch("/addRemoveOwner", verfiyJWT, addRemoveOwner);
 

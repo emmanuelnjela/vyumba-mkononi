@@ -47,12 +47,12 @@ export class Crud {
    * @returns object of found dataS
    */
   async foundDataInDB(id) {
-    
     try {
       const data = this._datas.find(({ _id }) => {
         return _id.toHexString() === id
       } );
       if (!data) throw new Error("Data not found!");
+      console.log(this._datas)
       return { data, id };
     } catch (error) {
       throw error;
@@ -80,14 +80,16 @@ export class Crud {
    * @returns updated data in array
    */
   async updateData(id, dataElements) {
+    console.log(id, "---=")
     try {
       const foundData = await this.foundDataInDB(id);
       const { data: dataInDB } = foundData;
 
       for (const elem of dataElements) {
         const { name, value } = elem;
-        dataInDB[name] = value;
+        dataInDB[name] = value
       }
+      console.log(dataInDB, dataElements)
 
       await dataInDB.save(); // Save the updated data back to the database
       return this._datas;

@@ -21,9 +21,7 @@ export const getAllUsers = async (req, res) => {
 export const getUser = async (req, res) => {
   try {
     const userId = req.params.id;
-    console.log(req.params.id)
     const user = await usersCrud.getData(userId);
-    user.password = ""
     res.json({ user });
   } catch (error) {
     if(error.message?.toLocaleLowerCase() === "data not found!") {
@@ -59,6 +57,7 @@ export const updateUser = async (req, res) => {
       res.status(404).json({message: error.message})
       return
     }
+    // console.log(error)
     res.json({ message: error.message });
   }
 }
