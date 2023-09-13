@@ -58,7 +58,8 @@ function Login() {
           }
           cookies.set('accessKey', accessToken, cookiesOption)
           cookies.set('refreshToken', refreshToken,  cookiesOption)
-          onCurrentUser(user)
+          cookies.set('currentUserId', user._id, cookiesOption)
+          onCurrentUser(user._id)
           navigate("/home")
         })
         .catch((err) => {

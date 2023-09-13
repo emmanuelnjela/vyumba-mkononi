@@ -1,6 +1,9 @@
 import bcrypt from "bcrypt";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
+import { Crud } from "../utils/crudOperations.js";
+
+const usersCrud = new Crud(User);
 
 export const register = async (req, res) => {
   try {
@@ -19,6 +22,7 @@ export const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(user.password, salt);
 
     user.password = hashedPassword;
+    user.isLoggenIn = true
 
     const formatedUser = (() => {
       const { _id, userName, password, owner } = user;
@@ -66,25 +70,38 @@ export const login = async (req, res) => {
     // res.cookie("refreshToken", refreshToken);
     user.password = "";
     delete user.password;
+    user.isLoggenIn = true
 
     res.status(202).json({ user, accessToken, refreshToken });
   } catch (err) {
     res.status(401).json({ message: err.message });
   }
 };
-export const logout = (req, res) => {
-  const { accessToken, refreshToken } = req.cookies;
-
-  if (accessToken === undefined)
-    return res.status(404).json({ message: "the access token not found" });
-
-  if (refreshToken == undefined)
-    return res.status(401).json({ message: "The refresh token is missing" });
-
-  console.log(req.app.get("tokenBlacklist"));
-
-  res.clearCookie("accessToken");
-  res.clearCookie("refreshToken");
-
-  res.json({ message: "successfully logout" });
+export const logout = async (req, res) => {
+try {
+    const { accessToken, refreshToken, userId } = req.cookies;
+  
+    if (accessToken === undefined)
+      return res.status(404).json({ message: "the access token not found" });
+  
+    if (refreshToken == undefined)
+      return res.status(401).json({ message: "The refresh token is missing" });
+  
+    console.log(req.app.get("tokenBlacklist"));
+    await usersCrud.foundDataInDB(userId)
+    await User.findOneAndUpdate({_id: userId}, {$set: {isLoggenIn: false}})
+  
+  
+    res.clearCookie("accessToken");
+    res.clearCookie("refreshToken");
+    res.clearCookie("userId")
+  
+    res.json({ message: "successfully logout" });
+} catch (error) {
+  if(error.message?.toLocaleLowerCase() === "data not found!") {
+    res.status(404).json({message: error.message})
+    return
+  }
+  res.json({ message: error.message });
+}
 };

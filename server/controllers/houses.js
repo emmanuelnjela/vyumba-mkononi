@@ -6,8 +6,7 @@ const housesCrud = new Crud(House);
 export const addHouse = async (req, res) => {
   try {
     const { houseInfo } = req.body;
-    const { currentUser } = req.cookies;
-    const { _id: ownerId } = JSON.parse(currentUser);
+    const { currentUserId: ownerId } = req.cookies;
     const houses = await housesCrud.addData({...houseInfo, ownerId});
     res.json({houses})
   } catch (error) {
