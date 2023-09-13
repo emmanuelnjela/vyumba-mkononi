@@ -1,9 +1,9 @@
-function ToggleHouseSaveText({onUpdate, savedUpateObj, house}) {
+function ToggleHouseSaveText({onUpdate, savedUpateObj, isCurrentUserLikeHouse}) {
   return <span
     className="text--muted text--small"
     onClick={() => onUpdate(savedUpateObj)}
   >
-    {house.isSaved ? "Imehifadhiwa" : "Hifadhi"}
+    {isCurrentUserLikeHouse ? "Imehifadhiwa" : "Hifadhi"}
   </span>;
 }
 

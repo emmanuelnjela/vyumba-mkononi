@@ -1,24 +1,27 @@
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import HousesContext from "../../../../context/housesContext";
+import UsersContext from "../../../../context/usersContext";
+
 import HouseCardBody from "./houseCardBody";
 import HouseCardFooter from "./houseCardFooter";
 import HouseCardHeader from "./houseCardHeader";
 
 function HouseCard({ house }) {
-  console.log(house._id)
-  const housesContext = useContext(HousesContext);
+  console.log(house._id);
+  const usersContext = useContext(UsersContext);
+
   const { "*": currentPage } = useParams();
 
-  const { onUpdate } = housesContext;
-
+  let { onUserUpdate: onUpdate, currentUser } = usersContext;
   const [showContacts, setShowContacts] = useState(false);
   const housePreviewPath = `/house-preview/${house._id}`;
 
   const pageViewMyPosts = currentPage === "my_posts";
 
   const onShowContact = () => setShowContacts(!showContacts);
+  // const customOnUpdate =
+  //   currentUser?._id === house?.ownerId ? onUpdate : () => null;
 
   return (
     <div className="housecard">

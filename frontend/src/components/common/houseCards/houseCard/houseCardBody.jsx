@@ -2,10 +2,22 @@ import List from "../../list";
 import HouseDetails from "../../houseDetails";
 import ToggleHouseSave from "./toggleHouseSave";
 import ViewHouseInfo from "./viewHouseInfo";
-import { memo } from "react";
+import { memo, useContext } from "react";
+import UsersContext from "../../../../context/usersContext";
+import { toggleElementAdd } from "../../../../utils/toggleElementAdd";
+import { executeOrNot } from "../../../../utils/excuteOrNot";
 
-function HouseCardBody({ pageViewMyPosts, house, housePreviewPath, onUpdate }) {
-  const savedUpateObj = { [house._id]: [{ name: 'isSaved',value: !house.isSaved }] };
+function HouseCardBody({ pageViewMyPosts, house, housePreviewPath , onUpdate }) {
+  // const savedUpateObj = { [house._id]: [{ name: 'isSaved',value: !house.isSaved }] };
+
+  const {currentUser} = useContext(UsersContext)
+console.log(currentUser)
+  let isCurrentUserHouseLike = (currentUser.savedHouses || []).some((savedHouseId) => savedHouseId === house._id)
+
+  const savedHousesNewValue = toggleElementAdd(house._id, currentUser.savedHouses, isCurrentUserHouseLike)
+
+  const savedUpateObj = { [currentUser._id]: [{ name: 'savedHouses',value: savedHousesNewValue }] };
+
   const listItems = [
     {
       id: 1,
@@ -14,6 +26,7 @@ function HouseCardBody({ pageViewMyPosts, house, housePreviewPath, onUpdate }) {
           house={house}
           onUpdate={onUpdate}
           savedUpateObj={savedUpateObj}
+          isCurrentUserHouseLike={isCurrentUserHouseLike}
         />
       ),
     },

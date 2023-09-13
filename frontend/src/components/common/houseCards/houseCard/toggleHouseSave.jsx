@@ -3,13 +3,21 @@ import Like from "../../like";
 import ToggleHouseSaveText from "./toggleHouseSaveText";
 
 function ToggleHouseSave(props) {
-  const {house, onUpdate, savedUpateObj} = props
+  const { onUpdate, savedUpateObj, isCurrentUserHouseLike } = props;
+
   return (
     <Link to={""} className="link link--primary link--inline">
-      <Like liked={house.isSaved} onLike={() => onUpdate(savedUpateObj)} />
-      <ToggleHouseSaveText {...props}  />
+      <Like
+        liked={isCurrentUserHouseLike}
+        onLike={() => onUpdate(savedUpateObj)}
+      />
+      <ToggleHouseSaveText
+        savedUpateObj={savedUpateObj}
+        isCurrentUserLikeHouse={isCurrentUserHouseLike}
+        onUpdate={onUpdate}
+      />
     </Link>
   );
 }
 
-export default ToggleHouseSave
+export default ToggleHouseSave;
