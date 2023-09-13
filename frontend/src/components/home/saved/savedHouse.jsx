@@ -1,7 +1,16 @@
 import HouseDetails from "../../common/houseDetails";
 import ContactIcons from "../../common/contactIcons";
+import { useContext } from "react";
+import { toggleElementAdd } from "../../../utils/toggleElementAdd";
+import UsersContext from "../../../context/usersContext";
 
 function SavedHouse({ house, listItems, onUpdate }) {
+  const {currentUser} = useContext(UsersContext)
+
+  let isCurrentUserHouseLike = (currentUser.savedHouses || []).some((savedHouseId) => savedHouseId === house._id)
+
+  const savedHousesNewValue = toggleElementAdd(house._id, currentUser.savedHouses, isCurrentUserHouseLike)
+  console.log(house)
   return (
     <div className="saved__house">
       <img
@@ -20,7 +29,7 @@ function SavedHouse({ house, listItems, onUpdate }) {
         <button
           className="btn btn--danger"
           onClick={() =>
-            onUpdate({ [house._id]: [{ name: "isSaved", value: !house.isSaved }] })
+            onUpdate({ [currentUser._id]: [{ name: 'savedHouses',value: savedHousesNewValue }] })
           }
         >
           Futa <i className="icon fas fa-trash"></i>

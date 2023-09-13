@@ -5,7 +5,7 @@ function AddHouseDefault({ screenWidth, currentItemNum, onAddHouseInfo }) {
   if (screenWidth) {
   }
   return (
-    <form onSubmit={onAddHouseInfo}>
+    <form>
       <AddHouseInfo screenWidth={screenWidth} currentItemNum={currentItemNum} />
     </form>
   );

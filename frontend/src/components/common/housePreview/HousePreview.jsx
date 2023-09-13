@@ -7,40 +7,57 @@ import { imageChanger } from "../../../utils/imageChanger";
 import { useReducer, useEffect, useContext } from "react";
 import HousePreviewNavigatorBtn from "./housePreviewNavigatorBtn";
 import HousesContext from "../../../context/housesContext";
+import UsersContext from "../../../context/usersContext";
 
 function HousePreview() {
   const { id } = useParams();
-  const {onGetHouse} = useContext(HousesContext)
+  const { onGetHouse } = useContext(HousesContext);
+  const { onGetUser } = useContext(UsersContext);
 
-  const [{ house, imgs }, dispatch] = useReducer(
+  const [{ house, imgs, owner }, dispatch] = useReducer(
     (state, action) => {
-      switch (action.type) {
-        case "SET-HOUSE":
-          return { ...state, house: action.payload };
-        case "SET-IMGS":
-          return { ...state, imgs: action.payload };
-        default:
-          return { ...state, errorMessage: action.payload };
+      try {
+        switch (action.type) {
+          case "SET-HOUSE":
+            return { ...state, house: action.payload };
+          case "SET-IMGS":
+            return { ...state, imgs: action.payload };
+          case "SET-OWNER":
+            return { ...state, owner: action.payload };
+          case "SET-ERROR":
+            return { ...state, errorMessage: action.payload };
+          default:
+            throw new Error("action.type is not match with any case!");
+        }
+      } catch (error) {
+        console.log(error.message)
       }
     },
     {
       house: {},
       imgs: [],
+      owner: {},
       errorMessage: "",
     }
   );
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/houses/${id}`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        if (response.data.message) throw new Error(response.data.message);
-        dispatch({ type: "SET-HOUSE", payload: response.data.house });
-        dispatch({ type: "SET-IMGS", payload: response.data.house.imgs });
-      })
-      .catch((e) => dispatch({ payload: e.message }));
-  }, [id]);
+    async function fetchDatas() {
+      try {
+        const respondHouse = await onGetHouse(id);
+        const house = respondHouse.data.house;
+        const respondUser = await onGetUser(house.ownerId);
+        const user = respondUser.data.user;
+
+        dispatch({ type: "SET-OWNER", payload: user });
+        dispatch({ type: "SET-HOUSE", payload: house });
+        dispatch({ type: "SET-IMGS", payload: house.imgs });
+      } catch (error) {
+        console.log(error)
+        dispatch({ type: "SET-ERROR", payload: error.message });
+      }
+    }
+    fetchDatas();
+  }, [id, onGetHouse, onGetUser]);
 
   function handleImgChange(pos) {
     let images = [...imgs];
@@ -54,7 +71,7 @@ function HousePreview() {
       </Routes>
       <HousePreviewNavigatorBtn />
       <HousePreviewImgs imgs={imgs} onImgChange={handleImgChange} />
-      <HousePreviewInfo house={house} />
+      <HousePreviewInfo house={house} owner={owner} />
     </div>
   );
 }

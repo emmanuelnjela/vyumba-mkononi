@@ -54,7 +54,6 @@ export function HousesProvider({ children }) {
   const handleHouseUpate = async (houseToUpdate) => {
     let errorMessage = "";
     const [houseToUpdateID] = Object.keys(houseToUpdate);
-    console.log(houseToUpdate)
     const respond = await axios.put(
       housesUrl,
       {
@@ -83,7 +82,7 @@ export function HousesProvider({ children }) {
         withCredentials: true,
       });
       const { message, houses } = respond.data;
-      console.log(houses)
+      console.log(houses);
       if (message) throw new Error(message);
       setHouses(houses);
       setErrorMessage(null);
@@ -91,26 +90,29 @@ export function HousesProvider({ children }) {
       setErrorMessage(error.message);
     }
   }
-  const handleGetHouse = async (id) => {
-    try {
-      const respond = await axios.get(`${housesUrl}/${id}`, {
-          withCredentials: true
-        })
-      const { message, houses } = respond.data;
-      if (message) throw new Error(message);
-      return houses
-    } catch (error) {
-      setErrorMessage(error.message)
-    }
-  }
+  const handleGetHouse = (id) => {
+    const promise = new Promise(function (resolve, reject) {
+      const respond = axios.get(`${housesUrl}/${id}`, {
+        withCredentials: true,
+      });
+    
+      respond.then(house => resolve(house))
+      respond.catch(error => reject(error))
+    });
+    return promise;
+  };
   // context variables
 
   const housesContextObject = {
     all: houses,
-    currentOwnerHouses: houses.filter(({ownerId}) => ownerId === currentUser._id),
-    saved: houses?.filter(({ isSaved }) => isSaved === true),
+    currentOwnerHouses: houses.filter(
+      ({ ownerId }) => ownerId === currentUser._id
+    ),
+    saved: houses?.filter(({ savedHouses }) => savedHouses?.same()),
     savedTotal: houses?.filter(({ isSaved }) => isSaved === true).length,
     getBySize: (size) => houses?.slice(0, size),
+    filterBy: (callback) => houses?.filter(callback),
+    getById: (id) => houses?.find(({_id}) => _id === id),
     onAddHouse: handleHouseAdd,
     onUpdate: handleHouseUpate,
     onGetHouse: handleGetHouse,
@@ -126,7 +128,7 @@ export function HousesProvider({ children }) {
 
   return (
     <HousesContext.Provider value={housesContextObject}>
-      <RenderErrorMessage errorMessage={errorMessage}/>
+      <RenderErrorMessage errorMessage={errorMessage} />
       {children}
     </HousesContext.Provider>
   );

@@ -4,8 +4,9 @@ import ContactIcons from "../contactIcons";
 import profile from "../../../imgs/profile.jpg";
 import map from "../../../imgs/map.jpeg";
 import MapComp from "../maps/map"
+import { useEffect, useRef } from "react";
+function HousePreviewInfo({house, owner}) {
 
-function HousePreviewInfo({house}) {
   return (
     <div className="house-preview__info">
       <div className="house-preview__info-header">
@@ -14,8 +15,8 @@ function HousePreviewInfo({house}) {
           <ContactIcons />
         </div>
         <Link to="profile" className="house-preview__profile">
-          <img src={profile} alt="" className="profile-img" />
-          <h6 className="house-preview__text text--dark">Emmanuel Njela</h6>
+          <img src={owner?.profileImage || profile} alt="" className="profile-img" />
+          <h6 className="house-preview__text text--dark">{owner?.userName}</h6>
         </Link>
       </div>
       <div className="house-preview__info-body">
