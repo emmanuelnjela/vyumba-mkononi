@@ -25391,7 +25391,8 @@ a.text--muted:hover + span {
   row-gap: 5%;
   -moz-column-gap: 8%;
        column-gap: 8%;
-  grid-template-areas: "A A A A A A" "A A A A A A" "B B C C D D" "B B C C D D";
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 60vh 20vh;
   overflow: hidden;
 }
 .house-preview__img {
@@ -25406,24 +25407,28 @@ a.text--muted:hover + span {
   width: 100%;
 }
 .house-preview__img-1 {
-  grid-area: A;
+  grid-column: span 6;
+  grid-row: span 1;
   display: flex;
   align-items: center;
   max-width: 100%;
   max-height: 60vh;
 }
 .house-preview__img-2 {
-  grid-area: B;
+  grid-column: span 2;
+  grid-row: span 1;
   width: 100%;
   height: 20vh;
 }
 .house-preview__img-3 {
-  grid-area: C;
+  grid-column: span 2;
+  grid-row: span 1;
   width: 100%;
   height: 20vh;
 }
 .house-preview__img-4 {
-  grid-area: D;
+  grid-column: span 2;
+  grid-row: span 1;
   width: 100%;
   height: 20vh;
 }
@@ -25453,10 +25458,15 @@ a.text--muted:hover + span {
   left: 1rem;
 }
 @media screen and (max-width: 768px) {
+  .house-preview__imgs {
+    display: flex;
+  }
   .house-preview__img {
     display: none;
+    height: 30vh;
   }
   .house-preview__img-1 {
     display: flex;
+    width: 100%;
   }
 }

@@ -16,14 +16,9 @@
     display: grid;
     row-gap: 5%;
     column-gap: 8%;
-    grid-template-areas:
-      "A A A A A A"
-      "A A A A A A"
-      "B B C C D D"
-      "B B C C D D";
+    grid-template-columns: repeat(6, 1fr); // divide the grid into 6 equal columns
+    grid-template-rows: 60vh 20vh; // divide the grid into 2 rows, one with 60vh height and one with 20vh height  
     overflow: hidden;
-
-    
   }
   &__img {
     position: relative;
@@ -35,29 +30,33 @@
       width: 100%;
     }
     &-1 {
-      grid-area: A;
+      grid-column: span 6; // span across all columns
+      grid-row: span 1; // span across one row
       display: flex;
-      align-items: center; 
+      align-items: center;
       max-width: 100%;
       max-height: 60vh;
     }
     &-2 {
-      grid-area: B;
+      grid-column: span 2; // span across two columns
+      grid-row: span 1; // span across one row
       width: 100%;
       height: 20vh;
     }
     &-3 {
-      grid-area: C;
+      grid-column: span 2; // span across two columns
+      grid-row: span 1; // span across one row
       width: 100%;
       height: 20vh;
     }
     &-4 {
-      grid-area: D;
+      grid-column: span 2; // span across two columns
+      grid-row: span 1; // span across one row
       width: 100%;
       height: 20vh;
     }
   }
-  &__info {
+&__info {
     // width: 50%;
 
     &-header {
@@ -90,11 +89,16 @@
     }
   }
   @media screen and (max-width: 768px) {
+      &__imgs {
+        display: flex;
+      }
       &__img {
         display: none;
+        height: 30vh;
 
         &-1 {
           display: flex;
+          width: 100%;
         }
       }
     }
