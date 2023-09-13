@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import "./app.css";
 import Login from "./components/login";
@@ -9,8 +9,23 @@ import HousePreview from "./components/common/housePreview/HousePreview";
 import Logout from "./components/logout";
 import { UsersProvider } from "./context/providers/users";
 import { HousesProvider } from "./context/providers/houses";
+import { useEffect } from "react";
+import Cookies from "universal-cookie";
 
 function App() {
+  const navigate = useNavigate();
+  const url = useLocation();
+
+  const cookies = new Cookies();
+  const currentUserId = cookies.get("currentUserId");
+  useEffect(() => {
+    const excludedPathnames = ["/", "/register", "/about-us"];
+    const isPathNameExcluded = excludedPathnames.some(
+      (path) => path === url.pathname
+    );
+    if (!currentUserId && !isPathNameExcluded) return navigate("/login");
+  }, [currentUserId, navigate, url.pathname]);
+
   return (
     <UsersProvider>
       <HousesProvider>
