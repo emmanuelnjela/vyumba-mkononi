@@ -19,7 +19,7 @@ function ProfileInfo({ currentUser }) {
     },
     {
       id: 3,
-      name: "from",
+      name: "location",
       title: "unapotokea",
     },
     {
