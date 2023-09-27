@@ -1,13 +1,11 @@
 import Auth from "./auth/Auth";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios"
-  
-
+import axios from "axios";
 
 function Register() {
-  const navigate = useNavigate()
-  const [errorMessage, setErrorMessage] = useState(null)
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(null);
   const authData = {
     brand: {
       btn: {
@@ -54,30 +52,39 @@ function Register() {
           iconName: "lock",
           hint: "Rudia Password Hapa",
         },
-      ], 
+      ],
       errorMessage: errorMessage,
       submitAction: (event, inputValues) => {
-        const username = event.target.username.value
-        const email = event.target.email.value
-        const password = event.target.password.value
-        const cpassword = event.target.cpassword.value
+        const username = event.target.username.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        const cpassword = event.target.cpassword.value;
 
         // useEffect(() => {
-          axios.post('http://localhost:3001/auth/register', {
-            userName: username, email, password
-          }, {})
+        axios
+          .post(
+            "http://localhost:3001/auth/register",
+            {
+              userName: username,
+              email,
+              password,
+            },
+            {}
+          )
           .then((response) => {
-            console.log(response.data)
-            navigate("/home")
+            const { user } = response.data;
+            // email verification
+            return navigate("/login", {
+              state: {username, password}
+            });
           })
           .catch((err) => {
-            console.log(err)
-            setErrorMessage(err.response.data.message)
-          })
+            console.log(err);
+            setErrorMessage(err.response.data.message);
+          });
         // })
-      }
+      },
     },
-   
   };
   const schema = {
     type: "object",
@@ -94,13 +101,7 @@ function Register() {
     additionalProperties: false,
   };
 
-
-  return (
-    <Auth
-      authData={authData}
-      schema={schema}
-    />
-  );
+  return <Auth authData={authData} schema={schema} />;
 }
 
 export default Register;

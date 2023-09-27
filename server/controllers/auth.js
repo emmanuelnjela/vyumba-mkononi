@@ -25,8 +25,8 @@ export const register = async (req, res) => {
     user.isLoggenIn = true
 
     const formatedUser = (() => {
-      const { _id, userName, password, owner } = user;
-      return { _id, userName, password, owner };
+      const { _id, userName, password, email } = user;
+      return { _id, userName, password, email };
     })();
     user.save();
 
@@ -41,7 +41,6 @@ export const login = async (req, res) => {
     const { userName, password } = req.body;
 
     const user = await User.findOne({ userName });
-    console.log(user);
 
     if (user == null) return res.status(404).json({ message: "Tarifa ulizoweka sio sahihi" });
 
@@ -79,22 +78,24 @@ export const login = async (req, res) => {
 };
 export const logout = async (req, res) => {
 try {
-    const { accessToken, refreshToken, userId } = req.cookies;
+    const { accessToken, refreshToken, currentUserId } = req.cookies;
   
+    if (currentUserId === undefined)
+      return res.status(404).json({ message: "the currentUserId not found" });
+
     if (accessToken === undefined)
       return res.status(404).json({ message: "the access token not found" });
   
     if (refreshToken == undefined)
       return res.status(401).json({ message: "The refresh token is missing" });
   
-    console.log(req.app.get("tokenBlacklist"));
-    await usersCrud.foundDataInDB(userId)
-    await User.findOneAndUpdate({_id: userId}, {$set: {isLoggenIn: false}})
+    // await usersCrud.foundDataInDB(currentUserId)
+    await User.findOneAndUpdate({_id: currentUserId}, {$set: {isLoggenIn: false}})
   
   
     res.clearCookie("accessToken");
     res.clearCookie("refreshToken");
-    res.clearCookie("userId")
+    res.clearCookie("currentUserId")
   
     res.json({ message: "successfully logout" });
 } catch (error) {
