@@ -9,6 +9,7 @@
   z-index: 5;
   left: calc(var(--t-btn-pos) - 0.5rem);
   top: calc(var(--t-btn-pos) - 0.5rem);
+
 }
 @media screen and (min-width: 768px) {
   .auth {
@@ -26,6 +27,12 @@
   }
 }
 
+@media screen and (max-width: 480px) {
+  .auth__navigator-btn {
+    top: unset;
+    bottom: 1rem;
+  }
+}
 
 .auth__form {
   background-color: #ff440075;

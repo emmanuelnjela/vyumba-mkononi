@@ -39,6 +39,7 @@ function HouseCard({ house }) {
       <HouseCardFooter
         housePreviewPath={housePreviewPath}
         houseId={house._id}
+        roomType={house.roomType}
         pageViewMyPosts={pageViewMyPosts}
         showContacts={showContacts}
         onShowContact={onShowContact}

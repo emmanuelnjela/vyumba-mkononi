@@ -117,6 +117,10 @@ span {
   text-align: center;
 }
 
+.text--justift {
+  text-align: justify;
+}
+
 .text--title {
   color: var(--text-clr);
 }
@@ -23956,6 +23960,37 @@ a.text--muted:hover + span {
     height: 0 !important;
   }
 }
+.bg--white {
+  background-color: var(--white);
+}
+.bg--light {
+  background-color: var(--light);
+}
+.bg--dark {
+  background-color: var(--dark);
+}
+.bg--muted-dark {
+  background-color: var(--muted-dark);
+}
+.bg--danger {
+  background-color: var(--danger);
+}
+.bg--grey-1 {
+  background-color: var(--grey-1);
+}
+.bg--grey-2 {
+  background-color: var(--grey-2);
+}
+.bg--grey-3 {
+  background-color: var(--grey-3);
+}
+.bg--primary {
+  background-color: var(--primary-clr);
+}
+.bg--secondary {
+  background-color: var(--secondary-clr);
+}
+
 .btn {
   cursor: pointer;
   border: 0;
@@ -24415,6 +24450,9 @@ a.text--muted:hover + span {
   .justify-xsm-items-center {
     justify-items: center;
   }
+  .justify-xsm-content-center {
+    justify-content: center;
+  }
   .space-xsm-btn {
     justify-content: space-between;
   }
@@ -24434,6 +24472,9 @@ a.text--muted:hover + span {
   }
   .justify-sm-items-center {
     justify-items: center;
+  }
+  .justify-sm-content-center {
+    justify-content: center;
   }
   .space-sm-btn {
     justify-content: space-between;
@@ -24455,6 +24496,9 @@ a.text--muted:hover + span {
   .justify-md-items-center {
     justify-items: center;
   }
+  .justify-md-content-center {
+    justify-content: center;
+  }
   .space-md-btn {
     justify-content: space-between;
   }
@@ -24474,6 +24518,9 @@ a.text--muted:hover + span {
   }
   .justify-lg-items-center {
     justify-items: center;
+  }
+  .justify-lg-content-center {
+    justify-content: center;
   }
   .space-lg-btn {
     justify-content: space-between;
@@ -24922,6 +24969,12 @@ a.text--muted:hover + span {
   .auth__toggler-btn {
     left: var(--t-btn-pos);
     top: var(--t-btn-pos);
+  }
+}
+@media screen and (max-width: 480px) {
+  .auth__navigator-btn {
+    top: unset;
+    bottom: 1rem;
   }
 }
 .auth__form {
@@ -25469,4 +25522,15 @@ a.text--muted:hover + span {
     display: flex;
     width: 100%;
   }
+}
+
+.welcome-page {
+  justify-content: center;
+  background-image: linear-gradient(360deg, var(--primary-clr) 50%, var(--light) 50%);
+}
+.welcome-page__card {
+  justify-content: center;
+}
+.welcome-page__logo {
+  height: 5rem;
 }

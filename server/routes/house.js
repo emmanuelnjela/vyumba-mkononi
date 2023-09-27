@@ -8,7 +8,7 @@ router.post("/",verifyJWT,  addHouse)
 router.get("/", getAllHouses)
 router.put("/",verifyJWT, updateHouse)
 router.delete("/:houseId", deleteHouse)
-router.get("/:houseId", verifyJWT, getHouse)
+router.get("/:houseId", getHouse)
 router.post("/upload", verifyJWT, uploadHouseImage)
 
 export default router

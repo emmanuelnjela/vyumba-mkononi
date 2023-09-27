@@ -3,20 +3,19 @@ import axios from "axios";
 import HousesContext from "../housesContext";
 import { Crud } from "../../utils/crudOperations";
 import UsersContext from "../usersContext";
-// import withPopUpCard from "../../components/hoc/withPopupCard";
 import ErrorMessage from "../../components/common/errorMessage";
-// import { housesInDB } from "../../data/falseHouseAPI";
+import _ from "lodash";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function HousesProvider({ children }) {
-  // let updatedHouse = null;
   const [errorMessage, setErrorMessage] = useState();
-  // const { getAllHouses, updateData, deleteHouse } = new Crud(housesInDB)
   const [houses, setHouses] = useState([]);
-  const { isLogin, currentUser } = useContext(UsersContext);
-  // const ErrorMessage = withPopUpCard(ErrorMessage)
+  const [searchedHouses, setSearchedHouses] = useState([]);
+  const { isLogin, currentUser, onUserUpdate } = useContext(UsersContext);
   const housesUrl = "http://localhost:3001/houses";
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // const [users, setUsers] = useState(usersInDB);
   useEffect(() => {
     axios
       .get(housesUrl, {
@@ -31,7 +30,17 @@ export function HousesProvider({ children }) {
       .catch((error) => setErrorMessage(error.message));
   }, [isLogin]);
 
-  // const [currentUser, setCurrentUser] = useState(getCurrentUser());
+  const handleHouseSearch = (searchWord) => {
+    if (location.pathname === "/") {
+      navigate("/house-search-bar-message");
+      return;
+    }
+    const searchedHouses = houses.filter(({ location }) => {
+      return searchWord !== "" ? location.startsWith(searchWord) : true;
+    });
+    setSearchedHouses(searchedHouses);
+  };
+
   const handleHouseAdd = async (houseInfo) => {
     try {
       const respond = await axios.post(
@@ -41,9 +50,9 @@ export function HousesProvider({ children }) {
           withCredentials: true,
         }
       );
-      const { message, houses } = respond.data;
+      const { message, house } = respond.data;
       if (message) throw new Error(message);
-      setHouses(houses);
+      setHouses([...houses, house]);
       setErrorMessage(null);
       return;
     } catch (error) {
@@ -64,7 +73,11 @@ export function HousesProvider({ children }) {
         withCredentials: true,
       }
     );
-    const { updatedHouses, message } = respond.data;
+    const { updatedHouse, message } = respond.data;
+    console.log(updatedHouse, houseToUpdate);
+    const updatedHouses = houses.map((house) =>
+      house._id === updatedHouse._id ? updatedHouse : house
+    );
     if (message) {
       errorMessage = `${Date()
         .match(/.{25}/)[0]
@@ -78,14 +91,26 @@ export function HousesProvider({ children }) {
   };
   async function handleHouseDelete(id) {
     try {
+      const houseToDelete = houses.find(({ _id }) => _id === id);
+      console.log(houseToDelete);
+      if (!houseToDelete) return;
       const respond = await axios.delete(`${housesUrl}/${id}`, null, {
         withCredentials: true,
       });
-      const { message, houses } = respond.data;
-      console.log(houses);
-      if (message) throw new Error(message);
-      setHouses(houses);
+      const { message } = respond.data;
+      const savedHousesAfterDelete = currentUser?.savedHouses.filter(
+        (houseId) => houseId !== id
+      );
+      onUserUpdate({
+        [houseToDelete.ownerId]: [
+          { name: "savedHouses", value: savedHousesAfterDelete },
+        ],
+      });
+      if (message !== "deleted successfully") throw new Error(message);
+      const housesAfterDelete = houses.filter(house => house._id !== id)
+      setHouses(housesAfterDelete);
       setErrorMessage(null);
+      return "house deleted successfully";
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -95,16 +120,30 @@ export function HousesProvider({ children }) {
       const respond = axios.get(`${housesUrl}/${id}`, {
         withCredentials: true,
       });
-    
-      respond.then(house => resolve(house))
-      respond.catch(error => reject(error))
+
+      respond.then((house) => resolve(house));
+      respond.catch((error) => reject(error));
     });
     return promise;
   };
-  // context variables
+  const handleHouses = (newHouses) => setHouses(newHouses);
+  const handleDeleteUserHouses = async (userId) => {
+    return new Promise(function (resolve, reject) {
+      for (let { _id: houseId, ownerId } of houses) {
+        console.log(houseId, ownerId, userId);
+        if (ownerId == userId) {
+          const respond = handleHouseDelete(houseId)
+          
+          respond.then((message) => resolve(message));
+          respond.catch((error) => reject(error.message));
+        }
+      }
+      resolve("No House to delete")
+    });
+  };
 
   const housesContextObject = {
-    all: houses,
+    all: _.isEmpty(searchedHouses) ? houses : searchedHouses,
     currentOwnerHouses: houses.filter(
       ({ ownerId }) => ownerId === currentUser._id
     ),
@@ -112,7 +151,10 @@ export function HousesProvider({ children }) {
     savedTotal: houses?.filter(({ isSaved }) => isSaved === true).length,
     getBySize: (size) => houses?.slice(0, size),
     filterBy: (callback) => houses?.filter(callback),
-    getById: (id) => houses?.find(({_id}) => _id === id),
+    getById: (id) => houses?.find(({ _id }) => _id === id),
+    onHouses: handleHouses,
+    onHouseSearch: handleHouseSearch,
+    onDeleteUserHouses: handleDeleteUserHouses,
     onAddHouse: handleHouseAdd,
     onUpdate: handleHouseUpate,
     onGetHouse: handleGetHouse,

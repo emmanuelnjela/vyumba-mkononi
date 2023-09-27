@@ -14,7 +14,7 @@ function HousePreviewInfo({house, owner}) {
           <h5 className="text text--title text--bold mb-xxxsm">Mawasiliano</h5>
           <ContactIcons />
         </div>
-        <Link to="profile" className="house-preview__profile">
+        <Link to="" className="house-preview__profile">
           <img src={owner?.profileImage || profile} alt="" className="profile-img" />
           <h6 className="house-preview__text text--dark">{owner?.userName}</h6>
         </Link>

@@ -51,4 +51,5 @@ app.use('/houses', houses)
 app.use('/images', images)
 
 console.log(__dirname)
+// console.log(new ObjectId("6504142b2b988def6d2ffe7c"))
 app.listen(port, () => console.log("Server is connected sucessfuly"))

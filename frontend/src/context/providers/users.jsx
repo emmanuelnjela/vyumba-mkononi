@@ -66,7 +66,6 @@ export function UsersProvider({ children }) {
         );
         const { user, message } = respond.data;
         if (message) throw new Error(message);
-        console.log(user);
         isLoggedInRef.current = true;
         setCurrentUser(user);
         // navigate("/home");
@@ -79,9 +78,11 @@ export function UsersProvider({ children }) {
   );
 
   useEffect(() => {
-    console.log(currentUserId);
-    handleCurrentUser(currentUserId);
-  }, [currentUserId, handleCurrentUser]);
+    console.log(currentUserId, currentUser)
+    if(currentUserId && _.isEmpty(currentUser)) {
+      handleCurrentUser(currentUserId);
+    }
+  }, [currentUserId, currentUser, handleCurrentUser]);
 
   // const updateCurrentUser = (dataElements) => {};
   const handleGetUser = (id) => {

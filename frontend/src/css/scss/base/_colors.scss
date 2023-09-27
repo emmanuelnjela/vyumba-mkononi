@@ -1,1 +1,43 @@
 // background and color and typograph and btns
+// --primary-clr
+//     --muted-primary-clr
+//     --light-primary-clr
+//     --secondary-clr
+//     --dark
+//     --muted-dark
+//     --grey-1    --grey-2
+//     --grey-3
+//     --shadow-sm
+//     --danger
+.bg {
+    &--white {
+        background-color: var(--white);
+    }
+    &--light {
+        background-color: var(--light);
+    }
+    &--dark {
+        background-color: var(--dark);
+    }
+    &--muted-dark {
+        background-color: var(--muted-dark);
+    }
+    &--danger {
+        background-color: var(--danger);
+    }
+    &--grey-1 {
+        background-color: var(--grey-1);
+    }
+    &--grey-2 {
+        background-color: var(--grey-2);
+    }
+    &--grey-3 {
+        background-color: var(--grey-3);
+    }
+    &--primary {
+        background-color: var(--primary-clr);
+    }
+    &--secondary {
+        background-color: var(--secondary-clr);
+    }
+}

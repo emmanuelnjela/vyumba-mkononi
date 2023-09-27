@@ -1,19 +1,38 @@
-import axios from "axios"
-import { useEffect } from "react"
+import axios from "axios";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import ComfirmMessage from "./common/comfirmMessage";
 
 function Logout() {
-    useEffect(() => {
-        const response = axios.post("http://localhost:3001/auth/logout", null, {
-                withCredentials: true,
-        },)
-        response.then((message) => console.log(message))
-    }, [])
+  const navigate = useNavigate();
 
-    return (
-        <div className="logout">
+  const handleClick = async (e) => {
+    try {
+      if (e.target.name === "yes") {
+        const response = await axios.post(
+          "http://localhost:3001/auth/logout",
+          null,
+          {
+            withCredentials: true,
+          }
+        );
+        navigate("/");
+        return;
+      }
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-        </div>
-    )
+  return (
+    <ComfirmMessage
+      message={"Unauhakika unataka kutoka kwenye account yako?"}
+      denialMessage={"nimehairisha"}
+      acceptMessage={"nataka kutoka"}
+      onclick={handleClick}
+    />
+  );
 }
 
-export default Logout
+export default Logout;

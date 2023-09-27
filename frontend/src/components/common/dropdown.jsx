@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import RenderCurrentSelected from "./renderComp/renderCurrentSelected";
 import List from "./list";
 
@@ -9,6 +9,7 @@ import List from "./list";
  */
 function Dropdown({ items, color, getSelectedValue, defaultSelectedValue }) {
   const [showDropDown, setShowDropDown] = useState(false);
+  const dropdownRef = useRef()
   const [currentSelected, setCurrentSelected] = useState(
     defaultSelectedValue
       ? defaultSelectedValue
@@ -24,16 +25,40 @@ function Dropdown({ items, color, getSelectedValue, defaultSelectedValue }) {
   const handleItemClicked = (item) => {
     const currentSelectedItem = !item ? currentSelected : item;
     setCurrentSelected(currentSelectedItem);
-    getSelectedValue(currentSelectedItem.value);
+    getSelectedValue(currentSelectedItem?.value);
     handleHideDropdown();
   };
 
   const handleHideDropdown = () => setShowDropDown(false);
 
+  const handleTouchStart = () => {
+    setShowDropDown(true);
+  };
+
+  const handleTouchEnd = () => {
+    setShowDropDown(false);
+    setTimeout(() => {
+      const element = dropdownRef.current;
+      element.dispatchEvent(new MouseEvent("mouseleave"));
+    }, 1000);
+  };
+
+  const handleMouseLeave = () => {
+    if (!usingTouch) {
+      setShowDropDown(false);
+    }
+  };
+
+  let usingTouch = false;
+
   return (
     <div
       className={`dropdown dropdown--${color || "none"}`}
-      onMouseLeave={handleHideDropdown} // Added onMouseLeave event here
+      onClick={handleHideDropdown}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onMouseLeave={handleMouseLeave}
+      ref={dropdownRef}
     >
       <RenderCurrentSelected
         currentSelected={currentSelected}

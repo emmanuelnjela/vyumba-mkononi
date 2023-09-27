@@ -1,18 +1,19 @@
-
 import { NavLink, Route, Routes } from "react-router-dom";
 import OverviewIndex from "./OverviewIndex";
 import OverviewAboutUs from "./OverviewAboutUs";
-
+import HouseSearchBarMessage from "../common/houseSearchBarMessage";
 
 function Overview() {
-      
   return (
     <div className="overview">
-      
       <Routes>
-        <Route index element={<OverviewIndex />}></Route>
-        <Route path="/about-us" element={<OverviewAboutUs />}>
+        <Route path="/" element={<OverviewIndex />}>
+          <Route
+            path="/house-search-bar-message"
+            element={<HouseSearchBarMessage />}
+          />
         </Route>
+        <Route path="/about-us" element={<OverviewAboutUs />} />
       </Routes>
     </div>
   );

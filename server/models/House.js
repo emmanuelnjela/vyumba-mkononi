@@ -22,6 +22,10 @@ const houseSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    roomType: {
+        type: String,
+        required: true
+    },
     location: {
         type: String,
         required: true,

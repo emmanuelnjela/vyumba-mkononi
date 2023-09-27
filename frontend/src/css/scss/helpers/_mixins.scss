@@ -199,6 +199,9 @@
       .justify-#{$breakpoint-name}-items-center {
         justify-items: center;
       }
+      .justify-#{$breakpoint-name}-content-center {
+        justify-content: center;
+      }
       .space-#{$breakpoint-name}-btn {
         justify-content: space-between;
       }

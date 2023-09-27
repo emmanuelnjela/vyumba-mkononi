@@ -15,7 +15,7 @@ function NavBarBrand({ navItems }) {
   return (
     <NavLink to={isLogin ? "/home" : "/"} className="navbar__brand">
       <img src={logo} alt="" className="navbar__brand-logo" />
-      <h6 className={classes}>Vyumba vya Kupanga online</h6>
+      <h6 className={classes}>Vyumba Mkononi</h6>
     </NavLink>
   );
 }

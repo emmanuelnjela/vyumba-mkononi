@@ -7,8 +7,8 @@ export const addHouse = async (req, res) => {
   try {
     const { houseInfo } = req.body;
     const { currentUserId: ownerId } = req.cookies;
-    const houses = await housesCrud.addData({...houseInfo, ownerId});
-    res.json({houses})
+    const house = await housesCrud.addData({...houseInfo, ownerId});
+    res.json({house})
   } catch (error) {
      if(error.message?.toLocaleLowerCase() === "data not found!") {
       res.status(404).json({message: error.message})
@@ -21,7 +21,6 @@ export const addHouse = async (req, res) => {
 export const getHouse = async (req, res) => {
   try {
     const houseId = req.params.houseId;
-    console.log(houseId)
     const house = await housesCrud.getData(houseId);
     res.json({ house });
   } catch (error) {
@@ -49,8 +48,8 @@ export const getAllHouses = async (req, res) => {
 export const deleteHouse = async (req, res) => {
   try {
     const houseId = req.params.houseId;
-    const houses = await housesCrud.deleteData(houseId);
-    res.json({ houses });
+    const message = await housesCrud.deleteData(houseId);
+    res.json({ message });
   } catch (error) {
      if(error.message?.toLocaleLowerCase() === "data not found!") {
       res.status(404).json({message: error.message})
@@ -64,8 +63,8 @@ export const updateHouse = async (req, res) => {
   try {
     const {id, dataElements} = req.body
 
-    const updatedHouses = await housesCrud.updateData(id, dataElements);
-    res.json({ updatedHouses});
+    const updatedHouse = await housesCrud.updateData(id, dataElements);
+    res.json({ updatedHouse});
   } catch (error) {
      if(error.message?.toLocaleLowerCase() === "data not found!") {
       res.status(404).json({message: error.message})

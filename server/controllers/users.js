@@ -49,7 +49,6 @@ export const deleteUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     const {id, dataElements} = req.body
-    console.log(id, "up")
     const updatedUsers = await usersCrud.updateData(id, dataElements);
     res.json({ updatedUsers});
   } catch (error) {

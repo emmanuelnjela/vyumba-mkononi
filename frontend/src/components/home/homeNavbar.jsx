@@ -34,7 +34,7 @@ function HomeNavbar() {
     {
       id: 2,
       inNavbarList: isOwner ? true : false,
-      path: "add_house",
+      path: "/home/add_house",
       classes: classes.showInMdScreenWhenOwner,
       link: (
         <button className="btn btn--primary btn--rounded">
@@ -45,7 +45,7 @@ function HomeNavbar() {
     {
       id: 3,
       inNavbarList: isOwner ? true : false,
-      path: "my_posts",
+      path: "/home/my_posts",
       classes: classes.showInMdScreenWhenOwner,
       link: (
         <button className="btn btn--primary btn--rounded">
@@ -55,14 +55,14 @@ function HomeNavbar() {
     },
     {
       id: 4,
-      path: "profile",
+      path: "/home/profile",
       classes: classes.showInSmScreenWhenOwner,
       inNavbarList: isOwner ? true : false,
       link: <Image imgSrc={currentUser?.profileImage || img} classes={"profile-img"} />,
     },
     {
       id: 5,
-      path: "/logout", // change path to /logout
+      path: "/home/logout", // change path to /logout
       link: <button className="btn btn--primary">TOKA</button>,
     },
   ];
