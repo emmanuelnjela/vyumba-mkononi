@@ -1,16 +1,18 @@
 import Auth from "./auth/Auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useContext,  useState } from "react";
+import { useContext, useState } from "react";
 
 import Cookies from "universal-cookie";
 import UsersContext from "../context/usersContext";
-  
-function Login() {
-  const navigate = useNavigate()
-  const {onCurrentUser} = useContext(UsersContext)
 
-  const [errorMessage, setErrorMessage] = useState(null)
+function Login() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { onCurrentUser } = useContext(UsersContext);
+
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const authData = {
     brand: {
       btn: {
@@ -41,32 +43,39 @@ function Login() {
         },
       ],
       errorMessage: errorMessage,
-      submitAction: (event) => {
+      submitAction: (event, fromRegister = false) => {
         const userName = event.target.username.value;
         const password = event.target.password.value;
+        console.log(userName, password)
+        axios
+          .post("http://localhost:3001/auth/login", {
+            userName,
+            password,
+          })
+          .then((response) => {
+            const { accessToken, refreshToken, user } = response.data;
+            const cookies = new Cookies();
+            const time = new Date().getTime();
+            const cookiesOption = {
+              path: "/",
+              expires: new Date(time + 5 * (60 * 1000)),
+            };
+            cookies.set("accessToken", accessToken, cookiesOption);
+            cookies.set("refreshToken", refreshToken, cookiesOption);
+            cookies.set("currentUserId", user._id, cookiesOption);
+            onCurrentUser(user._id);
 
-        axios.post("http://localhost:3001/auth/login", {
-          userName, password
-        })
-        .then((response) => {
-          const {accessToken, refreshToken, user} = response.data
-          const cookies = new Cookies();
-          const time = new Date().getTime();
-          const cookiesOption = {
-            path: "/",
-            expires: new Date(time + 5*(60 * 1000)) 
-          }
-          cookies.set('accessKey', accessToken, cookiesOption)
-          cookies.set('refreshToken', refreshToken,  cookiesOption)
-          cookies.set('currentUserId', user._id, cookiesOption)
-          onCurrentUser(user._id)
-          navigate("/home")
-        })
-        .catch((err) => {
-          console.log(err)
-          return setErrorMessage(err.response.data.message)
-        })
-      }
+            if(fromRegister) {
+              navigate("/welcome")
+              return
+            }
+            navigate("/home");
+          })
+          .catch((err) => {
+            console.log(err);
+            return setErrorMessage(err.response.data.message);
+          });
+      },
     },
   };
   const schema = {
@@ -81,13 +90,15 @@ function Login() {
     required: ["name", "password"],
     additionalProperties: false,
   };
-
-  return (
-    <Auth
-      authData={authData}
-      schema={schema}
-    />
-  );
+  if (location.state !== null) {
+    const { username, email, password } = location.state;
+    const event = {
+      target: { username: { value: username }, password: { value: password } },
+    };
+    const fromRegister = true
+    authData.form.submitAction(event, fromRegister);
+  }
+  return <Auth authData={authData} schema={schema} />;
 }
 
 export default Login;
