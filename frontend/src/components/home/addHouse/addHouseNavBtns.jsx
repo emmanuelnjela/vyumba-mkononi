@@ -5,7 +5,6 @@ function AddHouseNavBtns({ currentItemNum, screenWidth }) {
   // [1,2,3]
 
   const items = addHouseNavBtnItems(screenWidth);
-
   return (
     <div className="add-house__nav-btns d-flex space-btn">
       {items[0] !== currentItemNum && (

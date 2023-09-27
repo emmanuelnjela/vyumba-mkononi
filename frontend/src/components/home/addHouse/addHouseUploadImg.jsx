@@ -35,15 +35,18 @@ function AddHouseUploadImg() {
 
   const handleDeleteImage = async () => {
     try {
-      const response = await axios.delete(
-        `${lastHouseImage}?houseId=${currentHouseId}`,
-        {
-          withCredentials: true,
+      if (currentHouseId) {
+        const response = await axios.delete(
+          `${lastHouseImage}?houseId=${currentHouseId}`,
+          {
+            withCredentials: true,
+          }
+        );
+        console.log(response.status !== 204);
+        if (response.status !== 204) {
+          const { message } = response.data;
+          throw new Error(message);
         }
-      );
-      if (response.status !== 204) {
-        const { message } = response.data;
-        throw new Error(message);
       }
       const updatedImgs = houseInfo.imgs.slice(0, houseInfo.imgs.length - 1);
       onAddHouseInfo({ target: { name: "imgs", value: updatedImgs } });

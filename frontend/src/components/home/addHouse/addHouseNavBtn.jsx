@@ -20,7 +20,7 @@ export function AddHouseNavBtn({
         <i className={`fas fa-arrow-${arrow_direction}`}></i>
       </>
     );
-    const renderOnClick = isLastItem ? onAddHouseInfoSubmit : () => console.log("guck")
+    const renderOnClick = isLastItem === true ? onAddHouseInfoSubmit : () => console.log("guck")
   return (
     <Link
       to={direction}

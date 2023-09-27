@@ -1,5 +1,6 @@
 import AddHouseInputGroup from "./addHouseInputGroup";
 import DescriptionTextArea from "./descriptionTextArea";
+import HouseTypeDropdown from "./roomTypeDropdown";
 import MinReasesLengthDropdown from "./minReaseLengthDropdown";
 
 function AddHouseDetails() {
@@ -25,6 +26,12 @@ function AddHouseDetails() {
     },
     {
       id: 4,
+      title: "Aina ya chumba",
+      Component: <HouseTypeDropdown />
+    }
+    ,
+    {
+      id: 5,
       title: "Maelezo mafupi",
       name: "description",
       Component: <DescriptionTextArea />,

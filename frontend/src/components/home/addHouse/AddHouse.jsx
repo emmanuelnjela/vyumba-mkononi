@@ -20,12 +20,13 @@ function AddHouse() {
   const addHouseRef = useRef();
   const location = useLocation();
   const { state: currentHouseId } = location;
-
+// CHANGE TO USEREDUCER
   const houseInfoInitilizer = () => {
     const defaultHouseInfo = {
       location: "",
       reasePerMonth: "",
       minReaseLength: "",
+      roomType: "",
       description: "",
       imgs: [],
     }; 
@@ -54,7 +55,6 @@ function AddHouse() {
       } 
       houseToUpdate.current.dataElements = [...dataElements, {name, value}]
     }
-    console.log(houseInfo, houseToUpdate)
     setHouseInfo({ ...houseInfo, [name]: value });
   };
   const handleAddHouseInfoSubmit = async () => {
@@ -72,6 +72,7 @@ function AddHouse() {
         location: "",
         reasePerMonth: "",
         minReaseLength: "",
+        roomType: "",
         description: "",
         imgs: [],
       });
@@ -92,6 +93,7 @@ function AddHouse() {
     houseInfo,
     currentHouseId: houseToUpdate.current.currentHouseId,
     defaultMinReaseLength: houseInfo["minReaseLength"],
+    defaultRoomType: houseInfo["roomType"],
     onAddHouseInfo: handleAddHouseInfo,
     onAddHouseInfoSubmit: handleAddHouseInfoSubmit,
   };
