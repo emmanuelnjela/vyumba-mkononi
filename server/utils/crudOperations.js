@@ -1,18 +1,8 @@
-/**crud - add, view, view all, update, delete */
 export class Crud {
   constructor(dataModel) {
     this._dataModel = dataModel;
-    this._datas = [];
-    this.initializeData();
   }
 
-  async initializeData() {
-    try {
-      this._datas = await this.getAllDatas();
-    } catch (error) {
-      throw error;
-    }
-  }
   /**
    * get all data in the DB
    * @returns array of datas
@@ -25,7 +15,8 @@ export class Crud {
       throw error;
     }
   }
- /**
+
+  /**
    * Add new data
    * @param {Object} data
    * @returns datas with added data or error message
@@ -34,78 +25,72 @@ export class Crud {
     try {
       const dataInDB = new this._dataModel(data);
       await dataInDB.save();
-      this._datas.push(dataInDB);
-      return this._datas;
+      return dataInDB;
     } catch (error) {
       throw error;
     }
   }
+
   /**
-   * Check if data is in DB if not its will return the error message otherwise an object
-   * of with data and index of the found data
+   * Check if data is in DB; if not, it will return an error message;
+   * otherwise, return the found data.
    * @param {integer} id
-   * @returns object of found dataS
+   * @returns object of found data or error message
    */
   async foundDataInDB(id) {
     try {
-      const data = this._datas.find(({ _id }) => {
-        return _id.toHexString() === id
-      } );
+      const data = await this._dataModel.findById(id);
       if (!data) throw new Error("Data not found!");
-      console.log(this._datas)
-      return { data, id };
+      return data;
     } catch (error) {
       throw error;
     }
   }
+
   /**
    * Delete the data in the database
    * @param {string} id
-   * @returns datas
+   * @returns success message or error message
    */
   async deleteData(id) {
     try {
-      await this._dataModel.findOneAndDelete({_id: id})
-      this._datas = this._datas.filter(({ _id }) => _id.toHexString() !== id);
-
-      return this._datas;
+      const deletedData = await this._dataModel.findOneAndDelete({ _id: id });
+      if (!deletedData) throw new Error("Data not found!");
+      return "deleted successfully";
     } catch (error) {
       throw error;
     }
   }
+
   /**
    * Update the data in the database
    * @param {integer} id
-   * @param {string} datas
-   * @returns updated data in array
+   * @param {Object} dataElements
+   * @returns updated data or error message
    */
   async updateData(id, dataElements) {
-    console.log(id, "---=")
     try {
       const foundData = await this.foundDataInDB(id);
-      const { data: dataInDB } = foundData;
-
       for (const elem of dataElements) {
         const { name, value } = elem;
-        dataInDB[name] = value
+        foundData[name] = value;
       }
-      console.log(dataInDB, dataElements)
-
-      await dataInDB.save(); // Save the updated data back to the database
-      return this._datas;
+      await foundData.save(); // Save the updated data back to the database
+      return foundData;
     } catch (error) {
       throw error;
     }
   }
+
   /**
    * View an individual data in the database
    * @param {string} id
-   * @returns found data
+   * @returns found data or error message
    */
   async getData(id) {
     try {
-      const foundData = await this.foundDataInDB(id);
-      return foundData.data;
+      const data = await this.foundDataInDB(id);
+      return data;
     } catch (error) {
       throw error;
     }
