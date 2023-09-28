@@ -28,6 +28,7 @@ function AddHouseUploadImg() {
         withCredentials: true,
       }
     );
+    console.log(respond.data.imgName)
     const imgUrl = `http://localhost:3001/images/${respond.data.imgName}`;
     const updatedImgs = [...houseInfo.imgs, imgUrl];
     onAddHouseInfo({ target: { name: "imgs", value: updatedImgs } });
@@ -69,7 +70,7 @@ function AddHouseUploadImg() {
             </button>
           </div>
         )}
-
+        
         <img
           src={lastHouseImage || image}
           alt=""
