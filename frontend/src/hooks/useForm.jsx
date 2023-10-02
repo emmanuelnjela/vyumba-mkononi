@@ -60,7 +60,11 @@ const useForm = (authData) => {
       (value) => value.length > 0
     );
 
-    if (isEmpty(errors) && allValuesValid) submitAction(event);
+    if (isEmpty(errors) && allValuesValid) {
+      console.log("hello")
+      handleChange(event = {target: {name: ""}, target: {value: ""}})
+      submitAction(event);
+    }
   };
 
   return {

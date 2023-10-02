@@ -7,16 +7,29 @@ import UsersContext from "../../../../context/usersContext";
 import { toggleElementAdd } from "../../../../utils/toggleElementAdd";
 import { executeOrNot } from "../../../../utils/excuteOrNot";
 
-function HouseCardBody({ pageViewMyPosts, house, housePreviewPath , onUpdate }) {
+function HouseCardBody({
+  currentUser,
+  pageViewMyPosts,
+  house,
+  housePreviewPath,
+  onUpdate,
+}) {
   // const savedUpateObj = { [house._id]: [{ name: 'isSaved',value: !house.isSaved }] };
 
-  const {currentUser} = useContext(UsersContext)
-console.log(currentUser)
-  let isCurrentUserHouseLike = (currentUser.savedHouses || []).some((savedHouseId) => savedHouseId === house._id)
+  console.log(currentUser);
+  let isCurrentUserHouseLike = (currentUser.savedHouses || []).some(
+    (savedHouseId) => savedHouseId === house._id
+  );
 
-  const savedHousesNewValue = toggleElementAdd(house._id, currentUser.savedHouses, isCurrentUserHouseLike)
+  const savedHousesNewValue = toggleElementAdd(
+    house._id,
+    currentUser.savedHouses,
+    isCurrentUserHouseLike
+  );
 
-  const savedUpateObj = { [currentUser._id]: [{ name: 'savedHouses',value: savedHousesNewValue }] };
+  const savedUpateObj = {
+    [currentUser._id]: [{ name: "savedHouses", value: savedHousesNewValue }],
+  };
 
   const listItems = [
     {
@@ -27,15 +40,21 @@ console.log(currentUser)
           onUpdate={onUpdate}
           savedUpateObj={savedUpateObj}
           isCurrentUserHouseLike={isCurrentUserHouseLike}
+          currentUser={currentUser}
         />
       ),
     },
     {
       id: 2,
-      content: <ViewHouseInfo housePreviewPath={housePreviewPath} />,
+      content: (
+        <ViewHouseInfo
+          housePreviewPath={housePreviewPath}
+          currentUser={currentUser}
+        />
+      ),
     },
   ];
-  
+
   return (
     <div className="housecard__body">
       <HouseDetails house={house} />
@@ -48,4 +67,4 @@ console.log(currentUser)
   );
 }
 
-export default memo(HouseCardBody)
+export default memo(HouseCardBody);

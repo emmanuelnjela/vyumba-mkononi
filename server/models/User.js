@@ -47,6 +47,10 @@ const userSchema = mongoose.Schema(
       required: true,
       validation: [arrayLimit, '{PATH} exceeds the limit of 4']
     },
+    DateOfCreation: {
+        type: String,
+        default: new Date(),
+    }
   },
 
 );

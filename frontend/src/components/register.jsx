@@ -1,9 +1,14 @@
 import Auth from "./auth/Auth";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import axios from "axios";
+import _ from "lodash";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+
 
 function Register() {
+  const {watch} = useForm()
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null);
   const authData = {
@@ -54,11 +59,8 @@ function Register() {
         },
       ],
       errorMessage: errorMessage,
-      submitAction: (event, inputValues) => {
-        const username = event.target.username.value;
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-        const cpassword = event.target.cpassword.value;
+      submitAction: (data) => {
+        const {username, password, email} = data
 
         // useEffect(() => {
         axios
@@ -79,27 +81,48 @@ function Register() {
             });
           })
           .catch((err) => {
-            console.log(err);
-            setErrorMessage(err.response.data.message);
+            // console.log(err);
+            // setErrorMessage(err.response.data.message);
+            toast(err.response.data.message)
           });
         // })
       },
     },
   };
   const schema = {
-    type: "object",
-    properties: {
-      name: {
-        type: "string",
-        minLength: 4,
+    username: {
+      required: "Jina lina hitajika, tafadhali jaza",
+      minLength: {
+        value: 4,
+        message: "Jina lina herufi chache sana, tafadhali ongeza",
       },
-      email: { type: "string", format: "email", minLength: 8 },
-      password: { type: "string", minLength: 8 },
-      cpassword: { type: "string", minLength: 8 },
+      maxLength: {
+        message: "Jina lina herufi nyingi sana, tafadhali punguza",
+      },
     },
-    required: ["name", "email", "password", "cpassword"],
-    additionalProperties: false,
+    password: {
+      required: "Password inahitajika, tafadhali jaza",
+      minLength: {
+        value: 6,
+        message: "Password lazima iwe na herufi 6 na kuendelea"
+      },
+      pattern: {
+        value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/,
+        message: "Password lazima iwe na herufi kubwa, ndogo na namba"
+      }
+    },
+    cpassword: {
+      required: "Rudia Password inahitajika, tafadhali jaza",
+    },
+    email: {
+      required: "Email inahitajika, tafadhali jaza",
+      pattern: {
+        value:  /^(([^<>()[\]\\.,;;\s@"]+(\.[^<>()[\]\\.,;;\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        message: "Email yako si sahihi, tafadhali jaza email sahihi"
+      }
+    }
   };
+  
 
   return <Auth authData={authData} schema={schema} />;
 }

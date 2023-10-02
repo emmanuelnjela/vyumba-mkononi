@@ -6,6 +6,7 @@ import UsersContext from "../usersContext";
 import ErrorMessage from "../../components/common/errorMessage";
 import _ from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export function HousesProvider({ children }) {
   const [errorMessage, setErrorMessage] = useState();
@@ -30,16 +31,51 @@ export function HousesProvider({ children }) {
       .catch((error) => setErrorMessage(error.message));
   }, [isLogin]);
 
-  const handleHouseSearch = (searchWord) => {
+  const handleHouseSearch = (searchWord, setSearchWord, selectedValues) => {
     if (location.pathname === "/") {
       navigate("/house-search-bar-message");
       return;
+    } 
+    // Clear previous search results
+    setSearchedHouses([]);
+  
+    if (searchWord.trim() === "" && _.isEmpty(selectedValues)) {
+      // No search criteria provided, return early or show a message
+      return;
     }
-    const searchedHouses = houses.filter(({ location }) => {
-      return searchWord !== "" ? location.startsWith(searchWord) : true;
+  
+    const isSearchWordExists = houses.some(({ location }) =>
+      location.startsWith(searchWord)
+    );
+  
+    if (!isSearchWordExists && searchWord.trim() !== "") {
+      toast(`Hakuna nyumba katika maeneo ya "${searchWord}"`);
+      return;
+    }
+  
+    const searchedHouses = houses.filter(({ location, reasePerMonth }) => {
+      const locationMatch = location.startsWith(searchWord);
+      const priceMatch =
+        selectedValues.min <= reasePerMonth &&
+        selectedValues.max >= reasePerMonth;
+  
+      // Filter based on location and/or price range
+      return (
+        (searchWord.trim() === "" || locationMatch) &&
+        (_.isEmpty(selectedValues) || priceMatch)
+      );
     });
-    setSearchedHouses(searchedHouses);
+  
+    if (searchedHouses.length === 0) {
+      toast("Hakuna nyumba iliyo kizi vigezo vyako.");
+    } else {
+      setSearchedHouses(searchedHouses);
+    }
+  
+    // Optionally clear the search word
+    // setSearchWord("");
   };
+  
 
   const handleHouseAdd = async (houseInfo) => {
     try {
@@ -107,7 +143,7 @@ export function HousesProvider({ children }) {
         ],
       });
       if (message !== "deleted successfully") throw new Error(message);
-      const housesAfterDelete = houses.filter(house => house._id !== id)
+      const housesAfterDelete = houses.filter((house) => house._id !== id);
       setHouses(housesAfterDelete);
       setErrorMessage(null);
       return "house deleted successfully";
@@ -132,13 +168,13 @@ export function HousesProvider({ children }) {
       for (let { _id: houseId, ownerId } of houses) {
         console.log(houseId, ownerId, userId);
         if (ownerId == userId) {
-          const respond = handleHouseDelete(houseId)
-          
+          const respond = handleHouseDelete(houseId);
+
           respond.then((message) => resolve(message));
           respond.catch((error) => reject(error.message));
         }
       }
-      resolve("No House to delete")
+      resolve("No House to delete");
     });
   };
 

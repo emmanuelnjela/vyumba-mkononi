@@ -3,8 +3,8 @@ import ProfileInfoItem from "./profileInfoItem";
 
 function ProfileInfo({ currentUser }) {
   const items = [
-    { id: 1, content: <span>Mpangaji</span> },
-    { id: 2, content: <span>Mwene Nyumba</span> },
+    { id: 1, value: "agent", content: <span>Mwenye Nyumba</span> },
+    { id: 2, value: "houseOwner", content: <span>Dalali</span> },
   ];
   const profileInfoItems = [
     {

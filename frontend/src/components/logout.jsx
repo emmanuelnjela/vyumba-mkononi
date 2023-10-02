@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ComfirmMessage from "./common/comfirmMessage";
 
@@ -35,4 +35,4 @@ function Logout() {
   );
 }
 
-export default Logout;
+export default Logout

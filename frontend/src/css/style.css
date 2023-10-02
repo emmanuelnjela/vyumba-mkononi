@@ -24220,6 +24220,7 @@ a.text--muted:hover + span {
   /* justify-content: center; */
   align-items: center;
   /* align-items: flex-end;    */
+  cursor: pointer;
 }
 
 .link--inline {
@@ -24414,6 +24415,24 @@ a.text--muted:hover + span {
   border-radius: 0 0 100% 0;
   position: absolute;
   top: 1.1rem;
+}
+
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+.page-loader .loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.page-loader .loader .logo {
+  height: 8rem;
+  width: 8rem;
 }
 
 .d-flex {
@@ -25452,6 +25471,8 @@ a.text--muted:hover + span {
   position: relative;
   max-width: 10rem;
   max-height: 10rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 .house-preview__img img {
   -o-object-fit: cover;
@@ -25485,12 +25506,66 @@ a.text--muted:hover + span {
   width: 100%;
   height: 20vh;
 }
+.house-preview__table {
+  width: 100%;
+  background-color: var(--light);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.house-preview__table tr {
+  display: flex;
+  justify-content: space-between;
+}
+.house-preview__table th, .house-preview__table td {
+  flex-basis: 50%;
+  font-size: 0.8rem;
+  text-align: start;
+}
+.house-preview__table th {
+  color: var(--dark);
+}
+.house-preview__table td {
+  margin-bottom: 1rem;
+  color: var(--primary-clr);
+}
+.house-preview__owner {
+  border-radius: 0.5rem;
+  background-color: var(--light);
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.house-preview__owner .owner-profile {
+  background-color: bisque;
+  border-radius: 0.5rem;
+  height: 8rem;
+  width: 8rem;
+  overflow: hidden;
+  flex-basis: 40%;
+}
+.house-preview__owner .profile {
+  height: 100%;
+  width: 100%;
+}
+.house-preview__owner .house-preview__contacts {
+  flex-basis: 60%;
+}
 .house-preview__info-header {
   display: flex;
   justify-content: space-between;
 }
 .house-preview__title {
   margin: 0.5rem 0;
+}
+@media screen and (min-width: 480px) {
+  .house-preview__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 .house-preview__profile {
   display: grid;

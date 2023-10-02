@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./app.jsx";
 // import "bootstrap";
 import "./fontawesome/css/all.css";
+import "./leaflet/leaflet.css"
 import "./css/style.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

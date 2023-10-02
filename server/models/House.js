@@ -44,6 +44,10 @@ const houseSchema = mongoose.Schema({
         type: [String], 
         required: true,
         validate: [arrayLimit, '{PATH} exceeds the limit of 4'] // Custom validation for array size
+    },
+    DateOfCreation: {
+        type: String,
+        default: new Date(),
     }
 });
 

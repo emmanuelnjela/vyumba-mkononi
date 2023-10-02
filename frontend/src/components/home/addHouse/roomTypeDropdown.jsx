@@ -4,7 +4,7 @@ import AddHouseInfoContext from "../../../context/addHouseInfo";
 
 function RoomTypeDropdown() {
   const { onAddHouseInfo, defaultRoomType } = useContext(AddHouseInfoContext);
-
+ const houseTypes = {apartment: "nyumba nzima", single: "chumba kimoja", double: "chumba na sebure", self: "chumba na choo"}
   const dropdownItems = [
     {
       id: 1,
@@ -14,12 +14,12 @@ function RoomTypeDropdown() {
     {
       id: 2,
       value: "apartment",
-      content: <span>nyumba nzima</span>,
+      content: <span>Nyumba Nzima</span>,
     },
     {
       id: 3,
       value: "single",
-      content: <span>chumba single</span>,
+      content: <span>Chumba Kimoja</span>,
     },
     {
       id: 4,

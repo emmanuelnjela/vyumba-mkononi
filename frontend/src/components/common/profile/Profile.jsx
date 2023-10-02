@@ -9,6 +9,7 @@ import ProfileButtons from "./profileButtons";
 import ProfileImgSide from "./profileImgSide";
 import ProfileInfoSide from "./profileInfoSide";
 import HousesContext from "../../../context/housesContext";
+import { toast } from 'react-toastify';
 
 function Profile() {
   const { currentUser, onUserUpdate } =
@@ -41,6 +42,7 @@ function Profile() {
           { name: "profileImage", value: profileImage },
         ],
       });
+      toast("Mabadiliko katika account yako, yamehifadhika kikamilifu!")
       navigate("/home");
     } catch (error) {
       console.log(error);

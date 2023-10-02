@@ -1,8 +1,9 @@
 import AuthBrand from "./authBrand";
 import AuthForm from "./authForm";
 import AuthNavigatorBtn from "./authNavigatorBtn";
-import useForm from "../../hooks/useForm";
+// import useForm from "../../hooks/useForm";
 import RenderErrorMessage from "./renderComp/renderErrorMessage";
+
 
 /**
  * An auth component provide an authentification functionality,
@@ -12,22 +13,16 @@ import RenderErrorMessage from "./renderComp/renderErrorMessage";
  * @param {*} 'props to create auth component'
  * @returns a new component with all auth functionality
  */
-function Auth({ authData }) {
+function Auth({ authData, schema }) {
   const { brand: authBrandData, form: authFormData } = authData;
-  const { handleChange, values, errors, handleSubmit } = useForm(authData);
-  
+  // const { handleChange, values, errors, handleSubmit } = useForm(authData);
+
   return (
     <div className="auth">
-      <RenderErrorMessage errorMessage={authFormData.errorMessage}  />
+      <RenderErrorMessage errorMessage={authFormData.errorMessage} />
       <AuthNavigatorBtn />
       <AuthBrand authBrandData={authBrandData} />
-      <AuthForm
-        authFormData={authFormData}
-        inputValues={values}
-        onChange={handleChange}
-        errors={errors}
-        onSubmit={handleSubmit}
-      />
+      <AuthForm authFormData={authFormData} schema={schema} />
     </div>
   );
 }

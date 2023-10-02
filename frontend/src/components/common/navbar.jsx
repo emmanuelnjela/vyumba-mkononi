@@ -6,7 +6,7 @@ import logo from "../../imgs/logo.png";
 function Navbar({ navItems = [] }) {
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const navMenuClicked = () => setShowDropdown(!showDropdown);
+  const hideDropDown = () => setShowDropdown(!showDropdown);
   return (
     <div className="navbar">
       <NavLink to={"/"} className="navbar__brand">
@@ -14,7 +14,7 @@ function Navbar({ navItems = [] }) {
         <h6 className="navbar__brand-name">Nyumba za Kupanga online</h6>
       </NavLink>
       <div className="navbar__links">
-        <button className="btn navbar__menu" onClick={() => navMenuClicked()}>
+        <button className="btn navbar__menu" onClick={() => hideDropDown()}>
           <i className={`fas ${showDropdown ? "fa-x" : "fa-bars"} fs-lg icon--secondary`}></i>
         </button>
         {navItems.map((navItem) => {
@@ -23,6 +23,7 @@ function Navbar({ navItems = [] }) {
               key={navItem.id}
               to={navItem.path || ""}
               className="navbar__link"
+              onClick={hideDropDown}
             >
               {navItem.link}
             </NavLink>
@@ -37,6 +38,7 @@ function Navbar({ navItems = [] }) {
                 key={navItem.id}
                 to={navItem.path || ""}
                 className="navbar__link"
+                onClick={hideDropDown}
               >
                 {navItem.link}
               </NavLink>

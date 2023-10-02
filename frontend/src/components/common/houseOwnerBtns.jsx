@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import HousesContext from "../../context/housesContext";
 
 import RenderHouseOwnerBtn from "./renderComp/renderHouseOwnerBtn";
+import { toast } from "react-toastify";
 
 function HouseOwnerBtns({ withText, houseId }) {
   // console.log(houseId)
@@ -10,6 +11,15 @@ function HouseOwnerBtns({ withText, houseId }) {
   const { onHouseDelete } = useContext(HousesContext)
   const pageViewMyPosts = currentPage === "my_posts";
   const navigate = useNavigate()
+
+  async function handleDelete() {
+    try {
+      await onHouseDelete(houseId)
+      toast("Chumba chako kimefutwa kikamilifu")
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
 
 
   return (
@@ -26,8 +36,7 @@ function HouseOwnerBtns({ withText, houseId }) {
           withText={withText}
           btnText="Futa"
           iconName="trash"
-          houseId={houseId}
-          onClick={onHouseDelete}
+          onClick={handleDelete}
         />
       </div>
     )

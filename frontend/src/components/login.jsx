@@ -2,6 +2,7 @@ import Auth from "./auth/Auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 import Cookies from "universal-cookie";
 import UsersContext from "../context/usersContext";
@@ -43,13 +44,12 @@ function Login() {
         },
       ],
       errorMessage: errorMessage,
-      submitAction: (event, fromRegister = false) => {
-        const userName = event.target.username.value;
-        const password = event.target.password.value;
-        console.log(userName, password)
+      submitAction: (data, fromRegister = false) => {
+        const { username, password } = data;
+        console.log(username, password);
         axios
           .post("http://localhost:3001/auth/login", {
-            userName,
+            userName: username,
             password,
           })
           .then((response) => {
@@ -65,38 +65,34 @@ function Login() {
             cookies.set("currentUserId", user._id, cookiesOption);
             onCurrentUser(user._id);
 
-            if(fromRegister) {
-              navigate("/welcome")
-              return
+            if (fromRegister) {
+              navigate("/welcome");
+              return;
             }
             navigate("/home");
           })
           .catch((err) => {
             console.log(err);
-            return setErrorMessage(err.response.data.message);
+            toast(err.response.data.message, {});
+            // return setErrorMessage(err);
           });
       },
     },
   };
   const schema = {
-    type: "object",
-    properties: {
-      name: {
-        type: "string",
-        minLength: 4,
-      },
-      password: { type: "string", minLength: 8 },
+    username: {
+      required: "Jina lina hitajika, tafadhali jaza",
     },
-    required: ["name", "password"],
-    additionalProperties: false,
+    password: {
+      required: "Password inahitajika, tafadhali jaza",
+    },
   };
   if (location.state !== null) {
     const { username, email, password } = location.state;
-    const event = {
-      target: { username: { value: username }, password: { value: password } },
-    };
-    const fromRegister = true
-    authData.form.submitAction(event, fromRegister);
+    const data = { username, password };
+
+    const fromRegister = true;
+    authData.form.submitAction(data, fromRegister);
   }
   return <Auth authData={authData} schema={schema} />;
 }

@@ -25,7 +25,7 @@ function Dropdown({ items, color, getSelectedValue, defaultSelectedValue }) {
   const handleItemClicked = (item) => {
     const currentSelectedItem = !item ? currentSelected : item;
     setCurrentSelected(currentSelectedItem);
-    getSelectedValue(currentSelectedItem?.value);
+    getSelectedValue(currentSelectedItem?.value, setCurrentSelected);
     handleHideDropdown();
   };
 
@@ -48,6 +48,8 @@ function Dropdown({ items, color, getSelectedValue, defaultSelectedValue }) {
       setShowDropDown(false);
     }
   };
+
+  
 
   let usingTouch = false;
 

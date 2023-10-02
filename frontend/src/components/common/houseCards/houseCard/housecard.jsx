@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import UsersContext from "../../../../context/usersContext";
@@ -10,10 +10,11 @@ import HouseCardHeader from "./houseCardHeader";
 function HouseCard({ house }) {
   console.log(house._id);
   const usersContext = useContext(UsersContext);
+  const [owner, setOwner] = useState({});
 
   const { "*": currentPage } = useParams();
 
-  let { onUserUpdate: onUpdate, currentUser } = usersContext;
+  let { onUserUpdate: onUpdate, onGetUser, currentUser } = usersContext;
   const [showContacts, setShowContacts] = useState(false);
   const housePreviewPath = `/house-preview/${house._id}`;
 
@@ -22,6 +23,19 @@ function HouseCard({ house }) {
   const onShowContact = () => setShowContacts(!showContacts);
   // const customOnUpdate =
   //   currentUser?._id === house?.ownerId ? onUpdate : () => null;
+  useEffect(() => {
+    async function fetchOwner() {
+     try {
+       const respondUser = await onGetUser(house.ownerId);
+       const user = respondUser.data.user;
+ 
+       setOwner(user)
+     } catch (error) {
+       console.log(error.message)
+     }
+    }
+    fetchOwner()
+  }, []);
 
   return (
     <div className="housecard">
@@ -29,12 +43,14 @@ function HouseCard({ house }) {
         showContacts={showContacts}
         houseImgs={house.imgs}
         houseId={house._id}
+        owner={owner}
       />
       <HouseCardBody
         pageViewMyPosts={pageViewMyPosts}
         house={house}
         housePreviewPath={housePreviewPath}
         onUpdate={onUpdate}
+        currentUser={currentUser}
       />
       <HouseCardFooter
         housePreviewPath={housePreviewPath}
