@@ -25232,6 +25232,7 @@ a.text--muted:hover + span {
   width: 100%;
   padding-bottom: 1rem;
   background-color: var(--main-bg);
+  border: 2px solid var(--main-bg);
 }
 .home__searchbar-content {
   display: grid;
