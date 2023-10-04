@@ -72,10 +72,12 @@ function HousePreviewInfo({ house, owner }) {
               className="profile"
             />
           </div>
-          <div className="house-preview__contacts p-sm pt-xsm">
-            <h6 className="house-preview__text text--dark">
+          <div className="house-preview__contacts p-sm pt-xxsm">
+            <h6 className="house-preview__text text--dark mb-xxsm">
               {owner?.userName}
             </h6>
+            <p className="mb-xxsm">Anapatikana: {owner?.location}</p>
+            <button className="btn btn--primary mb-xxsm"><span><i className="fas fa-eye"></i> ona vyumba vyangu vyote</span></button>
             <ContactIcons phoneNumber={owner?.phoneNumber} />
           </div>
           {/* <Map /> */}

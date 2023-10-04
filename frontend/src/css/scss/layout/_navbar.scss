@@ -9,6 +9,9 @@
   background-color: var(--element-bg);
   box-shadow: var(--shadow-sm);
 
+  @media screen and (max-width: 480px) {
+    padding: 0 1rem;
+  }
   &__brand {
     display: flex;
     align-items: flex-end;

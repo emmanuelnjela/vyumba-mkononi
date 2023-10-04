@@ -32,7 +32,7 @@
 }
 .profile__info-item {
   display: grid;
-  grid-template-columns: 4rem auto;
+  grid-template-columns: 6.5rem auto;
   /* column-gap: 1rem; */
   align-items: flex-start;
   margin-bottom: 1rem;
@@ -123,6 +123,10 @@
     top: 1rem;
   }
   .profile__info-item {
-    grid-template-columns: 4rem auto;
+    display: block;
+    // grid-template-columns: 4rem auto;
+  }
+  .profile__data {
+    width: 100%;
   }
 }

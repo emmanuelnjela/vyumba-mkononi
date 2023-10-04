@@ -9,26 +9,26 @@ function MinReasesLengthDropdown() {
   console.log(defaultMinReaseLength);
   const dropdownItems = [
     {
-      id: 1,
+      id: 0,
       value: "default",
       content: <span>Miezi</span>,
     },
     {
-      id: 2,
+      id: 1,
       value: "Mitatu",
       content: <span>Mitatu</span>,
     },
     {
-      id: 3,
+      id: 2,
       value: "Minne",
       content: <span>Minne</span>,
     },
     {
-      id: 4,
+      id: 3,
       value: "sita",
       content: <span>sita</span>,
     },
-    { id: 5, value: "Nane", content: <span>Nane</span> },
+    { id: 4, value: "Nane", content: <span>Nane</span> },
   ];
   const handleSelectedValue = (selectedValue) => {
     const values = { Mitatu: 3, Minne: 4, sita: 6, Nane: 8 };

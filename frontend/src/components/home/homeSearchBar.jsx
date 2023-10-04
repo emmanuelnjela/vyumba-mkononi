@@ -7,7 +7,7 @@ function HomeSearchBar() {
  
 
   return (
-    <div className="home__searchbar w-80 mx-auto">
+    <div className="home__searchbar mx-auto">
       <HouseSearchBar />
     </div>
   );

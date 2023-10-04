@@ -1,0 +1,10 @@
+.myposts {
+  &__navigator {
+    position: sticky;
+    bottom: 1rem;
+
+    .navigator-btn {
+      margin-left: 1rem;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import Auth from "./auth/Auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { memo, useEffect, useState } from "react";
 import axios from "axios";
 import _ from "lodash";
@@ -59,6 +59,14 @@ function Register() {
         },
       ],
       errorMessage: errorMessage,
+      alreadyMessage: (
+        <>
+        Au kama tayari umejiunga, tafadhili bonyeza{" "}
+        <Link to={"/login"} className="text--underline text--primary">
+          ingia
+        </Link>
+      </>
+      ),
       submitAction: (data) => {
         const {username, password, email} = data
 

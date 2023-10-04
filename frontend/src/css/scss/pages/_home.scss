@@ -1,5 +1,5 @@
 .home {
-  position: relative;
+  // position: relative;
   &__header {
     position: sticky;
     top: 0;
@@ -11,6 +11,18 @@
   &__searchbar {
     display: grid;
     justify-items: center;
+    position: sticky;
+    z-index: 5;
+    top: 5rem;
+    width: 100%;
+    padding-bottom: 1rem;
+    background-color: var(--main-bg);
+
+    &-content {
+      display: grid;
+      justify-items: center;
+      width: 80%;
+    }
   }
 
   &__searchbar .btn {

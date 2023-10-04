@@ -6,6 +6,7 @@ import HousesContext from "../../context/housesContext";
 import CurrentUserContext from "../../context/usersContext";
 import img from "../../imgs/profile.jpg";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 function HomeNavbar() {
   const houses = useContext(HousesContext);
@@ -33,6 +34,15 @@ function HomeNavbar() {
     },
     {
       id: 2,
+      path: "/home/notification",
+      link: (
+        <i className="fas fa-bell icon--secondary icon--xlg me-lg">
+          <span className="counter-info">{size}</span>
+        </i>
+      ),
+    },
+    {
+      id: 3,
       inNavbarList: isOwner ? true : false,
       path: "/home/add_house",
       classes: classes.showInMdScreenWhenOwner,
@@ -43,7 +53,7 @@ function HomeNavbar() {
       ),
     },
     {
-      id: 3,
+      id: 4,
       inNavbarList: isOwner ? true : false,
       path: "/home/my_posts",
       classes: classes.showInMdScreenWhenOwner,
@@ -54,14 +64,19 @@ function HomeNavbar() {
       ),
     },
     {
-      id: 4,
+      id: 5,
       path: "/home/profile",
       classes: classes.showInSmScreenWhenOwner,
       inNavbarList: isOwner ? true : false,
-      link: <Image imgSrc={currentUser?.profileImage || img} classes={"profile-img"} />,
+      link: (
+        <Image
+          imgSrc={currentUser?.profileImage || img}
+          classes={"profile-img"}
+        />
+      ),
     },
     {
-      id: 5,
+      id: 6,
       path: "/home/logout", // change path to /logout
       link: <button className="btn btn--primary">TOKA</button>,
     },

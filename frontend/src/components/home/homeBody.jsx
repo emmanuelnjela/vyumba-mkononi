@@ -1,18 +1,9 @@
-import { useContext } from "react";
-
-import HousesContext from "../../context/housesContext";
-import HouseCards from "../common/houseCards/HouseCards";
+import { Outlet } from "react-router-dom";
 
 function HomeBody() {
-  const housesContext = useContext(HousesContext);
-
   return (
     <div className="home__body">
-      <HouseCards
-        houses={housesContext.all}
-        houseCardsTitle="ZILIZOWEKWA HIVI KARIBUNI"
-        layoutClass="grid-container"
-      />
+      <Outlet />
     </div>
   );
 }

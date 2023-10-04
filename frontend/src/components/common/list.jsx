@@ -6,6 +6,7 @@ function List({ isInline, classes, items, onHideDropdown, onItemClicked = () => 
   return (
     <ul className={`list ${isInline ? "list--inline" : ""} ${classes || ""}`} onMouseLeave={onHideDropdown}>
       {items?.map((item) => (
+        item.id != 0 &&
         <li
           key={item.id}
           ref={listItemRef}

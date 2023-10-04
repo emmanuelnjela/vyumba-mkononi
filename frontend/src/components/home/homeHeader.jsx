@@ -10,7 +10,7 @@ function HomeHeader() {
     <>
       <div className="home__header">
         <HomeNavbar />
-        <HomeSearchBar  />
+        {/* <HomeSearchBar  /> */}
       </div>
       <Outlet />
     </>

@@ -7,26 +7,26 @@ function RoomTypeDropdown() {
  const houseTypes = {apartment: "nyumba nzima", single: "chumba kimoja", double: "chumba na sebure", self: "chumba na choo"}
   const dropdownItems = [
     {
-      id: 1,
+      id: 0,
       value: "default",
       content: <span>Aina ya chumba</span>,
     },
     {
-      id: 2,
+      id: 1,
       value: "apartment",
       content: <span>Nyumba Nzima</span>,
     },
     {
-      id: 3,
+      id: 2,
       value: "single",
       content: <span>Chumba Kimoja</span>,
     },
     {
-      id: 4,
+      id: 3,
       value: "double",
       content: <span>chumba na sebure</span>,
     },
-    { id: 5, value: "self", content: <span>chumba self</span> },
+    { id: 4, value: "self", content: <span>chumba self</span> },
   ];
   const handleSelectedValue = (selectedValue) => {
     const e = {

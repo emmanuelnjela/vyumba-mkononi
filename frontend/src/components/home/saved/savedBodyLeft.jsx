@@ -1,6 +1,6 @@
 import Dropdown from "../../common/dropdown";
 
-export function SavedBodyLeft({ timeItems }) {
+export function SavedBodyLeft({ timeItems, roomTypeItems }) {
   return (
     <div className="saved__body--left">
       <div className="saved__sortbar">
@@ -9,7 +9,16 @@ export function SavedBodyLeft({ timeItems }) {
           <span className="sort__option">
             <h6>Muda</h6> <Dropdown items={timeItems} />
           </span>
+          {/* <span className="sort__option">
+            <h6>Kodi mwanzo</h6> <Dropdown items={priceStartItems} />
+          </span>
           <span className="sort__option">
+            <h6>Kodi Mwisho</h6> <Dropdown items={priceEndItems} />
+          </span> */}
+          <span className="sort__option">
+            <h6>Aina ya Chumba</h6> <Dropdown items={roomTypeItems} />
+          </span>
+          {/* <span className="sort__option">
             <h6>Kodi</h6>
             <div className="sort__option-radios">
               <div className="radio-group">
@@ -18,7 +27,7 @@ export function SavedBodyLeft({ timeItems }) {
                 </div>
               </div>
             </div>
-          </span>
+          </span> */}
         </div>
       </div>
     </div>

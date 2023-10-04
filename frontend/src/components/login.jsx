@@ -1,5 +1,5 @@
 import Auth from "./auth/Auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
@@ -44,6 +44,14 @@ function Login() {
         },
       ],
       errorMessage: errorMessage,
+      alreadyMessage: (
+        <>
+          Au kama bado haujajiunga, tafadhili bonyeza{" "}
+          <Link to={"/register"} className="text--underline text--primary">
+            jiunge
+          </Link>
+        </>
+      ),
       submitAction: (data, fromRegister = false) => {
         const { username, password } = data;
         console.log(username, password);

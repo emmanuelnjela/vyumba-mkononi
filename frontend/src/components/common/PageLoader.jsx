@@ -1,11 +1,12 @@
 import ReactLoading from "react-loading";
+import logo from "../../imgs/logo.png";
 
 export function PageLoader() {
   return (
     <div className="page-loader">
       <div className="loader">
-        {/* <img className="logo" src={logo} alt="" /> */}
-        <h1 className="text--primary">Vyumba Mkononi</h1>
+        <img className="logo" src={logo} alt="" />
+        <h1 className="text--secondary">Vyumba Mkononi</h1>
         <ReactLoading
           type={"bars"}
           color={"var(--primary-clr)"}

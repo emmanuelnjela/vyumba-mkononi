@@ -24562,6 +24562,11 @@ a.text--muted:hover + span {
   background-color: var(--element-bg);
   box-shadow: var(--shadow-sm);
 }
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+}
 .navbar__brand {
   display: flex;
   align-items: flex-end;
@@ -24668,7 +24673,7 @@ a.text--muted:hover + span {
 
 .profile__info-item {
   display: grid;
-  grid-template-columns: 4rem auto;
+  grid-template-columns: 6.5rem auto;
   /* column-gap: 1rem; */
   align-items: flex-start;
   margin-bottom: 1rem;
@@ -24766,7 +24771,10 @@ a.text--muted:hover + span {
     top: 1rem;
   }
   .profile__info-item {
-    grid-template-columns: 4rem auto;
+    display: block;
+  }
+  .profile__data {
+    width: 100%;
   }
 }
 .customer-reviews {
@@ -25208,9 +25216,6 @@ a.text--muted:hover + span {
   background-color: var(--element-bg);
 }
 
-.home {
-  position: relative;
-}
 .home__header {
   position: sticky;
   top: 0;
@@ -25221,6 +25226,17 @@ a.text--muted:hover + span {
 .home__searchbar {
   display: grid;
   justify-items: center;
+  position: sticky;
+  z-index: 5;
+  top: 5rem;
+  width: 100%;
+  padding-bottom: 1rem;
+  background-color: var(--main-bg);
+}
+.home__searchbar-content {
+  display: grid;
+  justify-items: center;
+  width: 80%;
 }
 .home__searchbar .btn {
   display: flex;
@@ -25534,6 +25550,7 @@ a.text--muted:hover + span {
   border-radius: 0.5rem;
   background-color: var(--light);
   margin-top: 1rem;
+  padding-top: 0.5rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -25541,7 +25558,7 @@ a.text--muted:hover + span {
 .house-preview__owner .owner-profile {
   background-color: bisque;
   border-radius: 0.5rem;
-  height: 8rem;
+  height: 10rem;
   width: 8rem;
   overflow: hidden;
   flex-basis: 40%;
@@ -25552,6 +25569,18 @@ a.text--muted:hover + span {
 }
 .house-preview__owner .house-preview__contacts {
   flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 480px) {
+  .house-preview__owner {
+    display: block;
+  }
+  .house-preview__owner .owner-profile {
+    width: 10rem;
+    border-radius: 100%;
+    margin: auto;
+  }
 }
 .house-preview__info-header {
   display: flex;
@@ -25608,4 +25637,12 @@ a.text--muted:hover + span {
 }
 .welcome-page__logo {
   height: 5rem;
+}
+
+.myposts__navigator {
+  position: sticky;
+  bottom: 1rem;
+}
+.myposts__navigator .navigator-btn {
+  margin-left: 1rem;
 }

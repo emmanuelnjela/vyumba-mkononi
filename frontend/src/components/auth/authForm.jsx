@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 
 function AuthForm({ authFormData, schema }) {
 
-  const { btn, type: formType, inputs, submitAction } = authFormData;
+  const { btn, type: formType, alreadyMessage, inputs, submitAction } = authFormData;
 
   const {handleSubmit, register,watch, formState: {errors}, reset} = useForm()
 
@@ -39,7 +39,7 @@ function AuthForm({ authFormData, schema }) {
         />
       ))}
       {formType === "login" ? <AuthFormGroup /> : <div className="p-sm"></div>}
-      <AuthFormAction label={btn.label} />
+      <AuthFormAction alreadyMessage={alreadyMessage} label={btn.label} />
     </form>
   );
 }

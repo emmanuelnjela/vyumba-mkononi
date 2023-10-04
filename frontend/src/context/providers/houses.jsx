@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import HousesContext from "../housesContext";
 import { Crud } from "../../utils/crudOperations";
@@ -26,56 +26,74 @@ export function HousesProvider({ children }) {
         // console.log(respond);
         const { houses: housesInDB, message } = respond?.data;
         if (message) throw new Error(message);
-        setHouses(housesInDB);
+        setHouses(
+          housesInDB.sort((a, b) => {
+            const aDate = new Date(a.DateOfCreation);
+            const bDate = new Date(b.DateOfCreation);
+
+            return (
+              bDate.getMonth() - aDate.getMonth() &&
+              bDate.getDate() - aDate.getDate() &&
+              bDate.getHours() - aDate.getHours() &&
+              bDate.getMinutes() - aDate.getMinutes() &&
+              bDate.getSeconds() - aDate.getSeconds()
+            );
+          })
+        );
       })
       .catch((error) => setErrorMessage(error.message));
   }, [isLogin]);
 
-  const handleHouseSearch = (searchWord, setSearchWord, selectedValues) => {
+  const handleHouseSearch = (searchWord, selectedValues) => {
+    console.log(selectedValues);
     if (location.pathname === "/") {
       navigate("/house-search-bar-message");
       return;
-    } 
+    }
     // Clear previous search results
     setSearchedHouses([]);
-  
+
     if (searchWord.trim() === "" && _.isEmpty(selectedValues)) {
       // No search criteria provided, return early or show a message
       return;
     }
-  
+
     const isSearchWordExists = houses.some(({ location }) =>
       location.startsWith(searchWord)
     );
-  
+
     if (!isSearchWordExists && searchWord.trim() !== "") {
       toast(`Hakuna nyumba katika maeneo ya "${searchWord}"`);
       return;
     }
-  
-    const searchedHouses = houses.filter(({ location, reasePerMonth }) => {
-      const locationMatch = location.startsWith(searchWord);
-      const priceMatch =
-        selectedValues.min <= reasePerMonth &&
-        selectedValues.max >= reasePerMonth;
-  
-      // Filter based on location and/or price range
-      return (
-        (searchWord.trim() === "" || locationMatch) &&
-        (_.isEmpty(selectedValues) || priceMatch)
-      );
-    });
-  
+
+    const searchedHouses = houses.filter(
+      ({ location, reasePerMonth, roomType }) => {
+        const locationMatch = location.startsWith(searchWord);
+        const priceMatch =
+          selectedValues.min <= reasePerMonth &&
+          selectedValues.max >= reasePerMonth;
+        const roomTypeMatch = roomType === selectedValues.type;
+
+        // Filter based on location and/or price range
+        return (
+          (searchWord.trim() === "" || locationMatch) &&
+          (_.isEmpty(selectedValues) || priceMatch) &&
+          (selectedValues.type === undefined || roomTypeMatch)
+        );
+      }
+    );
+
     if (searchedHouses.length === 0) {
-      toast("Hakuna nyumba iliyo kizi vigezo vyako.");
+      // toast("Hakuna nyumba iliyo kizi vigezo vyako.");
+      navigate("/home/houseReminderMessage")
     } else {
       setSearchedHouses(searchedHouses);
     }
-  
+
     // Optionally clear the search word
     // setSearchWord("");
   };
-  
 
   const handleHouseAdd = async (houseInfo) => {
     try {
@@ -180,8 +198,9 @@ export function HousesProvider({ children }) {
 
   const housesContextObject = {
     all: _.isEmpty(searchedHouses) ? houses : searchedHouses,
-    currentOwnerHouses: houses.filter(
-      ({ ownerId }) => ownerId === currentUser._id
+    currentOwnerHouses: useCallback(
+      houses.filter(({ ownerId }) => ownerId === currentUser._id),
+      [houses]
     ),
     saved: houses?.filter(({ savedHouses }) => savedHouses?.same()),
     savedTotal: houses?.filter(({ isSaved }) => isSaved === true).length,

@@ -7,7 +7,7 @@ function AuthFormGroup() {
           Kumbuka password yangu
         </label>
       </div>
-      <a href="." className="auth__form-link text--small">
+      <a href="." className="auth__form-link text--small text--underline">
         Nimesahau Password Yangu
       </a>
     </div>

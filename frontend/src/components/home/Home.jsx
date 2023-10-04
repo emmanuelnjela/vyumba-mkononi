@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, lazy } from "react";
 
 import HomeLayout from "./homeLayout";
 import { PageLoader } from "../common/PageLoader";
+const HouseReminderMessage = lazy(() => import("./houseReminderMessage"));
 const Profile = lazy(() => import("../common/profile/Profile"));
-const Saved = lazy(() => import("./saved/Saved"));
+
 const AddHouse = lazy(() => import("./addHouse/AddHouse"));
-const MyPosts = lazy(() => import("./myPosts/MyPosts"));
 const Logout = lazy(() => import("../logout"));
 const DeleteAccountComfirmMessage = lazy(() =>
   import("../common/profile/deleteAccountComfirmMessage")
@@ -19,6 +19,10 @@ function Home() {
         <Route path="*" element={<HomeLayout />}>
           <Route path="profile" element={<Profile />}></Route>
           <Route
+            path="houseReminderMessage"
+            element={<HouseReminderMessage />}
+          ></Route>
+          <Route
             path="deleteAccountComfirmMessage"
             element={<DeleteAccountComfirmMessage />}
           />
@@ -28,8 +32,6 @@ function Home() {
             <Route path=":currentItemNum" element={<AddHouse />} />
           </Route>
         </Route>
-        <Route path="my_posts" element={<MyPosts />} />
-        <Route path="saved" element={<Saved />} />
       </Routes>
     </Suspense>
   );
