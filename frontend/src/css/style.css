@@ -3,6 +3,7 @@
   --muted-primary-clr: hsl(23deg 99% 69%);
   --light-primary-clr: hsl(33, 100%, 88%);
   --secondary-clr: hsl(23deg 98% 24%);
+  --muted-secondary-clr: hsla(23, 98%, 24%, 0.496);
   --dark: hsl(25deg 100% 6%);
   --muted-dark: hsl(23deg 15% 30%);
   --grey-1: hsl(21deg 7% 53%);
@@ -24435,6 +24436,48 @@ a.text--muted:hover + span {
   width: 8rem;
 }
 
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 25rem;
+  height: 2.5rem;
+  margin: auto;
+  background-color: var(--white);
+  padding: 0.5rem;
+  border-radius: 5rem;
+}
+.pagination li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-radius: 100%;
+  width: 2rem;
+  height: 2rem;
+  padding: 0 1rem;
+}
+.pagination li.previous, .pagination li.next {
+  background-color: var(--secondary-clr);
+  width: 4.25rem;
+  color: var(--white);
+  border-radius: 5rem;
+  cursor: pointer;
+}
+.pagination li.previous.disabled, .pagination li.next.disabled {
+  background-color: var(--muted-secondary-clr);
+}
+.pagination li.previous a, .pagination li.next a {
+  color: var(--white);
+  font-weight: 500;
+}
+.pagination li.active {
+  background-color: var(--primary-clr);
+}
+.pagination li.active a {
+  color: var(--white);
+}
+
 .d-flex {
   display: flex;
 }
@@ -24841,7 +24884,6 @@ a.text--muted:hover + span {
 }
 
 .housecards {
-  margin: 1rem 0;
   margin-bottom: 3rem;
 }
 .housecards__header {
@@ -25192,6 +25234,9 @@ a.text--muted:hover + span {
   position: relative;
   z-index: 5;
 }
+.overview__searchbar-content {
+  margin-bottom: 1rem;
+}
 .overview__searchbar-title {
   padding-top: 1rem;
 }
@@ -25203,7 +25248,7 @@ a.text--muted:hover + span {
   padding-top: 1rem;
 }
 .overview__body {
-  padding: 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
 .overview__body-navigator-btn {
   display: flex;
@@ -25227,7 +25272,7 @@ a.text--muted:hover + span {
   display: grid;
   justify-items: center;
   position: sticky;
-  z-index: 5;
+  z-index: 4;
   top: 5rem;
   width: 100%;
   padding-bottom: 1rem;
@@ -25238,6 +25283,7 @@ a.text--muted:hover + span {
   display: grid;
   justify-items: center;
   width: 80%;
+  margin-bottom: 0.5rem;
 }
 .home__searchbar .btn {
   display: flex;
@@ -25247,7 +25293,7 @@ a.text--muted:hover + span {
   justify-content: space-around;
 }
 .home__body {
-  width: 90%;
+  padding: 0 2rem 2rem 2rem;
   margin: 0 auto;
 }
 
@@ -25645,5 +25691,5 @@ a.text--muted:hover + span {
   bottom: 1rem;
 }
 .myposts__navigator .navigator-btn {
-  margin-left: 1rem;
+  margin-left: -1.25rem;
 }

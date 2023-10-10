@@ -115,6 +115,7 @@ export function UsersProvider({ children }) {
     isOwner: true,
     isLogin: isLoggedInRef.current,
     currentUser,
+    onSetCurrentUser: setCurrentUser,
     onCurrentUser: handleCurrentUser,
     onUserDelete: handleUserDelete,
     onGetUser: handleGetUser,

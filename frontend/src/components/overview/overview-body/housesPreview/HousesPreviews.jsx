@@ -8,7 +8,7 @@ function HomeBody() {
   return (
     <div className="housesPreviews">
       <HouseCards
-        houses={housesContext.getBySize(4)}
+        currentItems={housesContext.getBySize(4)}
         houseCardsTitle="ZILIZOWEKWA HIVI KARIBUNI"
         layoutClass="grid-container"
       />

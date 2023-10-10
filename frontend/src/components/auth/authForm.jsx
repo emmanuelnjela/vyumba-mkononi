@@ -8,7 +8,7 @@ function AuthForm({ authFormData, schema }) {
 
   const { btn, type: formType, alreadyMessage, inputs, submitAction } = authFormData;
 
-  const {handleSubmit, register,watch, formState: {errors}, reset} = useForm()
+  const {handleSubmit, register,watch,control, formState: {errors}, reset} = useForm()
 
   function onData(data) {
     submitAction(data)
@@ -31,6 +31,7 @@ function AuthForm({ authFormData, schema }) {
           key={input.id}
           input={input}
           register={register}
+          control={control}
           // inputValues={inputValues}
           schema={schema}
           watch={watch}

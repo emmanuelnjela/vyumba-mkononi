@@ -1,10 +1,12 @@
 import axios from "axios";
-import { memo, useEffect } from "react";
+import { memo, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ComfirmMessage from "./common/comfirmMessage";
+import UsersContext from "../context/usersContext";
 
 function Logout() {
   const navigate = useNavigate();
+  const {onSetCurrentUser} = useContext(UsersContext);
 
   const handleClick = async (e) => {
     try {
@@ -16,6 +18,7 @@ function Logout() {
             withCredentials: true,
           }
         );
+        onSetCurrentUser({})
         navigate("/");
         return;
       }

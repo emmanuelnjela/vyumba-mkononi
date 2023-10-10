@@ -22,7 +22,11 @@ function Navbar({ navItems, showDropdownIn = "md" }) {
       />
 
       {menuClicked && containsNavLists ? (
-        <NavList navItems={navItems} showDropdownIn={showDropdownIn} />
+        <NavList
+          navItems={navItems}
+          showDropdownIn={showDropdownIn}
+          onNavMenuClicked={handleNavMenuClicked}
+        />
       ) : (
         ""
       )}

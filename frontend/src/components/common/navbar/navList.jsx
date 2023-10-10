@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function NavList({navItems, showDropdownIn}) {
+function NavList({navItems, showDropdownIn, onNavMenuClicked}) {
   return (
     <div className={`navbar__list d--${showDropdownIn}-none bg--light-primary`}>
       {navItems.map((navItem) => {
@@ -10,6 +10,7 @@ function NavList({navItems, showDropdownIn}) {
               key={navItem.id}
               to={navItem.path || ""}
               className={`navbar__item ${navItem.classes || ""}`}
+              onClick={onNavMenuClicked}
             >
               {navItem.link}
             </NavLink>

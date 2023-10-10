@@ -6,6 +6,7 @@ import App from "./app.jsx";
 import "./fontawesome/css/all.css";
 import "./leaflet/leaflet.css"
 import "./css/style.css";
+// import "bootstrap/dist/css/bootstrap.min.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 

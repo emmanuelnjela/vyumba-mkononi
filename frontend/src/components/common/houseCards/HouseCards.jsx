@@ -1,7 +1,7 @@
 import HouseCardsHeader from "./houseCardsHeader";
 import HouseCardsBody from "./houseCardsBody";
 
-function HouseCards({houses, houseCardsTitle, layoutClass}) {
+function HouseCards({currentItems: houses, houseCardsTitle, layoutClass}) {
     return (
         <div className="housecards">
             <HouseCardsHeader houseCardsTitle={houseCardsTitle} />

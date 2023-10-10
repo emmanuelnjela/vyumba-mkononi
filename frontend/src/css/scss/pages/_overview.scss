@@ -39,6 +39,10 @@
     position: relative;
     z-index: 5;
 
+    &-content {
+      margin-bottom: 1rem;
+    }
+
     &-title {
       padding-top: 1rem;
     }
@@ -53,7 +57,7 @@
     }
   }
   &__body {
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     &-navigator-btn {
       display: flex;
       column-gap: 10px;

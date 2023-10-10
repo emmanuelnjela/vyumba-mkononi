@@ -6,7 +6,7 @@ import { SavedBodyLeft } from "./savedBodyLeft";
 import { SavedBodyRight } from "./savedBodyRight";
 import UsersContext from "../../../context/usersContext";
 import { useForm } from "react-hook-form";
-import _ from "lodash";
+import _, { isEmpty } from "lodash";
 
 function SavedBody() {
   const { register, handleSubmit, reset } = useForm();
@@ -87,6 +87,16 @@ function SavedBody() {
       );
     }
   };
+
+  if (isEmpty(initialSavedHouses)) {
+    return (
+      <div className="">
+        <h3 className="text--center mb-sm">Hauja Hifadhi Nyumba au chumba chochote!</h3>
+        {/* <p className="d-flex align-items-center text--center"><i className="rounded rounded--sm rounded--primary ms-xsm fas fa-info"></i> kuhifadhi nyumba bonyeza alama ya <i className="fas fa-heart text--secondary ms-xsm"></i></p> */}
+        <Link to={"/home"} className="btn btn--primary w-md-30 m-auto">Rudi Ukurasa Mkuu</Link>
+      </div>
+    );
+  }
 
   return (
     <div className="saved__body px-md">

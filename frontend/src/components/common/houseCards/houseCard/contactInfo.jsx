@@ -3,9 +3,10 @@ import UsersContext from "../../../../context/usersContext";
 import ContactInfoAfterAuth from "./contactInfoAfterAuth";
 import ContactInfoBeforeAuth from "./contactInfoBeforeAuth";
 import { ContactInfoLink } from "./contactInfoLink";
+import _ from "lodash";
 
 function ContactInfo({ phoneNumber }) {
-  const { isLogin } = useContext(UsersContext);
+  const { currentUser } = useContext(UsersContext);
 
   const listItems = [
     {
@@ -42,7 +43,7 @@ function ContactInfo({ phoneNumber }) {
 
   return (
     <div className="contact-info">
-      {isLogin ? (
+      {!_.isEmpty(currentUser) ? (
         <ContactInfoAfterAuth listItems={listItems} />
       ) : (
         <ContactInfoBeforeAuth />
