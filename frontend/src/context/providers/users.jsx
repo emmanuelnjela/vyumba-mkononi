@@ -26,7 +26,7 @@ export function UsersProvider({ children }) {
       if (userToUpdateID === currentUserId) {
         console.log(userToUpdate);
         const respond = await axios.put(
-          "http://localhost:3001/users",
+          "https://vyumbamkononi.onrender.com/users",
           {
             id: userToUpdateID,
             dataElements: userToUpdate[userToUpdateID],

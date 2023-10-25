@@ -237,22 +237,22 @@
 }
 
 @mixin dimensions() {
-  @each $percentage-name, $percentage in $percentages {
-    .w-#{$percentage-name} {
-      width: $percentage!important;
+  @each $value-name, $value in $values {
+    .w-#{$value-name} {
+      width: $value;
     }
-    .h-#{$percentage-name} {
-      height: $percentage!important;
+    .h-#{$value-name} {
+      height: $value;
     }
   }
   @each $breakpoint-name, $breakpoint-size in $breakpoints {
     @include apply-to(greater-than, $breakpoint-name) {
-      @each $percentage-name, $percentage in $percentages {
-        .w-#{$breakpoint-name}-#{$percentage-name} {
-          width: $percentage!important;
+      @each $value-name, $value in $values {
+        .w-#{$breakpoint-name}-#{$value-name} {
+          width: $value;
         }
-        .h-#{$breakpoint-name}-#{$percentage-name} {
-          height: $percentage!important;
+        .h-#{$breakpoint-name}-#{$value-name} {
+          height: $value;
         }
       }
     }

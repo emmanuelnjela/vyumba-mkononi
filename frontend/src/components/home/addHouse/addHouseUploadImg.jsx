@@ -31,7 +31,7 @@ function AddHouseUploadImg() {
     console.log(respond.data.imgName)
     const imgUrl = `http://localhost:3001/images/${respond.data.imgName}`;
     const updatedImgs = [...houseInfo.imgs, imgUrl];
-    onAddHouseInfo({ target: { name: "imgs", value: updatedImgs } });
+    onAddHouseInfo("imgs", updatedImgs);
   }
 
   const handleDeleteImage = async () => {

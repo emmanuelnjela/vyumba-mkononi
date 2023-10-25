@@ -6,6 +6,7 @@ function OverviewNavbar() {
         {
             id: 1, 
             path: "/about-us",
+            text: "Kuhusu sisi",
             classes: "d--none d--sm-block",
             inNavbarList: true,
             link: <button className='btn btn--primary'><NavLink to={"/about-us"} style={{"color": "white"}}>Kuhusu sisi</NavLink></button>

@@ -30,7 +30,7 @@ function FormInputGroup({ input, register, errors, watch, schema }) {
         // onChange={onChange}
       />
       {errors[input.name] && (
-        <p className="auth__form-error">
+        <p className="auth__form-error input-group-error">
           {errors[input.name].message}
           {/* <i className="fas fa-x"></i> */}
         </p>

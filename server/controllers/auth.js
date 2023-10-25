@@ -77,32 +77,32 @@ export const login = async (req, res) => {
   }
 };
 export const logout = async (req, res) => {
-try {
+  try {
     const { accessToken, refreshToken, currentUserId } = req.cookies;
-  
+
     if (currentUserId === undefined)
       return res.status(404).json({ message: "the currentUserId not found" });
 
     if (accessToken === undefined)
       return res.status(404).json({ message: "the access token not found" });
-  
+
     if (refreshToken == undefined)
       return res.status(401).json({ message: "The refresh token is missing" });
-  
+
     // await usersCrud.foundDataInDB(currentUserId)
-    await User.findOneAndUpdate({_id: currentUserId}, {$set: {isLoggenIn: false}})
-  
-  
+    await User.findOneAndUpdate({ _id: currentUserId }, { $set: { isLoggenIn: false } })
+
+
     res.clearCookie("accessToken");
     res.clearCookie("refreshToken");
     res.clearCookie("currentUserId")
-  
+
     res.json({ message: "successfully logout" });
-} catch (error) {
-  if(error.message?.toLocaleLowerCase() === "data not found!") {
-    res.status(404).json({message: error.message})
-    return
+  } catch (error) {
+    if (error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({ message: error.message })
+      return
+    }
+    res.json({ message: error.message });
   }
-  res.json({ message: error.message });
-}
 };

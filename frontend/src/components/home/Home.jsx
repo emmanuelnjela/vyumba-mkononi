@@ -16,20 +16,23 @@ function Home() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        <Route path="*" element={<HomeLayout />}>
-          <Route path="profile" element={<Profile />}></Route>
-          <Route
-            path="houseReminderMessage"
-            element={<HouseReminderMessage />}
-          ></Route>
-          <Route
-            path="deleteAccountComfirmMessage"
-            element={<DeleteAccountComfirmMessage />}
-          />
-
-          <Route path="logout" element={<Logout />} />
-          <Route path="add_house/" element={<AddHouse />}>
+        <Route path="*">
+          <Route path="*"  element={<HomeLayout />} />
+          <Route path="profile" element={<HomeLayout />}>
+            <Route index element={<Profile />} />
+          </Route>
+          <Route path="houseReminderMessage" element={<HomeLayout />}>
+            <Route index element={<HouseReminderMessage />} />
+          </Route>
+          <Route path="deleteAccountComfirmMessage" element={<HomeLayout />}>
+            <Route index element={<DeleteAccountComfirmMessage />} />
+          </Route>
+          <Route path="add_house/" element={<HomeLayout />}>
+            <Route index element={<AddHouse />} />
             <Route path=":currentItemNum" element={<AddHouse />} />
+          </Route>
+          <Route path="logout" element={<HomeLayout />}>
+            <Route index element={<Logout />} />
           </Route>
         </Route>
       </Routes>

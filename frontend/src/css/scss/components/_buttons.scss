@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
   background-color: transparent;
 
   &--primary {
@@ -20,6 +20,14 @@
   &--secondary {
     background-color: var(--secondary-clr);
     color: var(--light);
+  }
+  &--primary-muted {
+    background-color: var(--muted-primary-clr);
+    color: var(--light);
+  }
+  &--white {
+    background-color: var(--white);
+    color: var(--dark);
   }
   &:hover {
     box-shadow: 0 0 0.2rem var(--grey-1);

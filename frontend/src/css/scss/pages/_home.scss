@@ -11,9 +11,9 @@
   &__searchbar {
     display: grid;
     justify-items: center;
-    position: sticky;
-    z-index: 4;
-    top: 5rem;
+    // position: relative;
+    // z-index: 4;
+    // top: 5rem;
     width: 100%;
     padding-bottom: 1rem;
     background-color: var(--main-bg);
@@ -23,7 +23,7 @@
       display: grid;
       justify-items: center;
       width: 80%;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
   }
 
@@ -35,7 +35,8 @@
   }
   &__body {
     // width: 90%;
-    padding: 0 2rem 2rem 2rem;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    min-height: 65vh;
     margin: 0 auto;
   }
 }

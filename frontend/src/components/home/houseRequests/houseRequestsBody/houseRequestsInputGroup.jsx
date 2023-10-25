@@ -1,21 +1,20 @@
-import { useContext } from "react";
-import AddHouseInfoContext from "../../../context/addHouseInfo";
-import ReactSelectDropdown from "../../common/reactSelectDropdown";
-import TextArea from "../../common/textArea";
+import ReactSelectDropdown from "../../../common/reactSelectDropdown";
+import TextArea from "../../../common/textArea";
 
-function AddHouseInputGroup({
-  title,
-  name,
+function HouseRequestsInputGroup({
+  labelText,
   placeholder,
+  control,
+  name,
   inputType,
-  options,
   rules,
+  register,
+  options,
+  errors,
 }) {
-  const { register, control, errors } = useContext(AddHouseInfoContext);
-
   return (
-    <div className="add-house__input-group">
-      <h6 className="add-house__input-group-label text--dark">{title}</h6>
+    <div className="house-requests__form-input-group mb-sm w-100">
+      <h6 className="mb-xxxsm text--dark">{labelText}</h6>
       {inputType === "select" ? (
         <ReactSelectDropdown
           name={name}
@@ -27,9 +26,9 @@ function AddHouseInputGroup({
       ) : inputType === "textArea" ? (
         <TextArea
           name={name}
+          placeholder={placeholder}
           register={register}
           rules={rules}
-          placeholder={placeholder}
         />
       ) : (
         <input
@@ -40,8 +39,14 @@ function AddHouseInputGroup({
           {...register(name, rules)}
         />
       )}
+      {errors[name] && (
+        <p className="input-group-error">
+          {errors[name].message}
+          {/* <i className="fas fa-x"></i> */}
+        </p>
+      )}
     </div>
   );
 }
 
-export default AddHouseInputGroup;
+export default HouseRequestsInputGroup;

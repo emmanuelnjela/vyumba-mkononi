@@ -26,6 +26,9 @@ function HomeNavbar() {
     {
       id: 1,
       path: "/home/saved",
+      classes: classes.showInSmScreenWhenOwner,
+      inNavbarList: isOwner ? true : false,
+      text: "Mtangazo Niliyohifadhi",
       link: (
         <i className="fas fa-heart icon--secondary icon--xlg me-lg">
           <span className="counter-info">{size}</span>
@@ -34,11 +37,13 @@ function HomeNavbar() {
     },
     {
       id: 2,
-      path: "/home/notification",
+      path: "/home/add_request",
+      text: "Weka Ombi",
       link: (
-        <i className="fas fa-bell icon--secondary icon--xlg me-lg">
-          <span className="counter-info">{size}</span>
-        </i>
+        <button className="btn btn--primary btn--rounded">
+          Tafutiwa Nyumba
+          {/* <i className="fas fa-plus icon--md"></i> */}
+        </button>
       ),
     },
     {
@@ -46,9 +51,10 @@ function HomeNavbar() {
       inNavbarList: isOwner ? true : false,
       path: "/home/add_house",
       classes: classes.showInMdScreenWhenOwner,
+      text: "Weka Tangazo la nyumba",
       link: (
         <button className="btn btn--primary btn--rounded">
-          Weka Chumba <i className="fas fa-plus icon--md"></i>
+          Weka Tangazo <i className="fas fa-plus icon--md"></i>
         </button>
       ),
     },
@@ -57,17 +63,31 @@ function HomeNavbar() {
       inNavbarList: isOwner ? true : false,
       path: "/home/my_posts",
       classes: classes.showInMdScreenWhenOwner,
+      text: "Matangazo Yangu",
       link: (
         <button className="btn btn--primary btn--rounded">
-          Nilizoweka <i className="fas fa-house icon--md"></i>
+          Matangazo Yangu <i className="fas fa-house icon--md"></i>
         </button>
       ),
     },
     {
       id: 5,
-      path: "/home/profile",
-      classes: classes.showInSmScreenWhenOwner,
       inNavbarList: isOwner ? true : false,
+      path: "/home/add_house",
+      classes: classes.showInMdScreenWhenOwner,
+      text: "Uliza Swali",
+      link: (
+        <button className="btn btn--primary btn--rounded">
+          Uliza Swali <i className="fas fa-question icon--md"></i>
+        </button>
+      ),
+    },
+    {
+      id: 6,
+      path: "/home/profile",
+      // classes: classes.showInSmScreenWhenOwner,
+      // inNavbarList: isOwner ? true : false,
+      text: "Profile Yangu",
       link: (
         <Image
           imgSrc={currentUser?.profileImage || img}
@@ -76,8 +96,12 @@ function HomeNavbar() {
       ),
     },
     {
-      id: 6,
+      id: 7,
+      classes: classes.showInSmScreenWhenOwner,
+      inNavbarList: isOwner ? true : false,
       path: "/home/logout", // change path to /logout
+      text: "Ondoka Kwenye Website",
+      textClasses: "btn btn--primary-muted",
       link: <button className="btn btn--primary">TOKA</button>,
     },
   ];

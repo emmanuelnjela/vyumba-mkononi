@@ -3,10 +3,12 @@ import { memo, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ComfirmMessage from "./common/comfirmMessage";
 import UsersContext from "../context/usersContext";
+import HousesContext from "../context/housesContext";
 
 function Logout() {
   const navigate = useNavigate();
   const {onSetCurrentUser} = useContext(UsersContext);
+  // const {onHouses} = useContext(HousesContext)
 
   const handleClick = async (e) => {
     try {

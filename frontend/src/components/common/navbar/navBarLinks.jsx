@@ -3,9 +3,10 @@ import { NavLink } from "react-router-dom";
 function NavBarLinks({
   containsNavLists,
   onNavMenuClicked,
+  onHideNavMenu,
   menuClicked,
   navItems,
-  showDropdownIn
+  showDropdownIn,
 }) {
   return (
     <div className="navbar__links">
@@ -28,8 +29,10 @@ function NavBarLinks({
               key={navItem.id}
               to={navItem.path || ""}
               className={`navbar__link ${navItem.classes || ""}`}
+              onClick={onHideNavMenu}
             >
               {navItem.link}
+            <div className="navlink-active-line"></div>
             </NavLink>
           );
         }

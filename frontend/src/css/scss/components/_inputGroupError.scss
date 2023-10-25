@@ -1,0 +1,25 @@
+.input-group-error {
+    background-color: var(--element-bg);
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-style: italic;
+    width: 100%;
+    padding: 0.3rem;
+    padding-right: 0;
+    height: 50%;
+    overflow: hidden;
+  }
+  .input-group-error i {
+    background-color: var(--danger);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 200%;
+    margin-left: auto;
+  }

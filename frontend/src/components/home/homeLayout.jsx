@@ -5,6 +5,7 @@ import HomeHeader from "./homeHeader";
 import { lazy, Suspense } from "react";
 const MyPosts = lazy(() => import("./myPosts/MyPosts"));
 const Saved = lazy(() => import("./saved/Saved"));
+const HouseRequests = lazy(() => import("./houseRequests/HouseRequests"));
 
 import { Route, Routes } from "react-router-dom";
 import { PageLoader } from "../common/PageLoader";
@@ -21,6 +22,7 @@ function HomeLayout() {
             <Route index element={<HomeBodyIndex />} />
             <Route path="saved" element={<Saved />} />
             <Route path="my_posts" element={<MyPosts />} />
+            <Route path="add_request" element={<HouseRequests />} />
           </Route>
         </Routes>
       </Suspense>

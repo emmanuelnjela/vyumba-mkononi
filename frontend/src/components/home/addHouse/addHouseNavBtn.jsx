@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AddHouseInfoContext from "../../../context/addHouseInfo";
+import _ from "lodash";
 
 export function AddHouseNavBtn({
   arrow_direction,
@@ -8,7 +9,7 @@ export function AddHouseNavBtn({
   text,
   isLastItem,
 }) {
-  const {onAddHouseInfoSubmit} = useContext(AddHouseInfoContext)
+  const {onAddHouseInfoSubmit, errors} = useContext(AddHouseInfoContext)
   const RenderLinkContent = () =>
     isLastItem ? (
       <>

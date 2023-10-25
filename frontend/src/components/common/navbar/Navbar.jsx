@@ -10,12 +10,16 @@ function Navbar({ navItems, showDropdownIn = "md" }) {
   function handleNavMenuClicked() {
     setMenuClicked(!menuClicked);
   }
+  function handleHideNavMenu() {
+    setMenuClicked(false)
+  }
   return (
     <div className="navbar">
       <NavBarBrand navItems={navItems} />
       <NavBarLinks
         containsNavLists={containsNavLists}
         onNavMenuClicked={handleNavMenuClicked}
+        onHideNavMenu={handleHideNavMenu}
         menuClicked={menuClicked}
         navItems={navItems}
         showDropdownIn={showDropdownIn}

@@ -13,7 +13,7 @@ export function HousesProvider({ children }) {
   const [houses, setHouses] = useState([]);
   const [searchedHouses, setSearchedHouses] = useState([]);
   const { isLogin, currentUser, onUserUpdate } = useContext(UsersContext);
-  const housesUrl = "http://localhost:3001/houses";
+  const housesUrl = "https://vyumbamkononi.onrender.com/houses";
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -43,6 +43,10 @@ export function HousesProvider({ children }) {
       })
       .catch((error) => setErrorMessage(error.message));
   }, [isLogin]);
+
+  useEffect(() => {
+    setSearchedHouses([])
+  }, [location.pathname])
 
   const handleHouseSearch = (searchWord, selectedValues) => {
     console.log(selectedValues);
@@ -85,8 +89,8 @@ export function HousesProvider({ children }) {
     );
 
     if (searchedHouses.length === 0) {
-      // toast("Hakuna nyumba iliyo kizi vigezo vyako.");
-      navigate("/home/houseReminderMessage")
+      toast("Hakuna nyumba iliyo kidhi vigezo vyako.");
+      // navigate("/home/houseReminderMessage")
     } else {
       setSearchedHouses(searchedHouses);
     }
@@ -200,7 +204,7 @@ export function HousesProvider({ children }) {
     all: _.isEmpty(searchedHouses) ? houses : searchedHouses,
     currentOwnerHouses: useCallback(
       houses.filter(({ ownerId }) => ownerId === currentUser._id),
-      [houses]
+      [houses,  currentUser._id]
     ),
     saved: houses?.filter(({ savedHouses }) => savedHouses?.same()),
     savedTotal: houses?.filter(({ isSaved }) => isSaved === true).length,

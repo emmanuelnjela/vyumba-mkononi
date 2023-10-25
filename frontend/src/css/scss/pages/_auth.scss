@@ -35,9 +35,9 @@
 }
 
 .auth__form {
-  background-color: #ff440075;
+  background-color: rgb(241 223 217);
   background-image: url(../imgs/bg.png);
-  background-blend-mode: hard-light;
+  background-blend-mode: luminosity;
   box-shadow: var(--shadow-sm);
   padding: 1rem 3rem;
   width: 100%;
@@ -90,33 +90,11 @@
   justify-content: flex-end;
 }
 .auth__form-error {
-  background-color: var(--element-bg);
-  border: 1px solid var(--danger);
-  color: var(--danger);
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  font-style: italic;
   position: absolute;
   left: 0rem;
   bottom: -1rem;
-  width: 100%;
-  padding: 0.3rem;
-  padding-right: 0;
-  height: 50%;
-  overflow: hidden;
 }
-.auth__form-error i {
-  background-color: var(--danger);
-  color: var(--white);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 200%;
-  margin-left: auto;
-}
+
 .auth__form-input-group.white-bg {
   background-color: var(--white);
 }

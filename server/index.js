@@ -11,6 +11,7 @@ import users from "./routes/users.js"
 import auth from "./routes/auth.js"
 import houses from "./routes/house.js"
 import images from "./routes/images.js"
+import houseRequest from "./routes/houseRequest.js"
 
 /* PREINSTALLED LIBRARY */
 import path from "path";
@@ -34,7 +35,7 @@ const port = process.env.PORT;
 
 /* THIRDPART MIDDLWARE */
 const corsOptions ={
-    origin:'http://localhost:5173', 
+    origin:'https://vyumbamkononi.onrender.com', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
@@ -49,6 +50,7 @@ app.use('/users', users)
 app.use('/auth', auth)
 app.use('/houses', houses)
 app.use('/images', images)
+app.use('/houseRequests', houseRequest)
 
 console.log(__dirname)
 // console.log(new ObjectId("6504142b2b988def6d2ffe7c"))
