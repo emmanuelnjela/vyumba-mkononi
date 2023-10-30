@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from 'react-toastify';
 
 import UsersContext from "../../../context/usersContext.jsx";
-import defaultProfileImage from "../../../imgs/profile.jsx";
+import defaultProfileImage from "../../../imgs/profile.jpg";
 import withPopUpCard from "../../hoc/withPopupCard.jsx";
 import ProfileButtons from "./profileButtons.jsx";
 import ProfileImgSide from "./profileImgSide.jsx";
