@@ -14,6 +14,7 @@ import ProgressTracker from "./progressTracker";
 import { screenWidthUpdate } from "../../../utils/screenWidthUpdate";
 import AddHouseInfoContext from "../../../context/addHouseInfo";
 import HousesContext from "../../../context/housesContext";
+import HousesInfoSelectContext from "../../../context/houseInfoSelectContext";
 
 function AddHouse() {
   const params = useParams();
@@ -45,53 +46,55 @@ function AddHouse() {
     return defaultHouseInfo;
   };
   const { onAddHouse, onUpdate, all: houses } = useContext(HousesContext);
+  const { roomTypeItems, minReaseLengthItems } = useContext(
+    HousesInfoSelectContext
+  );
   const [screenWidth, setScreenWidth] = useState(0);
   const [houseInfo, setHouseInfo] = useState(houseInfoInitilizer());
   const houseToUpdate = useRef({ currentHouseId, dataElements: [] });
 
   let { currentItemNum } = params;
   currentItemNum = currentItemNum ? parseInt(currentItemNum) : 1;
-  // console.log(history.state)
 
-  // const handleAddHouseInfo = (e) => {
-  //   const { name, value } = e.target;
-  //   if(houseToUpdate.current.currentHouseId) {
-  //     const {dataElements }= houseToUpdate.current
-  //     const index = dataElements.findIndex(({name: nameInElements}) => nameInElements === name)
-  //     if(index >= 0) {
-  //       houseToUpdate.current.dataElements[index].value = value
-  //     }
-  //     houseToUpdate.current.dataElements = [...dataElements, {name, value}]
-  //   }
-  //   setHouseInfo({ ...houseInfo, [name]: value });
-  // };
   const handleAddHouseInfo = (name, value) => {
     setHouseInfo({ ...houseInfo, [name]: value });
   };
-  const handleAddHouseInfoSubmit = async (direction, isLastItem) => {
-    // try {
-    //   if (houseToUpdate.current.currentHouseId) {
-    //     const { currentHouseId: id, dataElements } = houseToUpdate.current;
-    //     await onUpdate({ [id]: dataElements });
-    //   } else {
-    //     console.log("why here negger");
-    //     await onAddHouse(houseInfo);
-    //   }
-    //   // await onAddHouse(houseInfo);
-    //   setHouseInfo({
-    //     location: "",
-    //     reasePerMonth: "",
-    //     minReaseLength: "",
-    //     roomType: "",
-    //     description: "",
-    //     imgs: [],
-    //   });
-    //   return navigate("/home");
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    if (isLastItem) {
-      console.log(houseInfo);
+
+  useEffect(() => {
+    if (houseToUpdate.current.currentHouseId) {
+      reset({
+        location: houseInfo?.location,
+        reasePerMonth: houseInfo?.reasePerMonth,
+        minReaseLength: minReaseLengthItems.find(
+          (item) => item.value === houseInfo?.minReaseLength
+        ),
+        roomType: roomTypeItems.find(
+          (item) => item.value === houseInfo?.roomType
+        ),
+        description: houseInfo?.description,
+        imgs: houseInfo?.imgs,
+      });
+    }
+    screenWidthUpdate(addHouseRef, setScreenWidth);
+  }, [screenWidth]);
+
+  async function onData(data) {
+    try {
+      data.minReaseLength = data.minReaseLength?.value;
+      data.roomType = data.roomType?.value;
+      console.log(data);
+      if (houseToUpdate.current.currentHouseId) {
+        await onUpdate({
+          id: houseToUpdate.current.currentHouseId,
+          dataElements: Object.entries(houseInfo).map(
+            ([name, value]) => {
+              return { name, value };
+            }
+          ),
+        });
+      } else {
+        await onAddHouse({ ...houseInfo, ...data });
+      }
       setHouseInfo({
         location: "",
         reasePerMonth: "",
@@ -101,38 +104,9 @@ function AddHouse() {
         imgs: [],
       });
       return navigate("/home");
+    } catch (error) {
+      console.log(error.message);
     }
-    navigate(direction);
-  };
-
-  useEffect(() => {
-    if (houseToUpdate.current.currentHouseId) {
-      reset({
-        location: houseInfo?.location,
-        reasePerMonth: houseInfo?.reasePerMonth,
-        minReaseLength: { label: houseInfo?.minReaseLength },
-        roomType: { label: houseInfo?.roomType },
-        description: houseInfo?.description,
-        imgs: houseInfo?.imgs,
-      });
-    }
-    screenWidthUpdate(addHouseRef, setScreenWidth);
-  }, [screenWidth]);
-
-  async function onData(data) {
-    data.minReaseLength = data.minReaseLength?.value;
-    data.roomType = data.roomType?.value;
-    console.log(data);
-    await onAddHouse({ ...houseInfo, ...data });
-    setHouseInfo({
-      location: "",
-      reasePerMonth: "",
-      minReaseLength: "",
-      roomType: "",
-      description: "",
-      imgs: [],
-    });
-    return navigate("/home");
   }
 
   function onError(error) {

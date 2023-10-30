@@ -73,6 +73,7 @@ export class Crud {
       const foundData = await this.foundDataInDB(id);
       for (const elem of dataElements) {
         const { name, value } = elem;
+        if (name == undefined || value == undefined) throw new Error("The dataElements contains undefined values")
         foundData[name] = value;
       }
       await foundData.save(); // Save the updated data back to the database

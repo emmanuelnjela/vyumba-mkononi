@@ -30,18 +30,18 @@ dotenv.config()
 
 
 /* INITIALIZATION */
-const app = express(); 
+const app = express();
 const port = process.env.PORT;
 
 /* THIRDPART MIDDLWARE */
-const corsOptions ={
-    origin:'https://vyumbamkononi.onrender.com', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200
 }
 app.use(cors(corsOptions));
-app.use(bodyParser.urlencoded({extended: true, limit: "16mb"}));
-app.use(bodyParser.json({extended: true, limit: "16mb"}))
+app.use(bodyParser.urlencoded({ extended: true, limit: "16mb" }));
+app.use(bodyParser.json({ extended: true, limit: "16mb" }))
 app.use(cookieParser())
 
 

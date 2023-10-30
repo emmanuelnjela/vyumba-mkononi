@@ -100,12 +100,12 @@ function SavedBody() {
 
   return (
     <div className="saved__body px-md">
-      <SavedBodyLeft
+      {/* <SavedBodyLeft
         timeItems={timeItems}
         priceStartItems={priceStartItems}
         priceEndItems={priceEndItems}
         roomTypeItems={roomTypeItems}
-      />
+      /> */}
       <SavedBodyRight
         houses={_.isEmpty(savedHouses) ? initialSavedHouses : savedHouses}
         register={register}

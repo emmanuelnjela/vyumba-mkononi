@@ -70,20 +70,20 @@ function HomeNavbar() {
         </button>
       ),
     },
+    // {
+    //   id: 5,
+    //   inNavbarList: isOwner ? true : false,
+    //   path: "/home/add_house",
+    //   classes: classes.showInMdScreenWhenOwner,
+    //   text: "Uliza Swali",
+    //   link: (
+    //     <button className="btn btn--primary btn--rounded">
+    //       Uliza Swali <i className="fas fa-question icon--md"></i>
+    //     </button>
+    //   ),
+    // },
     {
       id: 5,
-      inNavbarList: isOwner ? true : false,
-      path: "/home/add_house",
-      classes: classes.showInMdScreenWhenOwner,
-      text: "Uliza Swali",
-      link: (
-        <button className="btn btn--primary btn--rounded">
-          Uliza Swali <i className="fas fa-question icon--md"></i>
-        </button>
-      ),
-    },
-    {
-      id: 6,
       path: "/home/profile",
       // classes: classes.showInSmScreenWhenOwner,
       // inNavbarList: isOwner ? true : false,
@@ -96,7 +96,7 @@ function HomeNavbar() {
       ),
     },
     {
-      id: 7,
+      id: 6,
       classes: classes.showInSmScreenWhenOwner,
       inNavbarList: isOwner ? true : false,
       path: "/home/logout", // change path to /logout

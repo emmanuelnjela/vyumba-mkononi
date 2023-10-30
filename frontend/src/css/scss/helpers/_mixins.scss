@@ -236,6 +236,95 @@
   }
 }
 
+@mixin position-respond-to-breakpoins {
+  @each $breakpoint-name, $breakpoint-size in $breakpoints {
+    @include apply-to(greater-than, $breakpoint-name) {
+      .pos {
+        &--#{$breakpoint-name}-relative {
+          position: relative;
+        }
+        &--#{$breakpoint-name}-absolute {
+          position: absolute;
+        }
+        &--#{$breakpoint-name}-sticky {
+          position: sticky;
+        }
+        &--#{$breakpoint-name}-static {
+          position: static;
+        }
+      }
+      .top {
+        &--#{$breakpoint-name}-1 {
+          top: 1rem;
+        }
+        &--#{$breakpoint-name}-2 {
+          top: 2rem;
+        }
+        &--#{$breakpoint-name}-3 {
+          top: 3rem;
+        }
+        &--#{$breakpoint-name}-4 {
+          top: 4rem;
+        }
+        &--#{$breakpoint-name}-5 {
+          top: 5rem;
+        }
+      }
+      .bottom {
+        &--#{$breakpoint-name}-1 {
+          bottom: 1rem;
+        }
+        &--#{$breakpoint-name}-2 {
+          bottom: 2rem;
+        }
+        &--#{$breakpoint-name}-3 {
+          bottom: 3rem;
+        }
+        &--#{$breakpoint-name}-4 {
+          bottom: 4rem;
+        }
+        &--#{$breakpoint-name}-5 {
+          bottom: 5rem;
+        }
+      }
+      .end {
+        &--#{$breakpoint-name}-1 {
+          left: 1rem;
+        }
+        &--#{$breakpoint-name}-2 {
+          left: 2rem;
+        }
+        &--#{$breakpoint-name}-3 {
+          left: 3rem;
+        }
+        &--#{$breakpoint-name}-4 {
+          left: 4rem;
+        }
+        &--#{$breakpoint-name}-5 {
+          left: 5rem;
+        }
+      }
+      .start {
+        &--#{$breakpoint-name}-1 {
+          right: 1rem;
+        }
+        &--#{$breakpoint-name}-2 {
+          right: 2rem;
+        }
+        &--#{$breakpoint-name}-3 {
+          right: 3rem;
+        }
+        &--#{$breakpoint-name}-4 {
+          right: 4rem;
+        }
+        &--#{$breakpoint-name}-5 {
+          right: 5rem;
+        }
+      }
+    }
+  }
+}
+
 @mixin dimensions() {
   @each $value-name, $value in $values {
     .w-#{$value-name} {

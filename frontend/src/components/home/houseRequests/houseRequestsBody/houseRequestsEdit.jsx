@@ -1,4 +1,4 @@
-import { infoInputGroups, contactsInputGroups } from "../houseRequestsStore";
+import { houseRequestsStore } from "../houseRequestsStore";
 import HouseRequestsInputGroup from "./houseRequestsInputGroup";
 
 function HouseRequestsEdit({
@@ -9,6 +9,7 @@ function HouseRequestsEdit({
   onError,
   ...rest
 }) {
+  const { infoInputGroups, contactsInputGroups } = houseRequestsStore();
   return (
     <>
       {houseRequests.map((houseRequest) => {

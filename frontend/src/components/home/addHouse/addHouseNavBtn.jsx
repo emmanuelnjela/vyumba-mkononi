@@ -24,7 +24,7 @@ export function AddHouseNavBtn({
     const renderOnClick = isLastItem === true ? onAddHouseInfoSubmit : () => console.log("guck")
   return (
     <Link
-      to={direction}
+      to={`/home/add_house/${direction}`}
       className="btn btn--primary"
       onClick={renderOnClick}
     >

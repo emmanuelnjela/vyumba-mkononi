@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext, useRef, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -10,6 +10,7 @@ import UsersContext from "../../../context/usersContext";
 import HouseRequestsBody from "./houseRequestsBody/HouseRequestsBody";
 import HouseRequestsHeader from "./HouseRequestsHeader";
 import HouseRequestsNavigator from "./HouseRequestsNavigator";
+import HousesInfoSelectContext from "../../../context/houseInfoSelectContext";
 
 function HouseRequests() {
   const {
@@ -22,8 +23,11 @@ function HouseRequests() {
 
   const [houseRequests, setHouseRequests] = useState([]);
   const location = useLocation();
-  const houseRequestsUrl = "https://vyumbamkononi.onrender.com/houseRequests";
+  const houseRequestsUrl = "http://localhost:3001/houseRequests";
   const { currentUser } = useContext(UsersContext);
+  const { minReasePriceItems, maxReasePriceItems, roomTypeItems } = useContext(
+    HousesInfoSelectContext
+  );
   const isAddModeRef = useRef(true);
 
   useEffect(() => {
@@ -42,34 +46,37 @@ function HouseRequests() {
             const aDate = new Date(a.DateOfCreation);
             const bDate = new Date(b.DateOfCreation);
 
-            return (
-              bDate.getMonth() - aDate.getMonth() &&
-              bDate.getDate() - aDate.getDate() &&
-              bDate.getHours() - aDate.getHours() &&
-              bDate.getMinutes() - aDate.getMinutes() &&
-              bDate.getSeconds() - aDate.getSeconds()
-            );
+            return bDate - aDate; // Compare the dates directly
           })
         );
         console.log(houseRequestsInDB);
+        // console.log(houseRequestsInDB[0].map(({label, value}) => ["minReasePerMonth", "maxReasePerMonth", "roomType"].includes(label) ? ))
+        const houseRequestInDB = houseRequestsInDB[0];
         reset({
-          location: houseRequestsInDB[0]?.location,
-          description: houseRequestsInDB[0]?.description,
-          maxReasePerMonth: { label: houseRequestsInDB[0]?.maxReasePerMonth },
-          minReasePerMonth: { label: houseRequestsInDB[0]?.minReasePerMonth },
-          roomType: { label: houseRequestsInDB[0]?.roomType },
-          whatsapp: houseRequestsInDB[0]?.whatsapp,
-          phone: houseRequestsInDB[0]?.phone,
+          location: houseRequestInDB?.location,
+          description: houseRequestInDB?.description,
+          minReasePerMonth: minReasePriceItems.find(
+            (item) => item.value === houseRequestInDB?.minReasePerMonth
+          ),
+          maxReasePerMonth: maxReasePriceItems.find(
+            (item) => item.value === houseRequestInDB?.maxReasePerMonth
+          ),
+          roomType: roomTypeItems.find(
+            (item) => item.value === houseRequestInDB?.roomType
+          ),
+          whatsapp: houseRequestInDB?.whatsapp,
+          phone: houseRequestInDB?.phone,
         });
       })
       .catch((error) => console.log(error.message));
   }, [location.pathname]);
 
   async function onData(houseRequestInfo) {
+    console.log(houseRequestInfo);
     // delete add update
     try {
       houseRequestInfo.roomType = houseRequestInfo.roomType?.value;
-      houseRequestInfo.minReaseLength = houseRequestInfo.minReaseLength?.value;
+      // houseRequestInfo.minReaseLength = houseRequestInfo.minReaseLength?.value;
       houseRequestInfo.minReasePerMonth =
         houseRequestInfo.minReasePerMonth?.value;
       houseRequestInfo.maxReasePerMonth =
@@ -92,16 +99,27 @@ function HouseRequests() {
       console.log(houseRequestInfo);
       const respond = await axios.put(
         houseRequestsUrl,
-        { houseRequestInfo },
+        {
+          id: houseRequests[0]?._id,
+          dataElements: Object.entries(houseRequestInfo).map(
+            ([name, value]) => {
+              return { name, value };
+            }
+          ),
+        },
         { withCredentials: true }
       );
-      const { message, houseRequest } = respond.data;
-      console.log(houseRequest);
+      const { message, updatedHouseRequest } = respond.data;
+      console.log(updatedHouseRequest);
       if (message) throw new Error(message);
-      setHouseRequests([...houseRequests, houseRequest]);
+      setHouseRequests(
+        houseRequests.map((h) =>
+          h._id == updatedHouseRequest ? updatedHouseRequest : h
+        )
+      );
       toast("Ombi lako limedalishwa kikamilifu!");
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
     // reset({ ...data });
   }

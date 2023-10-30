@@ -1,0 +1,86 @@
+@use "../helpers/mixins" as *;
+
+.pos {
+  &--relative {
+    position: relative;
+  }
+  &--absolute {
+    position: absolute;
+  }
+  &--sticky {
+    position: sticky;
+  }
+  &--static {
+    position: static;
+  }
+}
+.top {
+  &--1 {
+    top: 1rem;
+  }
+  &--2 {
+    top: 2rem;
+  }
+  &--3 {
+    top: 3rem;
+  }
+  &--4 {
+    top: 4rem;
+  }
+  &--5 {
+    top: 5rem;
+  }
+}
+.bottom {
+  &--1 {
+    bottom: 1rem;
+  }
+  &--2 {
+    bottom: 2rem;
+  }
+  &--3 {
+    bottom: 3rem;
+  }
+  &--4 {
+    bottom: 4rem;
+  }
+  &--5 {
+    bottom: 5rem;
+  }
+}
+.end {
+  &--1 {
+    left: 1rem;
+  }
+  &--2 {
+    left: 2rem;
+  }
+  &--3 {
+    left: 3rem;
+  }
+  &--4 {
+    left: 4rem;
+  }
+  &--5 {
+    left: 5rem;
+  }
+}
+.start {
+  &--1 {
+    right: 1rem;
+  }
+  &--2 {
+    right: 2rem;
+  }
+  &--3 {
+    right: 3rem;
+  }
+  &--4 {
+    right: 4rem;
+  }
+  &--5 {
+    right: 5rem;
+  }
+}
+
+@include position-respond-to-breakpoins();

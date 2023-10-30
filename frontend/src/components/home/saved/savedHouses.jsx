@@ -1,6 +1,6 @@
 import SavedHouse from "./savedHouse";
 
-function SavedHouses({ houses, ...rest }) {
+function SavedHouses({ currentItems: houses, ...rest }) {
   return (
     <div className="saved__houses">
       {houses.map((house) => (

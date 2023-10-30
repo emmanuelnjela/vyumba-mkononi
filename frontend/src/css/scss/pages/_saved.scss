@@ -45,7 +45,7 @@
   margin-top: 1rem;
 
   &-right {
-    width: 80%;
+    width: 100%;
   }
 
   @media screen and (max-width: 480px) {
@@ -63,12 +63,20 @@
         height: 10rem;
       }
     }
+    .saved__searchbar {
+      display: flex;
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
+      }
+    }
   }
 }
 
 .saved__houses {
   overflow: auto;
-  height: 20rem;
+  min-height: 20rem;
   padding: 0.5rem;
   margin-top: 0.5rem;
 

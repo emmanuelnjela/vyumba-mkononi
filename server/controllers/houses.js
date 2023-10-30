@@ -7,11 +7,11 @@ export const addHouse = async (req, res) => {
   try {
     const { houseInfo } = req.body;
     const { currentUserId: ownerId } = req.cookies;
-    const house = await housesCrud.addData({...houseInfo, ownerId});
-    res.json({house})
+    const house = await housesCrud.addData({ ...houseInfo, ownerId });
+    res.json({ house })
   } catch (error) {
-     if(error.message?.toLocaleLowerCase() === "data not found!") {
-      res.status(404).json({message: error.message})
+    if (error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({ message: error.message })
       return
     }
     res.json({ message: error.message });
@@ -24,8 +24,8 @@ export const getHouse = async (req, res) => {
     const house = await housesCrud.getData(houseId);
     res.json({ house });
   } catch (error) {
-     if(error.message?.toLocaleLowerCase() === "data not found!") {
-      res.status(404).json({message: error.message})
+    if (error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({ message: error.message })
       return
     }
     res.json({ message: error.message });
@@ -37,8 +37,8 @@ export const getAllHouses = async (req, res) => {
     const houses = await housesCrud.getAllDatas()
     res.json({ houses });
   } catch (error) {
-     if(error.message?.toLocaleLowerCase() === "data not found!") {
-      res.status(404).json({message: error.message})
+    if (error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({ message: error.message })
       return
     }
     res.json({ message: error.message });
@@ -51,8 +51,8 @@ export const deleteHouse = async (req, res) => {
     const message = await housesCrud.deleteData(houseId);
     res.json({ message });
   } catch (error) {
-     if(error.message?.toLocaleLowerCase() === "data not found!") {
-      res.status(404).json({message: error.message})
+    if (error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({ message: error.message })
       return
     }
     res.json({ message: error.message });
@@ -61,13 +61,13 @@ export const deleteHouse = async (req, res) => {
 
 export const updateHouse = async (req, res) => {
   try {
-    const {id, dataElements} = req.body
+    const { id, dataElements } = req.body
 
     const updatedHouse = await housesCrud.updateData(id, dataElements);
-    res.json({ updatedHouse});
+    res.json({ updatedHouse });
   } catch (error) {
-     if(error.message?.toLocaleLowerCase() === "data not found!") {
-      res.status(404).json({message: error.message})
+    if (error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({ message: error.message })
       return
     }
     res.json({ message: error.message });
@@ -89,11 +89,10 @@ export const uploadHouseImage = async (req, res) => {
 
     res.status(204).json({ message: "House image uploaded successfully" });
   } catch (error) {
-     if(error.message?.toLocaleLowerCase() === "data not found!") {
-      res.status(404).json({message: error.message})
+    if (error.message?.toLocaleLowerCase() === "data not found!") {
+      res.status(404).json({ message: error.message })
       return
     }
     res.json({ message: error.message });
   }
 };
- 

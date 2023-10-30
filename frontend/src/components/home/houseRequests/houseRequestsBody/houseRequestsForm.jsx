@@ -1,8 +1,9 @@
 import TextArea from "../../../common/textArea";
 import HouseRequestsInputGroup from "./houseRequestsInputGroup";
-import { infoInputGroups, contactsInputGroups } from "../houseRequestsStore";
+import { houseRequestsStore } from "../houseRequestsStore";
 
 function HouseRequestsForm(restProps) {
+  const { infoInputGroups, contactsInputGroups } = houseRequestsStore()
   return (
     <div className="add-request__form">
       {infoInputGroups.map((infoInputGroup) => (

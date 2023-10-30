@@ -3,8 +3,8 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import "./app.css";
 import { Suspense, lazy, useEffect, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = lazy(() => import("./components/login"));
 const Overview = lazy(() => import("./components/overview/Overview"));
@@ -20,6 +20,7 @@ import { HousesProvider } from "./context/providers/houses";
 import Cookies from "universal-cookie";
 import logo from "../logo.png";
 import { PageLoader } from "./components/common/PageLoader";
+import { HousesInfoSelectProvider } from "./context/providers/houseInfoSelect";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,24 +52,24 @@ function App() {
   return (
     <UsersProvider>
       <HousesProvider>
-        <div className="container">
-          <ToastContainer />
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="*" element={<Overview />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/welcome" element={<Welcome />} />
-              <Route path="/home/*" element={<Home />} />
-              <Route path="/house-preview/:id/*" element={<HousePreview />} />
-            </Routes>
-          </Suspense>
-        </div>
+        <HousesInfoSelectProvider>
+          <div className="container">
+            <ToastContainer />
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="*" element={<Overview />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/welcome" element={<Welcome />} />
+                <Route path="/home/*" element={<Home />} />
+                <Route path="/house-preview/:id/*" element={<HousePreview />} />
+              </Routes>
+            </Suspense>
+          </div>
+        </HousesInfoSelectProvider>
       </HousesProvider>
     </UsersProvider>
   );
 }
 
 export default App;
-
-

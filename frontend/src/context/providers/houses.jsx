@@ -13,7 +13,7 @@ export function HousesProvider({ children }) {
   const [houses, setHouses] = useState([]);
   const [searchedHouses, setSearchedHouses] = useState([]);
   const { isLogin, currentUser, onUserUpdate } = useContext(UsersContext);
-  const housesUrl = "https://vyumbamkononi.onrender.com/houses";
+  const housesUrl = "http://localhost:3001/houses";
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -30,14 +30,8 @@ export function HousesProvider({ children }) {
           housesInDB.sort((a, b) => {
             const aDate = new Date(a.DateOfCreation);
             const bDate = new Date(b.DateOfCreation);
-
-            return (
-              bDate.getMonth() - aDate.getMonth() &&
-              bDate.getDate() - aDate.getDate() &&
-              bDate.getHours() - aDate.getHours() &&
-              bDate.getMinutes() - aDate.getMinutes() &&
-              bDate.getSeconds() - aDate.getSeconds()
-            );
+          
+            return bDate - aDate; // Compare the dates directly
           })
         );
       })

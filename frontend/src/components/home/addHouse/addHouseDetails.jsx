@@ -1,46 +1,11 @@
+import { useContext } from "react";
 import AddHouseInputGroup from "./addHouseInputGroup";
-
+import HousesInfoSelectContext from "../../../context/houseInfoSelectContext";
 function AddHouseDetails() {
-  const reaseLengthItems = [
-    {
-      id: 0,
-      value: 3,
-      label: "Mitatu",
-    },
-    {
-      id: 1,
-      value: 4,
-      label: "Minne",
-    },
-    {
-      id: 2,
-      value: 6,
-      label: "sita",
-    },
-    {
-      id: 3,
-      value: 8,
-      label: "Nane",
-    },
-  ];
-  const houseTypeItems = [
-    {
-      id: 0,
-      value: "apartment",
-      label: "Nyumba Nzima",
-    },
-    {
-      id: 1,
-      value: "single",
-      label: "Chumba Kimoja",
-    },
-    {
-      id: 2,
-      value: "double",
-      label: "chumba na sebure",
-    },
-    { id: 3, value: "self", label: "chumba self" },
-  ];
+  const { roomTypeItems, minReaseLengthItems } = useContext(
+    HousesInfoSelectContext
+  );
+
   const inputGroupItems = [
     {
       id: 1,
@@ -56,7 +21,7 @@ function AddHouseDetails() {
       placeholder: "Chagua Awamu za Ulipaji wa Kodi",
       name: "minReaseLength",
       inputType: "select",
-      options: reaseLengthItems,
+      options: minReaseLengthItems,
       rules: { required: "Tafadhili jaza awamu za kulipa kodi" },
     },
     {
@@ -73,7 +38,7 @@ function AddHouseDetails() {
       title: "Aina ya chumba",
       placeholder: "Chagua aina ya chumba",
       inputType: "select",
-      options: houseTypeItems,
+      options: roomTypeItems,
       rules: { required: "Tafadhali jaza aina ya chumba" },
     },
     {
