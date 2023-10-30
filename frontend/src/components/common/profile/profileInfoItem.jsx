@@ -1,4 +1,4 @@
-import DefaultProfileInfoContent from "./defaultProfileInfoContent";
+import DefaultProfileInfoContent from "./defaultProfileInfoContent.jsx";
 
 function profileInfoItem({ Content, title, currentUser, name }) {
   return (

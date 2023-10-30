@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import NavBarBrand from "./navBarBrand";
-import NavBarLinks from "./navBarLinks";
-import NavList from "./navList";
+import NavBarBrand from "./navBarBrand.jsx";
+import NavBarLinks from "./navBarLinks.jsx";
+import NavList from "./navList.jsx";
 
 function Navbar({ navItems, showDropdownIn = "md" }) {
   const [menuClicked, setMenuClicked] = useState(false);

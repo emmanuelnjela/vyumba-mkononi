@@ -1,7 +1,7 @@
-import OverviewBody from "./overview-body/overviewBody";
-import OverviewFooter from "./overview-footer/overviewFooter";
-import OverviewSearchbar from "./overview-header/overviewSearchbar";
-import OverviewNavbar from "./overview-header/overviewNavbar";
+import OverviewBody from "./overview-body/overviewBody.jsx";
+import OverviewFooter from "./overview-footer/overviewFooter.jsx";
+import OverviewSearchbar from "./overview-header/overviewSearchbar.jsx";
+import OverviewNavbar from "./overview-header/overviewNavbar.jsx";
 
 function OverviewIndex() {
   return (

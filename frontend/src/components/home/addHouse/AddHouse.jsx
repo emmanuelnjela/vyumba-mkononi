@@ -3,18 +3,18 @@ import { useState, useContext } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
-import withPopUpCard from "../../hoc/withPopupCard";
-import AddHouse2 from "./addHouse2";
-import AddHouseComfirm from "./addHouseComfirm";
-import AddHouseDefault from "./addHouseDefault";
-import AddHouseTitle from "./addHouseTitle";
-import ProgressTracker from "./progressTracker";
-import { screenWidthUpdate } from "../../../utils/screenWidthUpdate";
-import AddHouseInfoContext from "../../../context/addHouseInfo";
-import HousesContext from "../../../context/housesContext";
-import HousesInfoSelectContext from "../../../context/houseInfoSelectContext";
+import withPopUpCard from "../../hoc/withPopupCard.jsx";
+import AddHouse2 from "./addHouse2.jsx";
+import AddHouseComfirm from "./addHouseComfirm.jsx";
+import AddHouseDefault from "./addHouseDefault.jsx";
+import AddHouseTitle from "./addHouseTitle.jsx";
+import ProgressTracker from "./progressTracker.jsx";
+import { screenWidthUpdate } from "../../../utils/screenWidthUpdate.jsx";
+import AddHouseInfoContext from "../../../context/addHouseInfo.jsx";
+import HousesContext from "../../../context/housesContext.jsx";
+import HousesInfoSelectContext from "../../../context/houseInfoSelectContext.jsx";
 
 function AddHouse() {
   const params = useParams();

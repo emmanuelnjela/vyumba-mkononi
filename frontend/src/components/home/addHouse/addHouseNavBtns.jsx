@@ -1,5 +1,5 @@
-import { AddHouseNavBtn } from "./addHouseNavBtn";
-import { addHouseNavBtnItems } from "./addHouseNavBtnItems";
+import { AddHouseNavBtn } from "./addHouseNavBtn.jsx";
+import { addHouseNavBtnItems } from "./addHouseNavBtnItems.jsx";
 
 function AddHouseNavBtns({ currentItemNum, screenWidth }) {
   // [1,2,3]

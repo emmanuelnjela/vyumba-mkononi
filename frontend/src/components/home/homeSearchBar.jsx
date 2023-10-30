@@ -1,7 +1,4 @@
-import { useContext, useState } from "react";
-import SearchBar from "../common/searchBar";
-import HousesContext from "../../context/housesContext";
-import HouseSearchBar from "../common/houseSearchBar";
+import HouseSearchBar from "../common/HouseSearchBar.jsx"
 
 function HomeSearchBar() {
  

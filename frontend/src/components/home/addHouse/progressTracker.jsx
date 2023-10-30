@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { addHouseNavBtnItems } from "./addHouseNavBtnItems";
+import { addHouseNavBtnItems } from "./addHouseNavBtnItems.jsx";
 
 function ProgressTracker({ currentItemNum, screenWidth }) {
 

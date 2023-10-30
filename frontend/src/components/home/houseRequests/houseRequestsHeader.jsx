@@ -1,5 +1,6 @@
 import _ from "lodash";
-import LineDivider from "../../common/lineDivider";
+
+import LineDivider from "../../common/lineDivider.jsx";
 
 function HouseRequestsHeader({houseRequests}) {
 

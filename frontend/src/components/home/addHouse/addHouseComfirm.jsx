@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import AddHouseNavBtns from "./addHouseNavBtns";
-import AddHouseInfoContext from "../../../context/addHouseInfo";
+
+import AddHouseNavBtns from "./addHouseNavBtns.jsx";
+import AddHouseInfoContext from "../../../context/addHouseInfo.jsx";
 
 
 function AddHouseComfirm({ currentItemNum, screenWidth }) {

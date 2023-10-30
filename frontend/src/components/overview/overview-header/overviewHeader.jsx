@@ -1,6 +1,6 @@
-import Navbar from "../../common/navbar/Navbar";
-import OverviewSearchbar from "./overviewSearchbar";
-import OverviewNavigatorBtn from "./overviewNavigatorBtn";
+import Navbar from "../../common/navbar/Navbar.jsx";
+import OverviewSearchbar from "./overviewSearchbar.jsx";
+import OverviewNavigatorBtn from "./overviewNavigatorBtn.jsx";
 
 function OverviewHeader() {
   const navItems = [

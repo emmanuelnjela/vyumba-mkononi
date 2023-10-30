@@ -1,5 +1,5 @@
-import SavedBody from "./savedBody";
-import SavedHeader from "./savedHeader";
+import SavedBody from "./savedBody.jsx";
+import SavedHeader from "./savedHeader.jsx";
 
 
 function Saved() {

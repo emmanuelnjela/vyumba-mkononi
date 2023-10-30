@@ -1,4 +1,4 @@
-import LineDivider from "../lineDivider";
+import LineDivider from "../lineDivider.jsx";
 
 function HouseCardsHeader({ houseCardsTitle }) {
   return (

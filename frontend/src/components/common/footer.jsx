@@ -1,4 +1,4 @@
-import List from "./list";
+import List from "./list.jsx";
 
 function Footer() {
   const listItems = [

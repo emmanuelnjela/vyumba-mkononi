@@ -1,4 +1,4 @@
-import withPopUpCard from "../hoc/withPopupCard";
+import withPopUpCard from "../hoc/withPopupCard.jsx";
 
 function HouseReminderMessage() {
   return (

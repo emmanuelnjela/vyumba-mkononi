@@ -1,4 +1,4 @@
-import SavedHouse from "./savedHouse";
+import SavedHouse from "./savedHouse.jsx";
 
 function SavedHouses({ currentItems: houses, ...rest }) {
   return (

@@ -1,4 +1,5 @@
-import HousesInfoSelectContext from "../houseInfoSelectContext";
+import HousesInfoSelectContext from "../houseInfoSelectContext.jsx";
+
 export function HousesInfoSelectProvider({ children }) {
   const roomTypeItems = [
     {

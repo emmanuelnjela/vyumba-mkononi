@@ -1,6 +1,8 @@
 import { useContext } from "react";
-import AddHouseInputGroup from "./addHouseInputGroup";
-import HousesInfoSelectContext from "../../../context/houseInfoSelectContext";
+
+import AddHouseInputGroup from "./addHouseInputGroup.jsx";
+import HousesInfoSelectContext from "../../../context/houseInfoSelectContext.jsx";
+
 function AddHouseDetails() {
   const { roomTypeItems, minReaseLengthItems } = useContext(
     HousesInfoSelectContext

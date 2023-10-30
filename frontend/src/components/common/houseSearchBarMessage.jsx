@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import withPopUpCard from "../hoc/withPopupCard";
+
+import withPopUpCard from "../hoc/withPopupCard.jsx";
 
 function HouseSearchBarMessage() {
   return (

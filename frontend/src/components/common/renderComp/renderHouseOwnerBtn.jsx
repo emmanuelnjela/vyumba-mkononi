@@ -1,5 +1,5 @@
 import { memo } from "react";
-import withToolTip from "../../hoc/withToolTip";
+import withToolTip from "../../hoc/withToolTip.jsx";
 function RenderHouseOwnerBtn({
   withText,
   btnText,

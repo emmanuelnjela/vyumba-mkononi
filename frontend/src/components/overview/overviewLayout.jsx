@@ -1,5 +1,5 @@
-import OverviewBody from "./overview-body/overviewBody";
-import OverviewFooter from "./overview-footer/overviewFooter";
+import OverviewBody from "./overview-body/overviewBody.jsx";
+import OverviewFooter from "./overview-footer/overviewFooter.jsx";
 
 function OverviewLayout() {
     return (

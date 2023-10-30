@@ -1,6 +1,6 @@
-import HouseOwnerBtns from "../../houseOwnerBtns";
-import HouseCardFooterBtn from "./houseCardFooterBtn";
-import HouseFooterRoomType from "./houseFooterRoomType";
+import HouseOwnerBtns from "../../houseOwnerBtns.jsx";
+import HouseCardFooterBtn from "./houseCardFooterBtn.jsx";
+import HouseFooterRoomType from "./houseFooterRoomType.jsx";
 
 function HouseCardFooter(props) {
   return (

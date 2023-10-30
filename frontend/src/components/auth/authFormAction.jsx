@@ -1,7 +1,5 @@
 import _ from "lodash";
 
-import AuthFormIcons from "./authFormIcons";
-
 function AuthFormAction({ label, alreadyMessage }) {
   const capitalizedLabel = _.capitalize(label);
   return (

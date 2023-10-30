@@ -1,4 +1,4 @@
-import SearchBar from "../../common/searchBar";
+import SearchBar from "../../common/searchBar.jsx";
 
 function SortSearchBar({ register, onHouseSearch }) {
   const searchBarObject = {

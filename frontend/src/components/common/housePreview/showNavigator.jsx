@@ -1,4 +1,4 @@
-import NavigatorBtn from "../../common/navigatorBtn";
+import NavigatorBtn from "../../common/navigatorBtn.jsx";
 
 function ShowNavigator({ index, pos, onImgChange }) {
   return (

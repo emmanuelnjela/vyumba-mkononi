@@ -1,6 +1,5 @@
 // import AutoComplete from "../autocomplete";
-import { useState } from "react";
-import RenderDropDowns from "./renderComp/renderDropDowns";
+import RenderDropDowns from "./renderComp/renderDropDowns.jsx";
 
 function SearchBar({ searchBarObject }) {
   const { items, withDropDown, placeholderText, register, getSelectedValue } =

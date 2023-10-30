@@ -1,6 +1,6 @@
-import SortSearchBar  from "./SortSearchBar";
-import SavedHouses from "./savedHouses";
-import Pagination from "../../common/pagination";
+import SortSearchBar  from "./SortSearchBar.jsx";
+import SavedHouses from "./savedHouses.jsx";
+import Pagination from "../../common/pagination.jsx";
 
 export function SavedBodyRight(props) {
   return (

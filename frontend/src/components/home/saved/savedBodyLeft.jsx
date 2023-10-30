@@ -1,4 +1,4 @@
-import Dropdown from "../../common/dropdown";
+import Dropdown from "../../common/dropdown.jsx";
 
 export function SavedBodyLeft({ timeItems, roomTypeItems }) {
   return (

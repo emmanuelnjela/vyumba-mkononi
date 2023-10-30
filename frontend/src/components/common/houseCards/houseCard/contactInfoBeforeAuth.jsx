@@ -1,4 +1,4 @@
-import ContactInfoActionLink from "./contactInfoActionLink";
+import ContactInfoActionLink from "./contactInfoActionLink.jsx";
 
 function ContactInfoBeforeAuth() {
   return (

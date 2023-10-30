@@ -3,11 +3,11 @@ import { Suspense, lazy } from "react";
 
 import HomeLayout from "./homeLayout";
 import { PageLoader } from "../common/PageLoader";
-const HouseReminderMessage = lazy(() => import("./houseReminderMessage"));
-const Profile = lazy(() => import("../common/profile/Profile"));
+const HouseReminderMessage = lazy(() => import("./houseReminderMessage.jsx"));
+const Profile = lazy(() => import("../common/profile/Profile.jsx"));
 
-const AddHouse = lazy(() => import("./addHouse/AddHouse"));
-const Logout = lazy(() => import("../logout"));
+const AddHouse = lazy(() => import("./addHouse/AddHouse.jsx"));
+const Logout = lazy(() => import("../logout.jsx"));
 const DeleteAccountComfirmMessage = lazy(() =>
   import("../common/profile/deleteAccountComfirmMessage")
 );

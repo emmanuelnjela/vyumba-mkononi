@@ -1,9 +1,9 @@
 import axios from "axios";
-import { memo, useContext, useEffect } from "react";
+import { useContext} from "react";
 import { useNavigate } from "react-router-dom";
-import ComfirmMessage from "./common/comfirmMessage";
-import UsersContext from "../context/usersContext";
-import HousesContext from "../context/housesContext";
+
+import ComfirmMessage from "./common/comfirmMessage.jsx";
+import UsersContext from "../context/usersContext.jsx";
 
 function Logout() {
   const navigate = useNavigate();

@@ -1,12 +1,11 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 
-import Navbar from "../common/navbar/Navbar";
-import Image from "../common/image";
-import HousesContext from "../../context/housesContext";
-import CurrentUserContext from "../../context/usersContext";
+import Navbar from "../common/navbar/Navbar.jsx";
+import Image from "../common/image.jsx";
+import HousesContext from "../../context/housesContext.jsx";
+import CurrentUserContext from "../../context/usersContext.jsx";
 import img from "../../imgs/profile.jpg";
-import axios from "axios";
-import { NavLink } from "react-router-dom";
+
 
 function HomeNavbar() {
   const houses = useContext(HousesContext);

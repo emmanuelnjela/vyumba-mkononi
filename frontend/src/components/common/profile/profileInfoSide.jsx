@@ -1,5 +1,5 @@
-import LineDivider from "../lineDivider";
-import ProfileInfo from "./profileInfo";
+import LineDivider from "../lineDivider.jsx";
+import ProfileInfo from "./profileInfo.jsx";
 
 function ProfileInfoSide({currentUser}) {
   return (

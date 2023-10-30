@@ -1,11 +1,11 @@
-import Auth from "./auth/Auth";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-
 import Cookies from "universal-cookie";
-import UsersContext from "../context/usersContext";
+
+import UsersContext from "../context/usersContext.jsx";
+import Auth from "./auth/Auth.jsx";
 
 function Login() {
   const navigate = useNavigate();

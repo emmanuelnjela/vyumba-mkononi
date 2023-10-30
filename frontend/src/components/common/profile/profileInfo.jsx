@@ -1,5 +1,5 @@
-import Dropdown from "../dropdown";
-import ProfileInfoItem from "./profileInfoItem";
+import Dropdown from "../dropdown.jsx";
+import ProfileInfoItem from "./profileInfoItem.jsx";
 
 function ProfileInfo({ currentUser }) {
   const items = [

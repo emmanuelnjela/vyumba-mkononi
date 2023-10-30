@@ -1,6 +1,6 @@
-import AddHouseDetails from "./addHouseDetails";
-import AddHouseNavBtns from "./addHouseNavBtns";
-import AddHouseUploadImg from "./addHouseUploadImg";
+import AddHouseDetails from "./addHouseDetails.jsx";
+import AddHouseNavBtns from "./addHouseNavBtns.jsx";
+import AddHouseUploadImg from "./addHouseUploadImg.jsx";
 
 function AddHouseInfo({screenWidth, currentItemNum}) {
   return (

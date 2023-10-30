@@ -1,4 +1,4 @@
-import List from "../../common/list";
+import List from "../../common/list.jsx";
 
 function OverviewFooter() {
   const listItems = [

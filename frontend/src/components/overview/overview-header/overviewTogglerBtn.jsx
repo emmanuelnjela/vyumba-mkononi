@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
-import TogglerBtn from "../../common/togglerBtn"
+
+import TogglerBtn from "../../common/togglerBtn.jsx"
 
 function OverviewTogglerBtn() {
     return (

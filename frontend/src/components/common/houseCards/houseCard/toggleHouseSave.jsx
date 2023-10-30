@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import Like from "../../like";
-import ToggleHouseSaveText from "./toggleHouseSaveText";
 import {toast} from "react-toastify";
 import { useContext } from "react";
-import UsersContext from "../../../../context/usersContext";
 import _ from "lodash";
+
+import Like from "../../like.jsx";
+import ToggleHouseSaveText from "./toggleHouseSaveText.jsx";
+import UsersContext from "../../../../context/usersContext.jsx";
 
 function ToggleHouseSave(props) {
   const { onUpdate, savedUpateObj, isCurrentUserHouseLike } = props;

@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import UsersContext from "../../../../context/usersContext";
-import ContactInfoAfterAuth from "./contactInfoAfterAuth";
-import ContactInfoBeforeAuth from "./contactInfoBeforeAuth";
-import { ContactInfoLink } from "./contactInfoLink";
 import _ from "lodash";
+
+import UsersContext from "../../../../context/usersContext.jsx";
+import ContactInfoAfterAuth from "./contactInfoAfterAuth.jsx";
+import ContactInfoBeforeAuth from "./contactInfoBeforeAuth.jsx";
+import { ContactInfoLink } from "./contactInfoLink.jsx";
 
 function ContactInfo({ phoneNumber }) {
   const { currentUser } = useContext(UsersContext);

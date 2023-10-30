@@ -1,8 +1,9 @@
-import HouseDetails from "../../common/houseDetails";
-import ContactIcons from "../../common/contactIcons";
 import { useContext } from "react";
-import { toggleElementAdd } from "../../../utils/toggleElementAdd";
-import UsersContext from "../../../context/usersContext";
+
+import HouseDetails from "../../coimportmmon/houseDetails.jsx";
+import ContactIcons from "../../common/contactIcons.jsx";
+import { toggleElementAdd } from "../../../utils/toggleElementAdd.jsx";
+import UsersContext from "../../../context/usersContext.jsx";
 
 function SavedHouse({ house, listItems, onUpdate }) {
   const {currentUser} = useContext(UsersContext)

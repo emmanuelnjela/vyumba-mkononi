@@ -1,8 +1,9 @@
 import { NavLink, Route, Routes } from "react-router-dom";
-import OverviewIndex from "./OverviewIndex";
 import { lazy } from "react";
-const OverviewAboutUs = lazy(() => import("./OverviewAboutUs"));
-const HouseSearchBarMessage = lazy(() => import("../common/houseSearchBarMessage"));
+
+import OverviewIndex from "./OverviewIndex.jsx";
+const OverviewAboutUs = lazy(() => import("./OverviewAboutUs.jsx"));
+const HouseSearchBarMessage = lazy(() => import("../common/houseSearchBarMessage.jsx"));
 
 function Overview() {
   return (

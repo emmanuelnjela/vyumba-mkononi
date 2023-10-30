@@ -1,16 +1,15 @@
-import { useState, useEffect, useContext, useRef, useCallback } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
 import _ from "lodash";
 
-import UsersContext from "../../../context/usersContext";
-
-import HouseRequestsBody from "./houseRequestsBody/HouseRequestsBody";
-import HouseRequestsHeader from "./HouseRequestsHeader";
-import HouseRequestsNavigator from "./HouseRequestsNavigator";
-import HousesInfoSelectContext from "../../../context/houseInfoSelectContext";
+import UsersContext from "../../../context/usersContext.jsx";
+import HouseRequestsBody from "./houseRequestsBody/HouseRequestsBody.jsx";
+import HouseRequestsHeader from "./HouseRequestsHeader.jsx";
+import HouseRequestsNavigator from "./HouseRequestsNavigator.jsx";
+import HousesInfoSelectContext from "../../../context/houseInfoSelectContext.jsx";
 
 function HouseRequests() {
   const {

@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import HousesContext from "../housesContext";
-import { Crud } from "../../utils/crudOperations";
-import UsersContext from "../usersContext";
-import ErrorMessage from "../../components/common/errorMessage";
 import _ from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
+import HousesContext from "../housesContext.jsx";
+import UsersContext from "../usersContext.jsx";
+import ErrorMessage from "../../components/common/errorMessage.jsx";
 
 export function HousesProvider({ children }) {
   const [errorMessage, setErrorMessage] = useState();

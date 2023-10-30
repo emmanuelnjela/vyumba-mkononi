@@ -1,13 +1,14 @@
 import { lazy, Suspense, useState } from "react";
 import _ from "lodash";
 
-const HouseRequestsEdit = lazy(() => import("./HouseRequestsEdit"));
-const HouseRequestsForm = lazy(() => import("./houseRequestsForm"));
-const HouseRequestsSubmitted = lazy(() => import("./houseRequestsSubmitted"));
+const HouseRequestsEdit = lazy(() => import("./HouseRequestsEdit.jsx"));
+const HouseRequestsForm = lazy(() => import("./houseRequestsForm.jsx"));
+const HouseRequestsSubmitted = lazy(() => import("./houseRequestsSubmitted.jsx"));
 const HouseRequestsSubmitButton = lazy(() =>
-  import("./houseRequestsSubmitButton")
+  import("./houseRequestsSubmitButton.jsx")
 );
-import { PageLoader } from "../../../common/PageLoader";
+import { PageLoader } from "../../../common/PageLoader.jsx";
+
 function HouseRequestsBody({
   houseRequests,
   handleSubmit,

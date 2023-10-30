@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import Navbar from "../../common/navbar/Navbar";
+
+import Navbar from "../../common/navbar/Navbar.jsx";
 
 function OverviewNavbar() {
     const navItems = [

@@ -1,6 +1,5 @@
-import TextArea from "../../../common/textArea";
-import HouseRequestsInputGroup from "./houseRequestsInputGroup";
-import { houseRequestsStore } from "../houseRequestsStore";
+import HouseRequestsInputGroup from "./houseRequestsInputGroup.jsx";
+import { houseRequestsStore } from "../houseRequestsStore.jsx";
 
 function HouseRequestsForm(restProps) {
   const { infoInputGroups, contactsInputGroups } = houseRequestsStore()

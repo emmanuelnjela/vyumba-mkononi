@@ -1,5 +1,5 @@
-import HouseCardsHeader from "./houseCardsHeader";
-import HouseCardsBody from "./houseCardsBody";
+import HouseCardsHeader from "./houseCardsHeader.jsx";
+import HouseCardsBody from "./houseCardsBody.jsx";
 
 function HouseCards({currentItems: houses, houseCardsTitle, layoutClass}) {
     return (

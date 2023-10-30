@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
-import UsersContext from "../../../context/usersContext";
+
+import UsersContext from "../../../context/usersContext.jsx";
 
 function ProfileImgSide({profileImage, onProfileImage}) {
 const {currentUser} = useContext(UsersContext)

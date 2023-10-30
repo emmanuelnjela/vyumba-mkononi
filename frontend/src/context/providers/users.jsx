@@ -1,11 +1,11 @@
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import CurrentUserContext from "../usersContext";
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-// import { usersInDB } from "../../data/fakeUsersApi";
-import { Crud } from "../../utils/crudOperations";
 import _ from "lodash";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import CurrentUserContext from "../usersContext.jsx";
+// import { usersInDB } from "../../data/fakeUsersApi";
 
 
 export function UsersProvider({ children }) {

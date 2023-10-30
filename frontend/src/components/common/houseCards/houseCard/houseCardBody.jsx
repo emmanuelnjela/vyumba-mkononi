@@ -1,11 +1,10 @@
-import List from "../../list";
-import HouseDetails from "../../houseDetails";
-import ToggleHouseSave from "./toggleHouseSave";
-import ViewHouseInfo from "./viewHouseInfo";
-import { memo, useContext } from "react";
-import UsersContext from "../../../../context/usersContext";
-import { toggleElementAdd } from "../../../../utils/toggleElementAdd";
-import { executeOrNot } from "../../../../utils/excuteOrNot";
+import { memo } from "react";
+
+import List from "../../list.jsx";
+import HouseDetails from "../../houseDetails.jsx";
+import ToggleHouseSave from "./toggleHouseSave.jsx";
+import ViewHouseInfo from "./viewHouseInfo.jsx";
+import { toggleElementAdd } from "../../../../utils/toggleElementAdd.jsx";
 
 function HouseCardBody({
   currentUser,

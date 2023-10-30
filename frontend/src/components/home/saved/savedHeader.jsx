@@ -1,6 +1,4 @@
-import NavigatorBtn from "../../common/navigatorBtn";
-import LineDivider from "../../common/lineDivider";
-import { Link } from "react-router-dom";
+import LineDivider from "../../common/lineDivider.jsx";
 
 function SavedHeader() {
   return (

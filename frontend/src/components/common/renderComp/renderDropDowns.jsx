@@ -1,4 +1,4 @@
-import Dropdown from "../dropdown";
+import Dropdown from "../dropdown.jsx";
 
 function RenderDropDowns({ withDropDown, items, getSelectedValue }) {
   return (

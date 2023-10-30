@@ -1,11 +1,11 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import UsersContext from "../../../../context/usersContext";
+import UsersContext from "../../../../context/usersContext.jsx";
 
-import HouseCardBody from "./houseCardBody";
-import HouseCardFooter from "./houseCardFooter";
-import HouseCardHeader from "./houseCardHeader";
+import HouseCardBody from "./houseCardBody.jsx";
+import HouseCardFooter from "./houseCardFooter.jsx";
+import HouseCardHeader from "./houseCardHeader.jsx";
 
 function HouseCard({ house }) {
   console.log(house._id);

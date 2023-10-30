@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import Image from "../../image";
-import ContactInfo from "./contactInfo";
+
+import Image from "../../image.jsx";
+import ContactInfo from "./contactInfo.jsx";
 
 function HouseCardHeader({ showContacts, houseImgs, houseId, owner }) {
   return (

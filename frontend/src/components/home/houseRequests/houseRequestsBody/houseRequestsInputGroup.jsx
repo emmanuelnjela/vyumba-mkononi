@@ -1,5 +1,5 @@
-import ReactSelectDropdown from "../../../common/reactSelectDropdown";
-import TextArea from "../../../common/textArea";
+import ReactSelectDropdown from "../../../common/reactSelectDropdown.jsx";
+import TextArea from "../../../common/textArea.jsx";
 
 function HouseRequestsInputGroup({
   labelText,

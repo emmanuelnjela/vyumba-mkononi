@@ -1,8 +1,8 @@
-import AuthBrand from "./authBrand";
-import AuthForm from "./authForm";
-import AuthNavigatorBtn from "./authNavigatorBtn";
-// import useForm from "../../hooks/useForm";
-import RenderErrorMessage from "./renderComp/renderErrorMessage";
+import AuthBrand from "./authBrand.jsx";
+import AuthForm from "./authForm.jsx";
+import AuthNavigatorBtn from "./authNavigatorBtn.jsx";
+// import useForm from "../../hooks/useForm.jsx";
+import RenderErrorMessage from "./renderComp/renderErrorMessage.jsx";
 
 
 /**

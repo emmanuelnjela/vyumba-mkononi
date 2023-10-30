@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import HousesContext from "../../context/housesContext";
-import HouseCards from "../common/houseCards/HouseCards";
-import HomeSearchBar from "./homeSearchBar";
-import Pagination from "../common/pagination";
+
+import HousesContext from "../../context/housesContext.jsx";
+import HouseCards from "../common/houseCards/HouseCards.jsx";
+import HomeSearchBar from "./homeSearchBar.jsx";
+import Pagination from "../common/pagination.jsx";
 
 export function HomeBodyIndex() {
   const housesContext = useContext(HousesContext);

@@ -1,5 +1,5 @@
-import { houseRequestsStore } from "../houseRequestsStore";
-import HouseRequestsInputGroup from "./houseRequestsInputGroup";
+import { houseRequestsStore } from "../houseRequestsStore.jsx";
+import HouseRequestsInputGroup from "./houseRequestsInputGroup.jsx";
 
 function HouseRequestsEdit({
   houseRequests,

@@ -1,4 +1,4 @@
-import Footer from "../common/footer"
+import Footer from "../common/footer.jsx"
 
 function HomeFooter() {
     return (

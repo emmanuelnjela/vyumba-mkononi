@@ -1,15 +1,14 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import UsersContext from "../../../context/usersContext";
 import { useState } from "react";
-import axios from "axios";
-import defaultProfileImage from "../../../imgs/profile.jpg";
-import withPopUpCard from "../../hoc/withPopupCard";
-import ProfileButtons from "./profileButtons";
-import ProfileImgSide from "./profileImgSide";
-import ProfileInfoSide from "./profileInfoSide";
-import HousesContext from "../../../context/housesContext";
 import { toast } from 'react-toastify';
+
+import UsersContext from "../../../context/usersContext.jsx";
+import defaultProfileImage from "../../../imgs/profile.jsx";
+import withPopUpCard from "../../hoc/withPopupCard.jsx";
+import ProfileButtons from "./profileButtons.jsx";
+import ProfileImgSide from "./profileImgSide.jsx";
+import ProfileInfoSide from "./profileInfoSide.jsx";
 
 function Profile() {
   const { currentUser, onUserUpdate } =

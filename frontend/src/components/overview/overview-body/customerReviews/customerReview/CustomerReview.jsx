@@ -1,5 +1,5 @@
-import CustomerReviewBody from "./customerReviewBody";
-import CustomerReviewHeader from "./customerReviewHeader";
+import CustomerReviewBody from "./customerReviewBody.jsx";
+import CustomerReviewHeader from "./customerReviewHeader.jsx";
 
 function CustomerReview({ translate }) {
   console.log(translate)

@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import AddHouseInfoContext from "../../../context/addHouseInfo";
-import ReactSelectDropdown from "../../common/reactSelectDropdown";
-import TextArea from "../../common/textArea";
+
+import AddHouseInfoContext from "../../../context/addHouseInfo.jsx";
+import ReactSelectDropdown from "../../common/reactSelectDropdown.jsx";
+import TextArea from "../../common/textArea.jsx";
 
 function AddHouseInputGroup({
   title,

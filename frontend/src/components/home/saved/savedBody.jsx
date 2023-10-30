@@ -1,12 +1,11 @@
 import { useCallback, useContext, useState } from "react";
 import { Link } from "react-router-dom";
-
-import HousesContext from "../../../context/housesContext";
-import { SavedBodyLeft } from "./savedBodyLeft";
-import { SavedBodyRight } from "./savedBodyRight";
-import UsersContext from "../../../context/usersContext";
 import { useForm } from "react-hook-form";
 import _, { isEmpty } from "lodash";
+
+import HousesContext from "../../../context/housesContext.jsx";
+import { SavedBodyRight } from "./savedBodyRight.jsx";
+import UsersContext from "../../../context/usersContext.jsx";
 
 function SavedBody() {
   const { register, handleSubmit, reset } = useForm();

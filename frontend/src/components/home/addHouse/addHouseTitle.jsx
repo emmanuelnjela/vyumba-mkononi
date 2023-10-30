@@ -1,4 +1,4 @@
-import { addHouseNavBtnItems } from "./addHouseNavBtnItems";
+import { addHouseNavBtnItems } from "./addHouseNavBtnItems.jsx";
 
 
 function AddHouseTitle({ currentItemNum, screenWidth }) {

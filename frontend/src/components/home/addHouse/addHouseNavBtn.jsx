@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import AddHouseInfoContext from "../../../context/addHouseInfo";
 import _ from "lodash";
+
+import AddHouseInfoContext from "../../../context/addHouseInfo.jsx";
 
 export function AddHouseNavBtn({
   arrow_direction,

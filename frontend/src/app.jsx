@@ -4,23 +4,22 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "./app.css";
 import { Suspense, lazy, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import Cookies from "universal-cookie";
 import "react-toastify/dist/ReactToastify.css";
 
-const Login = lazy(() => import("./components/login"));
-const Overview = lazy(() => import("./components/overview/Overview"));
-const Register = lazy(() => import("./components/register"));
-const Home = lazy(() => import("./components/home/Home"));
+const Login = lazy(() => import("./components/login.jsx"));
+const Overview = lazy(() => import("./components/overview/Overview.jsx"));
+const Register = lazy(() => import("./components/register.jsx"));
+const Home = lazy(() => import("./components/home/Home.jsx"));
 const HousePreview = lazy(() =>
-  import("./components/common/housePreview/HousePreview")
+  import("./components/common/housePreview/HousePreview.jsx")
 );
-const Welcome = lazy(() => import("./components/welcome"));
+const Welcome = lazy(() => import("./components/welcome.jsx"));
 
-import { UsersProvider } from "./context/providers/users";
-import { HousesProvider } from "./context/providers/houses";
-import Cookies from "universal-cookie";
-import logo from "../logo.png";
-import { PageLoader } from "./components/common/PageLoader";
-import { HousesInfoSelectProvider } from "./context/providers/houseInfoSelect";
+import { UsersProvider } from "./context/providers/users.jsx";
+import { HousesProvider } from "./context/providers/houses.jsx";
+import { PageLoader } from "./components/common/PageLoader.jsx";
+import { HousesInfoSelectProvider } from "./context/providers/houseInfoSelect.jsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

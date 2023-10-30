@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import UsersContext from "../../../context/usersContext";
-import HousesContext from "../../../context/housesContext";
-import ComfirmMessage from "../comfirmMessage";
+
+import UsersContext from "../../../context/usersContext.jsx";
+import HousesContext from "../../../context/housesContext.jsx";
+import ComfirmMessage from "../comfirmMessage.jsx";
 
 
 

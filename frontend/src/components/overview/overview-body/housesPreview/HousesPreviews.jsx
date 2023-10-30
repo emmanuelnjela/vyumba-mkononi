@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
-import HousesContext from "../../../../context/housesContext";
-import HouseCards from "../../../common/houseCards/HouseCards";
+import HousesContext from "../../../../context/housesContext.jsx";
+import HouseCards from "../../../common/houseCards/HouseCards.jsx";
 
 function HomeBody() {
   const housesContext = useContext(HousesContext);

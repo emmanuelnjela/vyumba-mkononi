@@ -1,5 +1,6 @@
 import { useState } from "react";
-import ToolTip from "./helpers/toolTip";
+
+import ToolTip from "./helpers/toolTip.jsx";
 
 function withToolTip(Content) {
   const WithToolTop = ({ btnText, ...props }) => {

@@ -1,14 +1,13 @@
-import Auth from "./auth/Auth";
 import { useNavigate, Link } from "react-router-dom";
-import { memo, useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import _ from "lodash";
-import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import _ from "lodash";
+
+import Auth from "./auth/Auth";
 
 
 function Register() {
-  const {watch} = useForm()
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null);
   const authData = {

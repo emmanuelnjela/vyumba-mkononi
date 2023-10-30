@@ -1,4 +1,4 @@
-import AddHouseInfo from "./addHouseInfo";
+import AddHouseInfo from "./addHouseInfo.jsx";
 
 
 function AddHouseDefault({ screenWidth, currentItemNum, onAddHouseInfo }) {

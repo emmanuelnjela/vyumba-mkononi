@@ -1,11 +1,11 @@
 import { useContext } from "react";
-
-import HousesContext from "../../../context/housesContext";
-import HouseCards from "../../common/houseCards/HouseCards";
-import NavigatorBtn from "../../common/navigatorBtn";
 import { Link } from "react-router-dom";
-import Pagination from "../../common/pagination";
 import _ from "lodash";
+
+import HousesContext from "../../../context/housesContext.jsx";
+import HouseCards from "../../common/houseCards/HouseCards.jsx";
+import NavigatorBtn from "../../common/navigatorBtn.jsx";
+import Pagination from "../../common/pagination.jsx";
 
 function MyPosts() {
   const { currentOwnerHouses } = useContext(HousesContext);

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import HousesContext from "../../context/housesContext";
-
-import RenderHouseOwnerBtn from "./renderComp/renderHouseOwnerBtn";
 import { toast } from "react-toastify";
+
+import HousesContext from "../../context/housesContext.jsx";
+import RenderHouseOwnerBtn from "./renderComp/renderHouseOwnerBtn.jsx";
 
 function HouseOwnerBtns({ withText, houseId }) {
   // console.log(houseId)

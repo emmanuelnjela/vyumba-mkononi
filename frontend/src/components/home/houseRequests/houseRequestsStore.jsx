@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import HousesInfoSelectContext from "../../../context/houseInfoSelectContext";
+
+import HousesInfoSelectContext from "../../../context/houseInfoSelectContext.jsx";
 
 export function houseRequestsStore() {
   const { roomTypesItems, maxReasePriceItems, minReasePriceItems } = useContext(

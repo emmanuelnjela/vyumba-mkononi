@@ -1,4 +1,4 @@
-import CustomerReview from "./customerReview/CustomerReview";
+import CustomerReview from "./customerReview/CustomerReview.jsx";
 
 function CustomerReviewsBody({translate}) {
   return (

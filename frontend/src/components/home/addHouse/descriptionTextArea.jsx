@@ -1,6 +1,7 @@
-import { useContext } from "react"
-import TextArea from "../../common/textArea"
-import AddHouseInfoContext from "../../../context/addHouseInfo"
+import { useContext } from "react";
+
+import TextArea from "../../common/textArea.jsx";
+import AddHouseInfoContext from "../../../context/addHouseInfo.jsx";
 
 function DescriptionTextArea() {
     const {houseInfo, onAddHouseInfo} = useContext(AddHouseInfoContext)

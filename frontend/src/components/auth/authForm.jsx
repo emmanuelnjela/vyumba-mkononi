@@ -1,8 +1,9 @@
-import AuthFormAction from "./authFormAction";
-import AuthFormGroup from "./authFormGroup";
-import AuthFormInputGroup from "./authFormInputGroup";
-import AuthFormTitle from "./AuthFormTitle";
 import { useForm } from "react-hook-form";
+
+import AuthFormAction from "./authFormAction.jsx";
+import AuthFormGroup from "./authFormGroup.jsx";
+import AuthFormInputGroup from "./authFormInputGroup.jsx";
+import AuthFormTitle from "./AuthFormTitle.jsx";
 
 function AuthForm({ authFormData, schema }) {
 

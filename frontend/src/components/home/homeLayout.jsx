@@ -3,9 +3,9 @@ import { Outlet } from "react-router-dom";
 import HomeFooter from "./homeFooter";
 import HomeHeader from "./homeHeader";
 import { lazy, Suspense } from "react";
-const MyPosts = lazy(() => import("./myPosts/MyPosts"));
-const Saved = lazy(() => import("./saved/Saved"));
-const HouseRequests = lazy(() => import("./houseRequests/HouseRequests"));
+const MyPosts = lazy(() => import("./myPosts/MyPosts.jsx"));
+const Saved = lazy(() => import("./saved/Saved.jsx"));
+const HouseRequests = lazy(() => import("./houseRequests/HouseRequests.jsx"));
 
 import { Route, Routes } from "react-router-dom";
 import { PageLoader } from "../common/PageLoader";

@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import CustomerReviewsFooter from "./customerReviewsFooter";
-import CustomerReviewsBody from "./customerReviewsBody";
-import CustomerReviewsHeader from "./customerReviewsHeader";
+import CustomerReviewsFooter from "./customerReviewsFooter.jsx";
+import CustomerReviewsBody from "./customerReviewsBody.jsx";
+import CustomerReviewsHeader from "./customerReviewsHeader.jsx";
 
 function CustomerReviews() {
   const [selectedSlider, setSelectedSlider] = useState(1);

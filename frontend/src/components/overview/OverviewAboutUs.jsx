@@ -1,7 +1,7 @@
-import About from "./overview-body/about/About"
-import CustomerReviews from "./overview-body/customerReviews/CustomerReviews"
-import OverviewFooter from "./overview-footer/overviewFooter"
-import OverviewNavbar from "./overview-header/overviewNavbar"
+import About from "./overview-body/about/About.jsx"
+import CustomerReviews from "./overview-body/customerReviews/CustomerReviews.jsx"
+import OverviewFooter from "./overview-footer/overviewFooter.jsx"
+import OverviewNavbar from "./overview-header/overviewNavbar.jsx"
 
 function OverviewAboutUs() {
     return (

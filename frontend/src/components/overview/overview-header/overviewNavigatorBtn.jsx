@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import NavigatorBtn from "../../common/navigatorBtn";
+
+import NavigatorBtn from "../../common/navigatorBtn.jsx";
 
 function OverviewNavigatorBtn() {
   return (

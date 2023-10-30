@@ -1,9 +1,9 @@
-import { useRef, useContext, useEffect } from "react";
+import { useContext } from "react";
 import axios from "axios";
 
-import AddHouseInfoContext from "../../../context/addHouseInfo";
+import AddHouseInfoContext from "../../../context/addHouseInfo.jsx";
 import image from "../../../imgs/image.svg";
-import { BtnCounter } from "./btnCounter";
+import { BtnCounter } from "./btnCounter.jsx";
 
 // change this to use uploaded image preview
 function AddHouseUploadImg() {

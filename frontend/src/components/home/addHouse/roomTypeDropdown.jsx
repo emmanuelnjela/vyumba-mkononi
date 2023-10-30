@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import Dropdown from "../../common/dropdown";
-import AddHouseInfoContext from "../../../context/addHouseInfo";
+
+import Dropdown from "../../common/dropdown.jsx";
+import AddHouseInfoContext from "../../../context/addHouseInfo.jsx";
 
 function RoomTypeDropdown() {
   const { onAddHouseInfo, defaultRoomType } = useContext(AddHouseInfoContext);

@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 
-import HomeSearchBar from "./homeSearchBar";
-import HomeNavbar from "./homeNavbar";
+import HomeNavbar from "./homeNavbar.jsx";
 
 function HomeHeader() {
 

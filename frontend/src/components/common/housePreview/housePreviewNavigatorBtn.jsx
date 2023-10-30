@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import NavigatorBtn from "../navigatorBtn";
+
+import NavigatorBtn from "../navigatorBtn.jsx";
 
 export default function HousePreviewNavigatorBtn() {
   return (

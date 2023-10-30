@@ -1,9 +1,8 @@
-import { useContext, useRef, useState } from "react";
-import SearchBar from "./searchBar";
-import HousesContext from "../../context/housesContext";
-import UsersContext from "../../context/usersContext";
-import { useLocation } from "react-router-dom";
+import { useContext, useRef } from "react";
 import { useForm } from "react-hook-form";
+
+import SearchBar from "./searchBar.jsx";
+import HousesContext from "../../context/housesContext.jsx";
 
 function HouseSearchBar() {
   const { register, handleSubmit, reset } = useForm();

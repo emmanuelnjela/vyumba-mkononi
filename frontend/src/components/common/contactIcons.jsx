@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import List from "./list";
+import List from "./list.jsx";
 
 function ContactIcons({ phoneNumber }) {
   // pNum = String(pNum)

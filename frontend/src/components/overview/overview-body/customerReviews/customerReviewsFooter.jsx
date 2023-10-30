@@ -1,4 +1,4 @@
-import Slider from "../../../common/slider";
+import Slider from "../../../common/slider.jsx";
 
 function CustomerReviewsFooter({ selectedSlider, onSliderSelect }) {
   return (

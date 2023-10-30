@@ -1,4 +1,4 @@
-import withPopupCard from "../hoc/withPopupCard";
+import withPopupCard from "../hoc/withPopupCard.jsx";
 
 const ErrorMessage = ({ message }) => {
   return (

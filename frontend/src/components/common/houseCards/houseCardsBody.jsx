@@ -1,4 +1,4 @@
-import HouseCard from "./houseCard/housecard";
+import HouseCard from "./houseCard/housecard.jsx";
 
 function HouseCardsBody({ houses, layoutClass}) {
   return (

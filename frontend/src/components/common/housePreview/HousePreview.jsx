@@ -1,13 +1,13 @@
 import { Route, Routes, useParams } from "react-router-dom";
-import axios from "axios";
-import HousePreviewImgs from "./housePreviewImgs";
-import HousePreviewInfo from "./housePreviewInfo";
-import Profile from "../profile/Profile";
-import { imageChanger } from "../../../utils/imageChanger";
 import { useReducer, useEffect, useContext } from "react";
-import HousePreviewNavigatorBtn from "./housePreviewNavigatorBtn";
-import HousesContext from "../../../context/housesContext";
-import UsersContext from "../../../context/usersContext";
+
+import HousePreviewImgs from "./housePreviewImgs.jsx";
+import HousePreviewInfo from "./housePreviewInfo.jsx";
+import Profile from "../profile/Profile.jsx";
+import { imageChanger } from "../../../utils/imageChanger.jsx";
+import HousePreviewNavigatorBtn from "./housePreviewNavigatorBtn.jsx";
+import HousesContext from "../../../context/housesContext.jsx";
+import UsersContext from "../../../context/usersContext.jsx";
 
 function HousePreview() {
   const { id } = useParams();

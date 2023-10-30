@@ -1,7 +1,8 @@
-import LineDivider from "../../common/lineDivider";
-import CustomerReview from "./customerReview/customerReview";
-import Slider from "../../common/slider";
 import { useState } from "react";
+
+import LineDivider from "../../common/lineDivider.jsx";
+import CustomerReview from "./customerReview/customerReview.jsx";
+import Slider from "../../common/slider.jsx";
 
 function CustomerReviews() {
   const [selectedSlider, setSelectedSlider] = useState(1);

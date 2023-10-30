@@ -1,4 +1,4 @@
-import withPopUpCard from "../hoc/withPopupCard";
+import withPopUpCard from "../hoc/withPopupCard.jsx";
 
 function ComfirmMessage({ message,denialMessage, acceptMessage, onclick }) {
   return (

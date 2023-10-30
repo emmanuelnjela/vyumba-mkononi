@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from "react";
-import RenderCurrentSelected from "./renderComp/renderCurrentSelected";
-import List from "./list";
+
+import RenderCurrentSelected from "./renderComp/renderCurrentSelected.jsx";
+import List from "./list.jsx";
 
 /**
  *
