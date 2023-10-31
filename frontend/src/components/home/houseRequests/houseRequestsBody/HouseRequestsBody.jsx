@@ -1,7 +1,7 @@
 import { lazy, Suspense, useState } from "react";
 import _ from "lodash";
 
-const HouseRequestsEdit = lazy(() => import("./HouseRequestsEdit.jsx"));
+const HouseRequestsEdit = lazy(() => import("./houseRequestsEdit.jsx"));
 const HouseRequestsForm = lazy(() => import("./houseRequestsForm.jsx"));
 const HouseRequestsSubmitted = lazy(() => import("./houseRequestsSubmitted.jsx"));
 const HouseRequestsSubmitButton = lazy(() =>
