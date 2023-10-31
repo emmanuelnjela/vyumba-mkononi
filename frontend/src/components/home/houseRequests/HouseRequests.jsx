@@ -7,8 +7,8 @@ import _ from "lodash";
 
 import UsersContext from "../../../context/usersContext.jsx";
 import HouseRequestsBody from "./houseRequestsBody/HouseRequestsBody.jsx";
-import HouseRequestsHeader from "./HouseRequestsHeader.jsx";
-import HouseRequestsNavigator from "./HouseRequestsNavigator.jsx";
+import HouseRequestsHeader from "./houseRequestsHeader.jsx";
+import HouseRequestsNavigator from "./houseRequestsNavigator.jsx";
 import HousesInfoSelectContext from "../../../context/houseInfoSelectContext.jsx";
 
 function HouseRequests() {
