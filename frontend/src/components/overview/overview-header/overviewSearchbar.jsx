@@ -1,4 +1,4 @@
-import HouseSearchBar from "../../common/HouseSearchBar.jsx";
+import HouseSearchBar from "../../common/houseSearchBar.jsx";
 
 function OverviewSearchbar() {
   return (
