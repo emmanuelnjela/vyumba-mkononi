@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import HouseDetails from "../../coimportmmon/houseDetails.jsx";
+import HouseDetails from "../../common/houseDetails.jsx";
 import ContactIcons from "../../common/contactIcons.jsx";
 import { toggleElementAdd } from "../../../utils/toggleElementAdd.jsx";
 import UsersContext from "../../../context/usersContext.jsx";
