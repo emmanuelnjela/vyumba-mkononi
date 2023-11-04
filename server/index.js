@@ -35,7 +35,7 @@ const port = process.env.PORT;
 
 /* THIRDPART MIDDLWARE */
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'https://vyumba-mkononi.onrender.com',
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200
 }

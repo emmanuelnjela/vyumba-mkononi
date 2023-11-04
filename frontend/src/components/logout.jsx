@@ -14,7 +14,7 @@ function Logout() {
     try {
       if (e.target.name === "yes") {
         const response = await axios.post(
-          "http://localhost:3001/auth/logout",
+          "https://vyumba-mkononi-backend.onrender.com/auth/logout",
           null,
           {
             withCredentials: true,

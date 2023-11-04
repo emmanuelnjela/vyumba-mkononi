@@ -19,7 +19,7 @@ function AddHouseUploadImg() {
     const formData = new FormData();
     formData.append("image", img);
     const respond = await axios.post(
-      "http://localhost:3001/images/upload",
+      "https://vyumba-mkononi-backend.onrender.com/images/upload",
       formData,
       {
         headers: {
@@ -29,7 +29,7 @@ function AddHouseUploadImg() {
       }
     );
     console.log(respond.data.imgName)
-    const imgUrl = `http://localhost:3001/images/${respond.data.imgName}`;
+    const imgUrl = `https://vyumba-mkononi-backend.onrender.com/images/${respond.data.imgName}`;
     const updatedImgs = [...houseInfo.imgs, imgUrl];
     onAddHouseInfo("imgs", updatedImgs);
   }

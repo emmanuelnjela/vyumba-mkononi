@@ -22,7 +22,7 @@ function HouseRequests() {
 
   const [houseRequests, setHouseRequests] = useState([]);
   const location = useLocation();
-  const houseRequestsUrl = "http://localhost:3001/houseRequests";
+  const houseRequestsUrl = "https://vyumba-mkononi-backend.onrender.com/houseRequests";
   const { currentUser } = useContext(UsersContext);
   const { minReasePriceItems, maxReasePriceItems, roomTypeItems } = useContext(
     HousesInfoSelectContext

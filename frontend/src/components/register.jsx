@@ -72,7 +72,7 @@ function Register() {
         // useEffect(() => {
         axios
           .post(
-            "http://localhost:3001/auth/register",
+            "https://vyumba-mkononi-backend.onrender.com/auth/register",
             {
               userName: username,
               email,
