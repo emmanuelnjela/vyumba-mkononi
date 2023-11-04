@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../usersContext.jsx";
 // import { usersInDB } from "../../data/fakeUsersApi";
 
-
 export function UsersProvider({ children }) {
   const navigate = useNavigate();
   const cookies = new Cookies();
@@ -26,7 +25,7 @@ export function UsersProvider({ children }) {
       if (userToUpdateID === currentUserId) {
         console.log(userToUpdate);
         const respond = await axios.put(
-          "https://vyumba-mkononi-backend.onrender.com/users",
+          "https://vyumba-mkononi-backend.onrender.comy/users",
           {
             id: userToUpdateID,
             dataElements: userToUpdate[userToUpdateID],
@@ -78,8 +77,8 @@ export function UsersProvider({ children }) {
   );
 
   useEffect(() => {
-    console.log(currentUserId, currentUser)
-    if(currentUserId && _.isEmpty(currentUser)) {
+    console.log(currentUserId, currentUser);
+    if (currentUserId && _.isEmpty(currentUser)) {
       handleCurrentUser(currentUserId);
     }
   }, [currentUserId, currentUser, handleCurrentUser]);
@@ -109,7 +108,6 @@ export function UsersProvider({ children }) {
   };
 
   // const isLogin = cookies.get("currentUserId") === currentUser._id
-
 
   const currentUserContextObject = {
     isOwner: true,
