@@ -13,7 +13,7 @@ export function HousesProvider({ children }) {
   const [houses, setHouses] = useState([]);
   const [searchedHouses, setSearchedHouses] = useState([]);
   const { isLogin, currentUser, onUserUpdate } = useContext(UsersContext);
-  const housesUrl = "https://vyumba-mkononi-backend.onrender.com//houses";
+  const housesUrl = "https://vyumba-mkononi-backend.onrender.com/houses";
   const location = useLocation();
   const navigate = useNavigate();
 
