@@ -14,6 +14,7 @@ export function UsersProvider({ children }) {
   const currentUserId = cookies.get("currentUserId");
   const [currentUser, setCurrentUser] = useState({});
   const isLoggedInRef = useRef(typeof currentUserId === "string");
+  const usersURl = "https://vyumba-mkononi-backend.onrender.com";
 
   // const usersCrud = new Crud(users);
 
@@ -25,7 +26,7 @@ export function UsersProvider({ children }) {
       if (userToUpdateID === currentUserId) {
         console.log(userToUpdate);
         const respond = await axios.put(
-          "https://vyumba-mkononi-backend.onrender.comy/users",
+          `${usersURl}/users`,
           {
             id: userToUpdateID,
             dataElements: userToUpdate[userToUpdateID],
@@ -58,7 +59,7 @@ export function UsersProvider({ children }) {
     async (userId) => {
       try {
         const respond = await axios.get(
-          `http://localhost:3001/users/${userId}`,
+          `${usersURl}/users/${userId}`,
           {
             withCredentials: true,
           }
@@ -86,7 +87,7 @@ export function UsersProvider({ children }) {
   // const updateCurrentUser = (dataElements) => {};
   const handleGetUser = (id) => {
     const promise = new Promise(function (resolve, reject) {
-      const respond = axios.get(`http://localhost:3001/users/${id}`, {
+      const respond = axios.get(`${usersURl}/users/${id}`, {
         withCredentials: true,
       });
 
@@ -98,7 +99,7 @@ export function UsersProvider({ children }) {
 
   const handleUserDelete = (id) => {
     const promise = new Promise(function (resolve, reject) {
-      const respond = axios.delete(`http://localhost:3001/users/${id}`, {
+      const respond = axios.delete(`${usersURl}/users/${id}`, {
         withCredentials: true,
       });
       respond.then(() => resolve());
