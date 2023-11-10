@@ -34,11 +34,21 @@ const app = express();
 const port = process.env.PORT;
 
 /* THIRDPART MIDDLWARE */
-const corsOptions = {
-    origin: 'https://vyumba-mkononi.onrender.com',
-    credentials: true,            //access-control-allow-credentials:true
-    optionSuccessStatus: 200
-}
+// const corsOptions = {
+//     origin: 'http://localhost:5173',
+//     credentials: true,            //access-control-allow-credentials:true
+//     optionSuccessStatus: 200
+// }
+var whitelist = ['http://localhost:5173', 'https://vyumba-mkononi.onrender.com'];
+var corsOptions = {
+  origin: function (origin, callback) {
+    console.log(origin)
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, originIsWhitelisted);
+  },
+  credentials: true,
+  optionSuccessStatus: 200
+};
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true, limit: "16mb" }));
 app.use(bodyParser.json({ extended: true, limit: "16mb" }))

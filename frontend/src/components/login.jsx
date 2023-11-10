@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import Cookies from "universal-cookie";
 
+import BaseUrlContext from "../context/baseUrlContext.jsx";
 import UsersContext from "../context/usersContext.jsx";
 import Auth from "./auth/Auth.jsx";
 
@@ -11,6 +12,7 @@ function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const { onCurrentUser } = useContext(UsersContext);
+  const baseUrl = useContext(BaseUrlContext);
 
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -56,7 +58,7 @@ function Login() {
         const { username, password } = data;
         console.log(username, password);
         axios
-          .post("https://vyumba-mkononi-backend.onrender.com/auth/login", {
+          .post(`${baseUrl}/auth/login`, {
             userName: username,
             password,
           })

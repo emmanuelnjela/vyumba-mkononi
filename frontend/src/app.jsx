@@ -16,6 +16,7 @@ const HousePreview = lazy(() =>
 );
 const Welcome = lazy(() => import("./components/welcome.jsx"));
 
+import { BaseUrlProvider } from "./context/providers/baseUrl.jsx";
 import { UsersProvider } from "./context/providers/users.jsx";
 import { HousesProvider } from "./context/providers/houses.jsx";
 import { PageLoader } from "./components/common/PageLoader.jsx";
@@ -49,25 +50,30 @@ function App() {
   if (isLoading) return <PageLoader />;
 
   return (
-    <UsersProvider>
-      <HousesProvider>
-        <HousesInfoSelectProvider>
-          <div className="container">
-            <ToastContainer />
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="*" element={<Overview />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/welcome" element={<Welcome />} />
-                <Route path="/home/*" element={<Home />} />
-                <Route path="/house-preview/:id/*" element={<HousePreview />} />
-              </Routes>
-            </Suspense>
-          </div>
-        </HousesInfoSelectProvider>
-      </HousesProvider>
-    </UsersProvider>
+    <BaseUrlProvider>
+      <UsersProvider>
+        <HousesProvider>
+          <HousesInfoSelectProvider>
+            <div className="container">
+              <ToastContainer />
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="*" element={<Overview />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/welcome" element={<Welcome />} />
+                  <Route path="/home/*" element={<Home />} />
+                  <Route
+                    path="/house-preview/:id/*"
+                    element={<HousePreview />}
+                  />
+                </Routes>
+              </Suspense>
+            </div>
+          </HousesInfoSelectProvider>
+        </HousesProvider>
+      </UsersProvider>
+    </BaseUrlProvider>
   );
 }
 

@@ -1,14 +1,16 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import _ from "lodash";
 
 import Auth from "./auth/Auth";
+import BaseUrlContext from "../context/baseUrlContext";
 
 
 function Register() {
   const navigate = useNavigate();
+  const baseUrl = useContext(BaseUrlContext)
   const [errorMessage, setErrorMessage] = useState(null);
   const authData = {
     brand: {
@@ -72,7 +74,7 @@ function Register() {
         // useEffect(() => {
         axios
           .post(
-            "https://vyumba-mkononi-backend.onrender.com/auth/register",
+            `${baseUrl}/auth/register`,
             {
               userName: username,
               email,

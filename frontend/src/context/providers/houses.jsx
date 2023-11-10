@@ -4,6 +4,7 @@ import _ from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import BaseUrlContext from "../baseUrlContext.jsx";
 import HousesContext from "../housesContext.jsx";
 import UsersContext from "../usersContext.jsx";
 import ErrorMessage from "../../components/common/errorMessage.jsx";
@@ -13,7 +14,8 @@ export function HousesProvider({ children }) {
   const [houses, setHouses] = useState([]);
   const [searchedHouses, setSearchedHouses] = useState([]);
   const { isLogin, currentUser, onUserUpdate } = useContext(UsersContext);
-  const housesUrl = "https://vyumba-mkononi-backend.onrender.com/houses";
+  const baseUrl = useContext(BaseUrlContext)
+  const housesUrl = `${baseUrl}/houses`;
   const location = useLocation();
   const navigate = useNavigate();
 

@@ -1,17 +1,20 @@
 import { useContext } from "react";
 import axios from "axios";
 
+import BaseUrlContext from "../../../context/baseUrlContext.jsx";
 import AddHouseInfoContext from "../../../context/addHouseInfo.jsx";
 import image from "../../../imgs/image.svg";
 import { BtnCounter } from "./btnCounter.jsx";
 
 // change this to use uploaded image preview
 function AddHouseUploadImg() {
+  const baseUrl = useContext(BaseUrlContext)
   const { houseInfo, onAddHouseInfo, currentHouseId } =
     useContext(AddHouseInfoContext);
   const { imgs } = houseInfo;
   const lastHouseImage = imgs[imgs.length - 1];
   const isImageUploaded = imgs.length > 0;
+  const imagesUrl = `${baseUrl}/images`
 
   const handleUploadedChange = (e) => handleUploadImg(e.target.files[0]);
 
@@ -19,7 +22,7 @@ function AddHouseUploadImg() {
     const formData = new FormData();
     formData.append("image", img);
     const respond = await axios.post(
-      "https://vyumba-mkononi-backend.onrender.com/images/upload",
+      `${imagesUrl}/upload`,
       formData,
       {
         headers: {
@@ -29,7 +32,7 @@ function AddHouseUploadImg() {
       }
     );
     console.log(respond.data.imgName)
-    const imgUrl = `https://vyumba-mkononi-backend.onrender.com/images/${respond.data.imgName}`;
+    const imgUrl = `${imagesUrl}/${respond.data.imgName}`;
     const updatedImgs = [...houseInfo.imgs, imgUrl];
     onAddHouseInfo("imgs", updatedImgs);
   }

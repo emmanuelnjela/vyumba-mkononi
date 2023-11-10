@@ -1,16 +1,19 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
 
+import BaseUrlContext from "../../../context/baseUrlContext.jsx";
 import UsersContext from "../../../context/usersContext.jsx";
 
 function ProfileImgSide({profileImage, onProfileImage}) {
 const {currentUser} = useContext(UsersContext)
+const baseUrl = useContext(BaseUrlContext)
+const imagesURL = `${baseUrl}/images`
   
   async function handleProfileChange(e) {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
     const respond = await axios.post(
-      "http://localhost:3001/images/upload",
+      `${imagesURL}/upload`,
       formData,
       {
         headers: {
@@ -19,7 +22,7 @@ const {currentUser} = useContext(UsersContext)
         withCredentials: true,
       }
     );
-    const imgUrl = `http://localhost:3001/images/${respond.data.imgName}`;
+    const imgUrl = `${imagesURL}/${respond.data.imgName}`;
 
     onProfileImage(imgUrl);
   }

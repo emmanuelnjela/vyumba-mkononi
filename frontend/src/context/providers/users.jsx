@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useContext, useRef, useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import _ from "lodash";
 import { useNavigate } from "react-router-dom";
 
+import BaseUrlContext from "../baseUrlContext.jsx";
 import CurrentUserContext from "../usersContext.jsx";
 // import { usersInDB } from "../../data/fakeUsersApi";
 
@@ -14,7 +15,8 @@ export function UsersProvider({ children }) {
   const currentUserId = cookies.get("currentUserId");
   const [currentUser, setCurrentUser] = useState({});
   const isLoggedInRef = useRef(typeof currentUserId === "string");
-  const usersURl = "https://vyumba-mkononi-backend.onrender.com";
+  const baseUrl = useContext(BaseUrlContext)
+  const usersURl = `${baseUrl}/users`;
 
   // const usersCrud = new Crud(users);
 
@@ -26,7 +28,7 @@ export function UsersProvider({ children }) {
       if (userToUpdateID === currentUserId) {
         console.log(userToUpdate);
         const respond = await axios.put(
-          `${usersURl}/users`,
+          usersURl,
           {
             id: userToUpdateID,
             dataElements: userToUpdate[userToUpdateID],
@@ -59,7 +61,7 @@ export function UsersProvider({ children }) {
     async (userId) => {
       try {
         const respond = await axios.get(
-          `${usersURl}/users/${userId}`,
+          `${usersURl}/${userId}`,
           {
             withCredentials: true,
           }
@@ -87,7 +89,7 @@ export function UsersProvider({ children }) {
   // const updateCurrentUser = (dataElements) => {};
   const handleGetUser = (id) => {
     const promise = new Promise(function (resolve, reject) {
-      const respond = axios.get(`${usersURl}/users/${id}`, {
+      const respond = axios.get(`${usersURl}/${id}`, {
         withCredentials: true,
       });
 
@@ -99,7 +101,7 @@ export function UsersProvider({ children }) {
 
   const handleUserDelete = (id) => {
     const promise = new Promise(function (resolve, reject) {
-      const respond = axios.delete(`${usersURl}/users/${id}`, {
+      const respond = axios.delete(`${usersURl}/${id}`, {
         withCredentials: true,
       });
       respond.then(() => resolve());

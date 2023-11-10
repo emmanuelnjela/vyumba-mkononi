@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import _ from "lodash";
 
+import BaseUrlContext from "../../../context/baseUrlContext.jsx";
 import UsersContext from "../../../context/usersContext.jsx";
 import HouseRequestsBody from "./houseRequestsBody/HouseRequestsBody.jsx";
 import HouseRequestsHeader from "./houseRequestsHeader.jsx";
@@ -22,7 +23,8 @@ function HouseRequests() {
 
   const [houseRequests, setHouseRequests] = useState([]);
   const location = useLocation();
-  const houseRequestsUrl = "https://vyumba-mkononi-backend.onrender.com/houseRequests";
+  const baseUrl = useContext(BaseUrlContext);
+  const houseRequestsUrl = `${baseUrl}/houseRequests`;
   const { currentUser } = useContext(UsersContext);
   const { minReasePriceItems, maxReasePriceItems, roomTypeItems } = useContext(
     HousesInfoSelectContext
