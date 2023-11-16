@@ -39,6 +39,7 @@ const port = process.env.PORT;
 //     credentials: true,            //access-control-allow-credentials:true
 //     optionSuccessStatus: 200
 // }
+app.set("trust proxy", 1)
 var whitelist = ['http://localhost:5173', 'https://vyumba-mkononi.onrender.com'];
 var corsOptions = {
   origin: function (origin, callback) {
