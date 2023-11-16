@@ -40,6 +40,9 @@
     "build": "vite build",
     "serve": "vite preview"
   },
+  "engines": {
+    "node": "^14.18.1"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
