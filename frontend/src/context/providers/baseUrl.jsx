@@ -19,7 +19,7 @@ export function BaseUrlProvider({ children }) {
   });
 
   return (
-    <BaseUrlContext.Provider value={isUserOnline.current ? liveUrl : localhost}>
+    <BaseUrlContext.Provider value={liveUrl}>
       {children}
     </BaseUrlContext.Provider>
   );
